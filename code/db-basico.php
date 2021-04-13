@@ -46,7 +46,7 @@ $stmt -> execute();
 */
 
 //Insert utilizando arreglo forma1
-$users =[
+/*$users =[
     ['Miguel Perez', 'miguel.perez@segic.cl', 'miguel.perez', 'miguel123'],
     ['Andrea Perez', 'andrea.perez@segic.usach.cl', 'andrea.perez', 'andrea123'],
 ];
@@ -64,6 +64,45 @@ foreach($users as $user){
     $user_name=$user[2];;
     //$password='juan123';
     $password= password_hash($user[3], PASSWORD_DEFAULT);
+    //password_verify()
+
+    $stmt->bindParam (':full_name',$full_name);
+    $stmt->bindParam (':email',$email);
+    $stmt->bindParam (':user_name',$user_name);
+    $stmt->bindParam (':password',$password);
+    $stmt -> execute();
+}
+*/
+
+//Insert utilizando arreglo forma2
+*$users =[
+    [
+    'name'=>'Miguel Perez',
+    'email'=>'miguel.perez@segic.cl', 
+    'username'=>'miguel.perez', 
+    'password'=>'miguel123'
+    ],
+    [
+    'name'=>'Andrea Perez', 
+    'email'=>'andrea.perez@segic.usach.cl', 
+    'username'=>'andrea.perez', 
+    'password'=>'andrea123'
+    ],
+];
+
+$sql= "INSERT INTO users
+            (full_name, email, user_name, password)
+        values 
+            (:full_name, :email, :user_name, :password)";
+
+$stmt = $db->prepare($sql);
+
+foreach($users as $user){
+    $full_name = $user['name'];
+    $email = $user['email'];
+    $user_name=$user['username'];;
+    //$password='juan123';
+    $password= password_hash($user['password'], PASSWORD_DEFAULT);
     //password_verify()
 
     $stmt->bindParam (':full_name',$full_name);

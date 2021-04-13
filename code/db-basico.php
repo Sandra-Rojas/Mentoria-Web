@@ -75,7 +75,7 @@ foreach($users as $user){
 */
 
 //Insert utilizando arreglo forma2
-*$users =[
+$users =[
     [
     'name'=>'Miguel Perez',
     'email'=>'miguel.perez@segic.cl', 

@@ -75,7 +75,7 @@ foreach($users as $user){
 */
 
 //Insert utilizando arreglo forma2
-$users =[
+/*$users =[
     [
     'name'=>'Miguel Perez',
     'email'=>'miguel.perez@segic.cl', 
@@ -111,3 +111,17 @@ foreach($users as $user){
     $stmt->bindParam (':password',$password);
     $stmt -> execute();
 }
+*/
+
+
+//querying data
+$stmt = $db->prepare("SELECT * FROM users");
+$stmt->execute();
+$users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+//imprimir nombres hacia abajo
+foreach($users as $user){
+    echo $user['id']. "<br>";
+    echo $user['full_name']. "<br>";
+}
+

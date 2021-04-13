@@ -46,7 +46,7 @@ $stmt -> execute();
 */
 
 //Insert utilizando arreglo forma1
-// $users =[
+$users =[
     ['Miguel Perez', 'miguel.perez@segic.cl', 'miguel.perez', 'miguel123'],
     ['Andrea Perez', 'andrea.perez@segic.usach.cl', 'andrea.perez', 'andrea123'],
 ];

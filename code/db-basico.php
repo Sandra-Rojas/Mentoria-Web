@@ -28,13 +28,19 @@ $email = 'juan.perez@segic.cl';
 $user_name='juan.perez';
 $password='juan123';
 
-$stmt -> bindParam (':full_name',$full_name);
-$stmt -> bindParam (':email',$email);
-$stmt -> bindParam (':user_name',$user_name);
-$stmt -> bindParam (':password',$password);
+$stmt->bindParam (':full_name',$full_name);
+$stmt->bindParam (':email',$email);
+$stmt->bindParam (':user_name',$user_name);
+$stmt->bindParam (':password',$password);
 
+$stmt-> execute();
+
+
+//delete
+/*$id=3;
+$stmt = $db->prepare("DELETE FROM users WHERE id= :id");
+$stmt->bindParam(':id',$id);
 $stmt -> execute();
-
-
+*/
 
 

@@ -39,10 +39,36 @@ $stmt-> execute();
 */
 
 //delete
-$id=3;
+/*$id=3;
 $stmt = $db->prepare("DELETE FROM users WHERE id= :id");
 $stmt->bindParam(':id',$id);
 $stmt -> execute();
+*/
 
+//Insert utilizando arreglo forma1
+// $users =[
+    ['Miguel Perez', 'miguel.perez@segic.cl', 'miguel.perez', 'miguel123'],
+    ['Andrea Perez', 'andrea.perez@segic.usach.cl', 'andrea.perez', 'andrea123'],
+];
 
+$sql= "INSERT INTO users
+            (full_name, email, user_name, password)
+        values 
+            (:full_name, :email, :user_name, :password)";
 
+$stmt = $db->prepare($sql);
+
+foreach($users as $user){
+    $full_name = $user[0];
+    $email = $user[1];
+    $user_name=$user[2];;
+    //$password='juan123';
+    $password= password_hash($user[3], PASSWORD_DEFAULT);
+    //password_verify()
+
+    $stmt->bindParam (':full_name',$full_name);
+    $stmt->bindParam (':email',$email);
+    $stmt->bindParam (':user_name',$user_name);
+    $stmt->bindParam (':password',$password);
+    $stmt -> execute();
+}

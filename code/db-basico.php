@@ -125,3 +125,23 @@ foreach($users as $user){
     echo $user['full_name']. "<br>";
 }
 
+
+//usar tabla para imprimir nombres
+
+echo '<table border=1>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Mail</th>
+        <th>User Name</th>
+    </tr>';     
+    
+    foreach($users as $user){
+        echo '<tr>
+                <td>' . $user['id']. '</td>;
+                <td>'. $user['full_name']. '</td>;
+                <td>'. $user['email']. '</td>;
+                <td>'. $user['user_name']. '</td>;
+                </tr>';
+    }
+    echo  '</table>';

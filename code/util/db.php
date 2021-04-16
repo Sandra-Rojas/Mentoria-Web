@@ -8,7 +8,7 @@ function connectDB()
     //manejo de error
     try  { 
         $dsn = "mysql:host=localhost;dbname=$db_name";
-        $db = new PDO($dsn, $db_pass, $db_user);
+        $db = new PDO($dsn, $db_user, $db_pass );
         return $db;
     } catch(PDOException $e){
         echo $e->getMessage();

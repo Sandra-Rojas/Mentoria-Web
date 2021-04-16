@@ -14,4 +14,5 @@ function connectDB()
         
     }catch(PDOException $e){
         echo $e->getMessage();
-}
+    }
+    

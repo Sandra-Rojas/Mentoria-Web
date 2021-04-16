@@ -28,7 +28,8 @@ $email = 'juan.perez@segic.cl';
 $user_name='juan.perez';
 //$password='juan123';
 $password= password_hash('juan123', PASSWORD_DEFAULT);
-//password_verify()
+//password_verify('juan123','aca ingresar passw encriptada que esta en la bd')
+//si la clave corresponde devuelve verdadero
 
 $stmt->bindParam (':full_name',$full_name);
 $stmt->bindParam (':email',$email);
@@ -75,7 +76,7 @@ foreach($users as $user){
 */
 
 //Insert utilizando arreglo forma2
-/*$users =[
+/* $users =[
     [
     'name'=>'Miguel Perez',
     'email'=>'miguel.perez@segic.cl', 
@@ -138,10 +139,10 @@ echo '<table border=1>
     
     foreach($users as $user){
         echo '<tr>
-                <td>' . $user['id']. '</td>;
-                <td>'. $user['full_name']. '</td>;
-                <td>'. $user['email']. '</td>;
-                <td>'. $user['user_name']. '</td>;
+                <td>' . $user['id']. '</td>
+                <td>'. $user['full_name']. '</td>
+                <td>'. $user['email']. '</td>
+                <td>'. $user['user_name']. '</td>
                 </tr>';
     }
     echo  '</table>';

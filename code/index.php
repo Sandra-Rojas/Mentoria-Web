@@ -1,7 +1,8 @@
 <?php
     //codigo PHP
-	echo "Hola Mundo";
-
+	//echo "Hola Mundo";
+	//agrega ruta de conexion
+	require "util/db.php";
 	$db= connectDB();
 ?>
 <!DOCTYPE html>

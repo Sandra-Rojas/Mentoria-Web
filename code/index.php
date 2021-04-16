@@ -4,12 +4,48 @@
 	
 	//agrega ruta de conexión
 	require "util/db.php";
-	$db= connectDB();
+	
+	if (isset($_POST["sing-up-button"])){
+		// se envio form
+		$db=connectDB();
+
+		//print_r($_POST);
+
+		$name = $_POST["name"];
+		$email= $_POST["email"];
+		$username= $_POST["username"];
+		$pass= $_POST["pass"];
+		$repeatPass= $_POST["repeat-pass"];
+		$rememberMe= $_POST["remember-me"];
+		
+		//preparar consulta
+		$sql = "INSERT INTO users
+				(full_name, email, user_name, password)
+				VALUES
+				(:full_name, :email, :user_name, :password);";
+
+		 $stmt = $db->prepare($sql);
+
+		$stmt->bindParam(':full_name',$name);
+		$stmt->bindParam(':email',$email);
+		$stmt->bindParam(':user_name',$username);
+		$stmt->bindParam(':password',password_hash($pass, PASSWORD_DEFAULT));
+
+		$stmt->execute();
+		echo "Registro realizado";
+
+
+
+	}else{
+		echo "No se ha enviado pagina por boton";
+	}
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Login V13</title>
+	<title>Registro Mentoria Web</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -44,7 +80,7 @@
 			<div class="login100-more" style="background-image: url('images/bg-01.jpg');"></div>
 
 			<div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
-				<form class="login100-form validate-form">
+				<form class="login100-form validate-form" method="POST" action="index.php">
 					<span class="login100-form-title p-b-59">
 						Sign Up
 					</span>
@@ -69,13 +105,13 @@
 
 					<div class="wrap-input100 validate-input" data-validate = "Password is required">
 						<span class="label-input100">Password</span>
-						<input class="input100" type="text" name="pass" placeholder="*************">
+						<input class="input100" type="text" name="pass" placeholder="*****">
 						<span class="focus-input100"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "Repeat Password is required">
 						<span class="label-input100">Repeat Password</span>
-						<input class="input100" type="text" name="repeat-pass" placeholder="*************">
+						<input class="input100" type="text" name="repeat-pass" placeholder="*****">
 						<span class="focus-input100"></span>
 					</div>
 
@@ -98,7 +134,7 @@
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
-							<button class="login100-form-btn">
+							<button class="login100-form-btn" name="sing-up-button">
 								Sign Up
 							</button>
 						</div>

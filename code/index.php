@@ -2,6 +2,7 @@
     //codigo PHP
 	echo "Hola Mundo";
 
+	$db= connectDB();
 ?>
 <!DOCTYPE html>
 <html lang="en">

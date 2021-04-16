@@ -1,18 +1,16 @@
 <?php
+
 function connectDB()
 {
-    $dbname = "registro"; //modicar por valor no valido y comprobar try
-    $dbuser = "registro_user";
-    $dbpassword = "registro_user1";
-
-    try {
-    
-        $dsn = "mysql:host=localhost;dbname=$dbname";
-        //objeto de conexion a la bd
-        $db = new PDO($dsn, $dbuser, $dbpassword);
+    $db_name = "registro";
+    $db_user = "registro_user";
+    $db_pass = "registro_user1";
+    //manejo de error
+    try  { 
+        $dsn = "mysql:host=localhost;dbname=$db_name";
+        $db = new PDO($dsn, $db_pass, $db_user);
         return $db;
-        
-    }catch(PDOException $e){
+    } catch(PDOException $e){
         echo $e->getMessage();
     }
-    
+}

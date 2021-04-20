@@ -2,7 +2,7 @@
     //codigo PHP
 	//echo "Hola Mundo";
 	
-	//agrega ruta de conexión
+	///agrega ruta de conexión
 	require "util/db.php";
 	
 	if (isset($_POST["sing-up-button"])){

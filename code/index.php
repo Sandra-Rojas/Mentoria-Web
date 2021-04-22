@@ -106,7 +106,7 @@ echo $valido;
 					<?php if($valido==1):?>
 						<!--<p> Este es un texto controlado desde PHP </p>-->
 						<!-- definir estilo al parrafo-->
-						<p> class="msg-form">Este es un texto controlado desde PHP </p>
+						<p class="msg-form">Este es un texto controlado desde PHP </p>
 					<?php else: ?>
 						<h1>Soy un texto dentro del else</h1>	
 					<?php endif; ?> 

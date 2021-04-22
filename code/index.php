@@ -43,6 +43,7 @@
 
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -86,6 +87,12 @@
 					<span class="login100-form-title p-b-59">
 						Sign Up
 					</span>
+
+					<?php if($valido==1):?>
+						<p> Este es un texto controlado desde PHP </p>
+					<?php endif; ?>
+
+						
 
 					<div class="wrap-input100 validate-input" data-validate="Name is required">
 						<span class="label-input100">Full Name</span>

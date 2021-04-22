@@ -42,7 +42,7 @@
 	}
 
 	//clase 16
-	$valido = 1;
+	$valido = 0;
 echo $valido;
 ?>
 

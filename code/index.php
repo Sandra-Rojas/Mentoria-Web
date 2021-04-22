@@ -8,7 +8,7 @@
 	require "util/db.php";
 	//clase 16
 	$valido = 0;
-//	
+	
 	if (isset($_POST["sing-up-button"])){
 		// se envio form
 		$db=connectDB();
@@ -42,7 +42,7 @@
 		//echo "Registro realizado";
 		$message= "Registro realizado";
 		$valido = 1;
-
+	}	
 //echo $valido;
 ?>
 

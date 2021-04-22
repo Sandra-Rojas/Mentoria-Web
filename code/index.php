@@ -35,14 +35,18 @@
 		$stmt->bindParam(':password',$pass);
 
 		$stmt->execute();
-		echo "Registro realizado";
+		
+		//clase 16
+		//echo "Registro realizado";
+		$message= "Registro realizado";
+		$valido = 1;
 
 	}else{
 		echo "No se ha enviado pagina por boton";
 	}
 
 	//clase 16
-	$valido = 0;
+	//$valido = 0;
 echo $valido;
 ?>
 
@@ -106,7 +110,8 @@ echo $valido;
 					<?php if($valido==1):?>
 						<!--<p> Este es un texto controlado desde PHP </p>-->
 						<!-- definir estilo al parrafo-->
-						<p class="msg-form">Este es un texto controlado desde PHP </p>
+						<!--<p class="msg-form">Este es un texto controlado desde PHP </p>-->
+						<p class="msg-form"><?= $message; ?> </p>
 					<?php else: ?>
 						<h1>Soy un texto dentro del else</h1>	
 					<?php endif; ?> 

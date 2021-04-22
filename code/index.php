@@ -91,18 +91,17 @@ echo $valido;
 						Sign Up
 					</span>
 					
-					//clase 16
-					//Recomendable cuando hay que insertar codigo php en html
-					//sentencia if
-					<?php if($valido==1):?>//los dos puntos es como la llave que contiene el html donde esta el parrafo
+					<!--clase 16-->
+					<!--Recomendable cuando hay que insertar codigo php en html-->
+					<!--sentencia if-->
+					<?php if($valido==1):?>
 						<p> Este es un texto controlado desde PHP </p>
-					<?php endif; ?> //para cerrar if
+					<?php endif; ?> 
 
-					echo <p> $valido <p>
-					//otra forma de hacerlo, que no es recomendable, no se activan colores en editor
-					if ($valido==1)	{
+					<!--otra forma de hacerlo, que no es recomendable, no se activan colores en editor-->
+					<!--if ($valido==1)	{
 						echo <p> (2) Este es un texto controlado desde PHP </p>
-					}
+					}--->
 
 					<div class="wrap-input100 validate-input" data-validate="Name is required">
 						<span class="label-input100">Full Name</span>

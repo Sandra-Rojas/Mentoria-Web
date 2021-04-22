@@ -6,7 +6,10 @@
 	//se utiliza biblioteca PDO la màs utilizada
 	// clase 16: otra biblioteca es mysqli no tan utilizada, pero se revisarà
 	require "util/db.php";
-	
+
+	//definir siempre variable
+	$valido = 0;
+
 	if (isset($_POST["sing-up-button"])){
 		// se envio form
 		$db=connectDB();
@@ -42,12 +45,12 @@
 		$valido = 1;
 
 	}else{
-		echo "No se ha enviado pagina por boton";
+		echo "No se ha enviado pagina po//r boton";
 	}
 
 	//clase 16
 	//$valido = 0;
-echo $valido;
+//echo $valido;
 ?>
 
 

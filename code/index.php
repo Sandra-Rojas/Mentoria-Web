@@ -43,7 +43,7 @@
 
 	//clase 16
 	$valido = 1;
-
+echo $valido;
 ?>
 
 
@@ -98,10 +98,11 @@
 						<p> Este es un texto controlado desde PHP </p>
 					<?php endif; ?> //para cerrar if
 
+					echo <p> $valido <p>
 					//otra forma de hacerlo, que no es recomendable, no se activan colores en editor
-					//if ($valido==1)	{
-					//	echo <p> Este es un texto controlado desde PHP </p>
-					//}
+					if ($valido==1)	{
+						echo <p> (2) Este es un texto controlado desde PHP </p>
+					}
 
 					<div class="wrap-input100 validate-input" data-validate="Name is required">
 						<span class="label-input100">Full Name</span>

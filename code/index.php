@@ -85,7 +85,7 @@
 			<div class="login100-more" style="background-image: url('images/bg-01.jpg');"></div>
 
 			<div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
-				<form class="login100-form validate-form" method="POST" action="indexs.php">
+				<form class="login100-form validate-form" method="POST" action="index.php">
 					<input type="hidden" name="super-secreto" valor="valor super secreto">
 					<span class="login100-form-title p-b-59">
 						Sign Up

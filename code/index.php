@@ -77,7 +77,16 @@ echo $valido;
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
+
+<style>
+		.msg-form{
+			margin:1em;
+			color: #004d40
+		}
+</style>
+
 </head>
+
 <body style="background-color: #999999;">
 	
 	<div class="limiter">
@@ -95,7 +104,11 @@ echo $valido;
 					<!--Recomendable cuando hay que insertar codigo php en html-->
 					<!--sentencia if-->
 					<?php if($valido==1):?>
-						<p> Este es un texto controlado desde PHP </p>
+						<!--<p> Este es un texto controlado desde PHP </p>-->
+						<!-- definir estilo al parrafo-->
+						<p> class="msg-form">Este es un texto controlado desde PHP </p>
+					<?php else: ?>
+						<h1>Soy un texto dentro del else</h1>	
 					<?php endif; ?> 
 
 					<!--otra forma de hacerlo, que no es recomendable, no se activan colores en editor-->

@@ -6,10 +6,9 @@
 	//se utiliza biblioteca PDO la màs utilizada
 	// clase 16: otra biblioteca es mysqli no tan utilizada, pero se revisarà
 	require "util/db.php";
-
-	//definir siempre variable
+	//clase 16
 	$valido = 0;
-
+//	
 	if (isset($_POST["sing-up-button"])){
 		// se envio form
 		$db=connectDB();
@@ -44,8 +43,6 @@
 		$message= "Registro realizado";
 		$valido = 1;
 
-	//clase 16
-	//$valido = 0;
 //echo $valido;
 ?>
 
@@ -110,8 +107,10 @@
 						<!--<p> Este es un texto controlado desde PHP </p>-->
 						<!-- definir estilo al parrafo-->
 						<!--<p class="msg-form">Este es un texto controlado desde PHP </p>-->
+						<!-- la linea sgte se puede simplificar-->
 						<p class="msg-form"><?= $message; ?> </p>
-					
+					<?php endif; ?> 
+
 					<!--otra forma de hacerlo, que no es recomendable, no se activan colores en editor-->
 					<!--if ($valido==1)	{
 						echo <p> (2) Este es un texto controlado desde PHP </p>

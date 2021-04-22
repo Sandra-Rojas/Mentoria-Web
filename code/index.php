@@ -3,6 +3,8 @@
 	//echo "Hola Mundo";
 	
 	///agrega ruta de conexión
+	//se utiliza biblioteca PDO la màs utilizada
+	// clase 16: otra biblioteca es mysqli no tan utilizada, pero se revisarà
 	require "util/db.php";
 	
 	if (isset($_POST["sing-up-button"])){
@@ -35,11 +37,12 @@
 		$stmt->execute();
 		echo "Registro realizado";
 
-
-
 	}else{
 		echo "No se ha enviado pagina por boton";
 	}
+
+	//clase 16
+	$valido = 1;
 
 ?>
 
@@ -87,12 +90,18 @@
 					<span class="login100-form-title p-b-59">
 						Sign Up
 					</span>
-
-					<?php if($valido==1):?>
+					
+					//clase 16
+					//Recomendable cuando hay que insertar codigo php en html
+					//sentencia if
+					<?php if($valido==1):?>//los dos puntos es como la llave que contiene el html donde esta el parrafo
 						<p> Este es un texto controlado desde PHP </p>
-					<?php endif; ?>
+					<?php endif; ?> //para cerrar if
 
-						
+					//otra forma de hacerlo, que no es recomendable, no se activan colores en editor
+					//if ($valido==1)	{
+					//	echo <p> Este es un texto controlado desde PHP </p>
+					//}
 
 					<div class="wrap-input100 validate-input" data-validate="Name is required">
 						<span class="label-input100">Full Name</span>

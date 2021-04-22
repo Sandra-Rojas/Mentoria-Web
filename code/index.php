@@ -44,10 +44,6 @@
 		$message= "Registro realizado";
 		$valido = 1;
 
-	}else{
-		echo "No se ha enviado pagina po//r boton";
-	}
-
 	//clase 16
 	//$valido = 0;
 //echo $valido;
@@ -115,10 +111,7 @@
 						<!-- definir estilo al parrafo-->
 						<!--<p class="msg-form">Este es un texto controlado desde PHP </p>-->
 						<p class="msg-form"><?= $message; ?> </p>
-					<?php else: ?>
-						<h1>Soy un texto dentro del else</h1>	
-					<?php endif; ?> 
-
+					
 					<!--otra forma de hacerlo, que no es recomendable, no se activan colores en editor-->
 					<!--if ($valido==1)	{
 						echo <p> (2) Este es un texto controlado desde PHP </p>
@@ -144,13 +137,13 @@
 
 					<div class="wrap-input100 validate-input" data-validate = "Password is required">
 						<span class="label-input100">Password</span>
-						<input class="input100" type="text" name="pass" placeholder="*****">
+						<input class="input100" type="password" name="pass" placeholder="*****">
 						<span class="focus-input100"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "Repeat Password is required">
 						<span class="label-input100">Repeat Password</span>
-						<input class="input100" type="text" name="repeat-pass" placeholder="*****">
+						<input class="input100" type="password" name="repeat-pass" placeholder="*****">
 						<span class="focus-input100"></span>
 					</div>
 

@@ -37,10 +37,10 @@ if (isset($_POST['sing-in-button'])) {
 
 	/****cuenta filas */
 	$row_cnt = $result->num_rows;
-	echo "\n Cantidad de filas encontradas: " 
+	echo "\n Cantidad de filas encontradas: " ;
 	echo $row_cnt;
 	/************ */
-	
+
 	if ($result) {
 		$row = $result->fetch_row();
 		echo $row;

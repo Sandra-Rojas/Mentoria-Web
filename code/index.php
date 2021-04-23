@@ -42,7 +42,7 @@ if (isset($_POST['sing-in-button'])) {
 		echo "\n Cantidad de filas encontradas: " ;
 		echo $row_cnt;
 		/************ */
-}
+
 
 		//modifica sentencia result, se debe validar tb que query devuelve datos
 		if ($result) {

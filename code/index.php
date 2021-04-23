@@ -5,11 +5,11 @@ $valido= null;
 if (isset($_POST['sing-in-button'])) {
 	//buscar datos
 	//utilizar mysqli para accesar a bd
-	$db_name = "registro";
-	$db_user = "registro_user";
-	$db_pass = "registro_user1";
+	$dbname = "registro";
+	$dbuser = "registro_user";
+	$dbpass = "registro_user1";
 
-	$db = new mysqli('localhost', $db_user, $db_pass, $db_name);
+	$db = new mysqli('localhost', $dbuser, $dbpass, $dbname);
 	$db->set_charset('utf8mb4');
 
 	$username = $_POST['username'];

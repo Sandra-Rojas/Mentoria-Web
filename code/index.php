@@ -59,6 +59,12 @@ if (isset($_POST['sing-in-button'])) {
 			if (password_verify($password, $row['password'])) {
 				echo "\nDatos de query: ";
 				echo "\nEl result existe\n";
+				
+				//Activar inicio de sesiòn
+				session_start();
+				// a la sesion nombre le asigna el full_name
+				$_SESSION["nombre"]= $row[full_name];
+
 				header("Location: main.php");
 
 				} else {
@@ -67,7 +73,6 @@ if (isset($_POST['sing-in-button'])) {
 	
 					$valido = false;
 				}
-			
 			}
 		else {
 			echo "\nDatos de query: ";

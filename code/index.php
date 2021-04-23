@@ -2,6 +2,9 @@
 
 $valido= null;
 $result= null;
+$username = null;
+$password = null;
+ 
 if (isset($_POST['sing-in-button'])) {
 	//buscar datos
 	//utilizar mysqli para accesar a bd
@@ -30,7 +33,7 @@ if (isset($_POST['sing-in-button'])) {
 	$username = $_POST['username'];
 	$password = $_POST['pass'];
 
-	echo "$username" . username . "-";
+	echo "$username" . $username . "-";
 
 	$sql = "SELECT * FROM users WHERE user_name = '$username'";
 	echo $sql;

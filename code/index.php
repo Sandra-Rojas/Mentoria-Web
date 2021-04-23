@@ -13,6 +13,16 @@ if (isset($_POST['sing-in-button'])) {
 	$username = $_POST['username'];
 	$password = $_POST['pass'];
 
+	$sql = "Select * FROM users WHERE username = '$username'";
+	$result = $db->query($sql);
+
+	if ($result){
+		//$row = $result->fetch_row();
+		echo "El result existe";
+	}else{
+		echo "El result no existe";
+	}
+
 	echo "$username, $password ";
 
 }

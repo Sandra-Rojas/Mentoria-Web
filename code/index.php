@@ -15,7 +15,7 @@ if (isset($_POST['sing-in-button'])) {
 	$username = $_POST['username'];
 	$password = $_POST['pass'];
 
-	$sql = "Select * FROM users WHERE user_name = '$username'";
+	$sql = "SELECT * FROM users WHERE user_name = '$username'";
 	echo $sql;
 
 	$result = $db->query($sql);

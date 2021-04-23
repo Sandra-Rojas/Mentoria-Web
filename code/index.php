@@ -41,11 +41,13 @@ if (isset($_POST['sing-in-button'])) {
 	echo $row_cnt;
 	/************ */
 
+	//modifica sentencia result, se debe validar tb que query devuelve datos
 	if ($result) {
 		if ($row = $result->fetch_row()){
-		echo $row;
-		echo "\nEl result existe\n";
-		}
+			echo "\nDatos de query: " 
+			print_r($row);
+			echo "\nEl result existe\n";
+			}
 		else {
 			$valido = false;
 		}

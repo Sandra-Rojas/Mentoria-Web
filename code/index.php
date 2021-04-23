@@ -58,9 +58,9 @@ if (isset($_POST['sing-in-button'])) {
 					$valido = false;
 			}
 			
-			echo "\nDatos de query: ";
-			print_r($row);
-			echo "\nEl result existe\n";
+				echo "\nDatos de query: ";
+				print_r($row);
+				echo "\nEl result existe\n";
 			}
 		else {
 			$valido = false;

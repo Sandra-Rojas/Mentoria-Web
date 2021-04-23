@@ -22,6 +22,7 @@ if (isset($_POST['sing-in-button'])) {
 	
 	if ($result){
 	    $row = $result->fetch_row();
+		echo $row;
 		echo "El result existe";
 	}else{
 		$valido = false;

@@ -51,6 +51,8 @@ if (isset($_POST['sing-in-button'])) {
 
 	echo "$username, $password ";
 
+	 /* liberar el conjunto de resultados */
+	 $result->close();
 }
 ?>
 

@@ -9,14 +9,13 @@
 
     require "util/db.php";
     $db=connectDB();
-
     $sql = "SELECT * FROM users";
 
     //Statement, conectarse a BD con PDO
     $stmt = $db->prepare($sql); 
     $stmt->execute(); 
     $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                 
+               
 ?>
 
 <!DOCTYPE html>
@@ -40,9 +39,9 @@
         </tr>
         <?php foreach ($users as $user): ?>
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td><?=  $user['full_name'] ?> </td>
+                <td><?=  $user['user_name'] ?></td>
+                <td><?=  $user['email'] ?></td>
             </tr>
 
         <?php endforeach; ?>

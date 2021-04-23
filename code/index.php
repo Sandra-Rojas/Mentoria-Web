@@ -17,9 +17,10 @@ if (isset($_POST['sing-in-button'])) {
 
 	$sql = "Select * FROM users WHERE user_name = '$username'";
 	echo $sql;
-	
-	$result = $db->query($sql);
 
+	$result = $db->query($sql);
+	echo $result;
+	
 	if ($result){
 		//$row = $result->fetch_row();
 		echo "El result existe";

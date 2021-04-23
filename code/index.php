@@ -36,7 +36,8 @@ if (isset($_POST['sing-in-button'])) {
 	$password = $_POST['pass'];
 
 	echo "username" . $username . "-";
-
+	echo "password" . $password  ."-";
+	
 	$sql = "SELECT * FROM users WHERE user_name = '$username'";
 	echo $sql;
 
@@ -51,7 +52,9 @@ if (isset($_POST['sing-in-button'])) {
 	//modifica sentencia result, se debe validar tb que query devuelve datos
 	if ($result) {
 		if ($row = $result->fetch_assoc()){
-			
+			echo "PASSWORD de BD:";
+			print_r($row['password']);
+
 			if (password_verify($password, $row['password'])) {
 					header("Location: main.php");
 				} else {

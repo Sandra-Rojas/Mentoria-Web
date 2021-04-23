@@ -13,14 +13,14 @@ if (isset($_POST['sing-in-button'])) {
 	$username = $_POST['username'];
 	$password = $_POST['pass'];
 
-	$sql = "Select * FROM users WHERE username = '$username'";
+	$sql = "Select * FROM users WHERE user_name = '$username'";
 	$result = $db->query($sql);
 
 	if ($result){
 		//$row = $result->fetch_row();
 		echo "El result existe";
 	}else{
-		echo "El result no existe";
+		$valido = false;
 	}
 
 	echo "$username, $password ";
@@ -62,7 +62,7 @@ if (isset($_POST['sing-in-button'])) {
 <style>
 		.msg-form{
 			margin:1em;
-			color: #004d40
+			color: red;
 		}
 </style>
 
@@ -81,6 +81,12 @@ if (isset($_POST['sing-in-button'])) {
 						<!--Sign Up-->
 						Sign In
 					</span>
+
+					<!--controla que una vez ingresado los datos y no encuentre datos indica que uusario o passw es incorrecta -->
+					<?php if($valido === false):?>
+						<p class="msg-form">Usuario o password incorrecto </p>
+					<?php endif; ?> 
+
 					
 					<div class="wrap-input100 validate-input" data-validate="Username is required">
 						<span class="label-input100">Username</span>

@@ -12,14 +12,6 @@ if (isset($_POST['sing-in-button'])) {
 	$db = new mysqli('localhost', $dbuser, $dbpass, $dbname);
 	$db->set_charset('utf8mb4');
 
-	$username = $_POST['username'];
-	$password = $_POST['pass'];
-
-	$sql = "SELECT * FROM users WHERE user_name = '$username'";
-	echo $sql;
-
-	$result = $db->query($sql);
-
 	/****************************** */
 	/* comprobar la conexión */
 	if ($db->connect_errno) {
@@ -35,10 +27,24 @@ if (isset($_POST['sing-in-button'])) {
 	}
 	//*********************** */
 
+	$username = $_POST['username'];
+	$password = $_POST['pass'];
+
+	$sql = "SELECT * FROM users WHERE user_name = '$username'";
+	echo $sql;
+
+	$result = $db->query($sql);
+
+	/****cuenta filas */
+	$row_cnt = $result->num_rows;
+	echo "\n Cantidad de filas encontradas: " 
+	echo $row_cnt;
+	/************ */
+	
 	if ($result) {
 		$row = $result->fetch_row();
 		echo $row;
-		echo "El result existe";
+		echo "\nEl result existe\n";
 	} else {
 		$valido = false;
 	}

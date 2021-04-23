@@ -19,10 +19,9 @@ if (isset($_POST['sing-in-button'])) {
 	echo $sql;
 
 	$result = $db->query($sql);
-	echo $result;
 	
 	if ($result){
-		//$row = $result->fetch_row();
+	    $row = $result->fetch_row();
 		echo "El result existe";
 	}else{
 		$valido = false;

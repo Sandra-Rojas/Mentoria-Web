@@ -27,38 +27,42 @@ if (isset($_POST['sing-in-button'])) {
 	}
 	//*********************** */
 
-	$username = $_POST['username'];
-	$password = $_POST['pass'];
+	If ($valido != null){
 
-	$sql = "SELECT * FROM users WHERE user_name = '$username'";
-	echo $sql;
+		$username = $_POST['username'];
+		$password = $_POST['pass'];
 
-	$result = $db->query($sql);
+		$sql = "SELECT * FROM users WHERE user_name = '$username'";
+		echo $sql;
 
-	/****cuenta filas */
-	$row_cnt = $result->num_rows;
-	echo "\n Cantidad de filas encontradas: " ;
-	echo $row_cnt;
-	/************ */
+		$result = $db->query($sql);
 
-	//modifica sentencia result, se debe validar tb que query devuelve datos
-	if ($result) {
-		if ($row = $result->fetch_row()){
-			echo "\nDatos de query: ";
-			print_r($row);
-			echo "\nEl result existe\n";
+		/****cuenta filas */
+		$row_cnt = $result->num_rows;
+		echo "\n Cantidad de filas encontradas: " ;
+		echo $row_cnt;
+		/************ */
+}
+
+		//modifica sentencia result, se debe validar tb que query devuelve datos
+		if ($result) {
+			if ($row = $result->fetch_row()){
+				echo "\nDatos de query: ";
+				print_r($row);
+				echo "\nEl result existe\n";
+				}
+			else {
+				$valido = false;
 			}
-		else {
+		} else {
 			$valido = false;
 		}
-	} else {
-		$valido = false;
-	}
 
-	echo "$username, $password ";
+		echo "$username, $password ";
 
-	 /* liberar el conjunto de resultados */
-	 $result->close();
+		/* liberar el conjunto de resultados */
+		$result->close();
+	}	
 }
 ?>
 

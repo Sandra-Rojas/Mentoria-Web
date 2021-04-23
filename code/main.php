@@ -14,8 +14,9 @@
 
     //Statement, conectarse a BD con PDO
     $stmt = $db->prepare($sql); 
+    $stmt->execute(); 
     $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    $stmt->execute();              
+                 
 ?>
 
 <!DOCTYPE html>

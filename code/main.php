@@ -1,4 +1,5 @@
 
+
 <?php
 
     session_start();
@@ -6,7 +7,15 @@
         header("Location: index.php");
     }
 
+    require "util/db.php";
+    $db=connectDB();
 
+    $sql = "SELECT * FROM users";
+
+    //Statement, conectarse a BD con PDO
+    $stmt = $db->prepare($sql); 
+    $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt->execute();              
 ?>
 
 <!DOCTYPE html>
@@ -20,5 +29,14 @@
 <body>
     <?= "Hola," . $_SESSION['nombre']; ?>
     <a href="logout.php">(Salir)</a>
+
+    <h1>Lista de Usuarios Disponibles</h1>
+    <table border=1>
+        <tr>
+            <th>Full Name</th>
+            <th>Username</th>
+            <th>Email</th>
+        </tr>
+    </table>
 </body>
 </html>

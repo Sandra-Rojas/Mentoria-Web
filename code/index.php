@@ -1,7 +1,7 @@
 <?php
 
 $valido= null;
-
+$result= null;
 if (isset($_POST['sing-in-button'])) {
 	//buscar datos
 	//utilizar mysqli para accesar a bd

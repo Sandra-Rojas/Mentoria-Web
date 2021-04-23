@@ -29,9 +29,8 @@ if (isset($_POST['sing-in-button'])) {
 		printf ("Error: %s\n", $mysqli->error);
 	}
 	//*********************** */
-
-	If (!isset ($_POST['username']))  $_POST['username']= false	;
-	If (!isset ($_POST['pass']))  $_POST['pass']= false	;
+	//If (!isset ($_POST['username']))  $_POST['username']= false	;
+	//If (!isset ($_POST['pass']))  $_POST['pass']= false	;
 
 	$username = $_POST['username'];
 	$password = $_POST['pass'];
@@ -51,7 +50,7 @@ if (isset($_POST['sing-in-button'])) {
 
 	//modifica sentencia result, se debe validar tb que query devuelve datos
 	if ($result) {
-		if ($row = $result->fetch_row()){
+		if ($row = $result->fetch_asocc()){
 			echo "\nDatos de query: ";
 			print_r($row);
 			echo "\nEl result existe\n";

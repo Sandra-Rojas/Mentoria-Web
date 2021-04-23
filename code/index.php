@@ -19,9 +19,23 @@ if (isset($_POST['sing-in-button'])) {
 	echo $sql;
 
 	$result = $db->query($sql);
-	
+
+	/****************************** */
+	/* comprobar la conexión */
+	if ($db->connect_errno) {
+		printf("Conexión fallida: %s\n", $mysqli->connect_error);
+		exit();
+	}
+
+	/* comprobar si el servidor sigue vivo */
+	if ($db->ping()) {
+		printf ("¡La conexión está bien!\n");
+	} else {
+		printf ("Error: %s\n", $mysqli->error);
+	}
+	//*********************** */
 	if ($result){
-	    $row = $result->fetch_row();
+		$row = $result->fetch_row();
 		echo $row;
 		echo "El result existe";
 	}else{

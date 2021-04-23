@@ -3,4 +3,6 @@
 session_start();
 session_destroy();
 
-echo "sesion cerrada!";
+//echo "sesion cerrada!";
+
+header('Location: index.php"')

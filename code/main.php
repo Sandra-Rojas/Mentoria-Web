@@ -41,7 +41,7 @@
             <tr>
                 <td><?=  $user['full_name'] ?> </td>
                 <td><?=  $user['user_name'] ?></td>
-                <td><?=  $user['email'] ?></td>
+                <td><?=  $user['email'] ?? 'Sin Correo' ?></td>
             </tr>
 
         <?php endforeach; ?>

@@ -34,11 +34,12 @@ if (isset($_POST['sing-in-button'])) {
 		printf ("Error: %s\n", $mysqli->error);
 	}
 	//*********************** */
-	if ($result){
+
+	if ($result) {
 		$row = $result->fetch_row();
 		echo $row;
 		echo "El result existe";
-	}else{
+	} else {
 		$valido = false;
 	}
 

@@ -1,6 +1,6 @@
 <?php
 
-if (isset($_POST['sign_in_button'])) {
+if (isset($_POST['sing-in-button'])) {
 	//buscar datos
 	//utilizar mysqli para accesar a bd
 	$db_name = "registro";

@@ -51,6 +51,13 @@ if (isset($_POST['sing-in-button'])) {
 	//modifica sentencia result, se debe validar tb que query devuelve datos
 	if ($result) {
 		if ($row = $result->fetch_assoc()){
+			
+			if (password_verify($password, row$['password'])) {
+					header("Location: main.php");
+				} else {
+					$valido = false;
+			}
+			
 			echo "\nDatos de query: ";
 			print_r($row);
 			echo "\nEl result existe\n";

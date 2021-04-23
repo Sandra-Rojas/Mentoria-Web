@@ -42,9 +42,13 @@ if (isset($_POST['sing-in-button'])) {
 	/************ */
 
 	if ($result) {
-		$row = $result->fetch_row();
+		if ($row = $result->fetch_row()){
 		echo $row;
 		echo "\nEl result existe\n";
+		}
+		else {
+			$valido = false;
+		}
 	} else {
 		$valido = false;
 	}

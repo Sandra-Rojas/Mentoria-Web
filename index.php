@@ -1,8 +1,27 @@
+<?php
+
+    session_start();
+    if(!isset($_SESSION['nombre'])) {
+        header("Location: index.php");
+    }
+
+    require "util/db.php";
+    $db=connectDB();
+    $sql = "SELECT * FROM users";
+
+    //Statement, conectarse a BD con PDO
+    $stmt = $db->prepare($sql); 
+    $stmt->execute(); 
+    $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+               
+?>
+
 <!doctype html>
 <html lang="en" class="h-100">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
@@ -57,36 +76,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>
-                        <a href="view.php"><button class="btn btn-primary btn-sm">View</button></a>
-                        <a href="edit.php"><button class="btn btn-outline-primary btn-sm">Edit</button></a>
-                        <button class="btn btn-sm">Delete</button>
-                    </td>
-                    </tr>
-                    <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>
-                        <a href="view.php"><button class="btn btn-primary btn-sm">View</button></a>
-                        <a href="edit.php"><button class="btn btn-outline-primary btn-sm">Edit</button></a>
-                        <button class="btn btn-sm">Delete</button>
-                    </td>
-                    </tr>
-                    <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>
-                        <a href="view.php"><button class="btn btn-primary btn-sm">View</button></a>
-                        <a href="edit.php"><button class="btn btn-outline-primary btn-sm">Edit</button></a>
-                        <button class="btn btn-sm">Delete</button>
-                    </td>
-                    </tr>
+                <?php $i=0 ?>
+                <?php foreach ($users as $user): ?>
+                <tr>
+                    <td><?=  $i ?></td>
+                    <td><?=  $user['full_name'] ?> </td>
+                    <td><?=  'segundo' ?></td>
+                </tr>
+                <?php endforeach; ?>      
                 </tbody>
             </table>
         </div>

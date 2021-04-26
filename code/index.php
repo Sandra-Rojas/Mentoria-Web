@@ -1,27 +1,8 @@
-<?php
-
-    session_start();
-    if(!isset($_SESSION['nombre'])) {
-        header("Location: index.php");
-    }
-
-    require "util/db.php";
-    $db=connectDB();
-    $sql = "SELECT * FROM users";
-
-    //Statement, conectarse a BD con PDO
-    $stmt = $db->prepare($sql); 
-    $stmt->execute(); 
-    $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
-               
-?>
-
 <!doctype html>
 <html lang="en" class="h-100">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
@@ -36,7 +17,7 @@
     
     <div class="container pt-4 pb-4">
         <nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
-            <a class="navbar-brand" href="#">HTML-PHP CRUD Template</a>
+            <a class="navbar-brand" href="#">HTML CRUD Template</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -44,10 +25,10 @@
             <div class="collapse navbar-collapse" id="navbarsExample09">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="create.php">Create</a>
+                        <a class="nav-link" href="create.html">Create</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">FAQ</a>
@@ -76,14 +57,36 @@
                     </tr>
                 </thead>
                 <tbody>
-                <?php $i=0 ?>
-                <?php foreach ($users as $user): ?>
-                <tr>
-                    <td><?=  $i ?></td>
-                    <td><?=  $user['full_name'] ?> </td>
-                    <td><?=  'segundo' ?></td>
-                </tr>
-                <?php endforeach; ?>      
+                    <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>
+                        <a href="view.html"><button class="btn btn-primary btn-sm">View</button></a>
+                        <a href="edit.html"><button class="btn btn-outline-primary btn-sm">Edit</button></a>
+                        <button class="btn btn-sm">Delete</button>
+                    </td>
+                    </tr>
+                    <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>
+                        <a href="view.html"><button class="btn btn-primary btn-sm">View</button></a>
+                        <a href="edit.html"><button class="btn btn-outline-primary btn-sm">Edit</button></a>
+                        <button class="btn btn-sm">Delete</button>
+                    </td>
+                    </tr>
+                    <tr>
+                    <th scope="row">3</th>
+                    <td>Larry</td>
+                    <td>the Bird</td>
+                    <td>
+                        <a href="view.html"><button class="btn btn-primary btn-sm">View</button></a>
+                        <a href="edit.html"><button class="btn btn-outline-primary btn-sm">Edit</button></a>
+                        <button class="btn btn-sm">Delete</button>
+                    </td>
+                    </tr>
                 </tbody>
             </table>
         </div>

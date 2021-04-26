@@ -81,7 +81,7 @@
                     <tr>
                   
                     <?php foreach ($users as $user): ?>
-                         <?php i=i+1; ?>
+                         <?php $i=$i+1; ?>
                         <tr>
                             
                             <td><?=  $i ?> </td>

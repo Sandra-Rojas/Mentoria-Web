@@ -1,3 +1,23 @@
+<?php
+
+    $i=0;
+
+    session_start();
+    if(!isset($_SESSION['nombre'])) {
+        header("Location: index.php");
+    }
+
+    require "util/db.php";
+    $db=connectDB();
+    $sql = "SELECT * FROM users";
+
+    //Statement, conectarse a BD con PDO
+    $stmt = $db->prepare($sql); 
+    $stmt->execute(); 
+    $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+               
+?>
+
 <!doctype html>
 <html lang="en" class="h-100">
   <head>
@@ -10,7 +30,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
 
-    <title>List of User</title>
+    <title>Lista de Usuario</title>
    
   </head>
   <body class="d-flex flex-column h-100">
@@ -25,10 +45,10 @@
             <div class="collapse navbar-collapse" id="navbarsExample09">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="create.html">Create</a>
+                        <a class="nav-link" href="create.php">Create</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">FAQ</a>
@@ -46,47 +66,39 @@
         
     <main role="main" class="flex-shrink-0">
         <div class="container">
-            <h1>List of User</h1>
+            <h1>Lista de Usuario</h1>
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
                     <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
+                    <th scope="col">Id</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Correo</th>
                     <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
+                  
+                    <?php foreach ($users as $user): ?>
+                         <?php i=i+1; ?>
+                        <tr>
+                            
+                            <td><?=  $i ?> </td>
+                            <td><?=  $user['id'] ?> </td>
+                            <td><?=  $user['full_name'] ?? 'Sin Nombre Completo' ?> </td>
+                            <td><?=  $user['user_name'] ?? 'Sin nombre de usuario' ?></td>
+                            <td><?=  $user['email'] ?? 'Sin Correo' ?></td>
+                        </tr>
+                    <?php endforeach; ?>    
+                    
                     <td>
-                        <a href="view.html"><button class="btn btn-primary btn-sm">View</button></a>
-                        <a href="edit.html"><button class="btn btn-outline-primary btn-sm">Edit</button></a>
+                        <a href="view.php"><button class="btn btn-primary btn-sm">View</button></a>
+                        <a href="edit.php"><button class="btn btn-outline-primary btn-sm">Edit</button></a>
                         <button class="btn btn-sm">Delete</button>
                     </td>
                     </tr>
-                    <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>
-                        <a href="view.html"><button class="btn btn-primary btn-sm">View</button></a>
-                        <a href="edit.html"><button class="btn btn-outline-primary btn-sm">Edit</button></a>
-                        <button class="btn btn-sm">Delete</button>
-                    </td>
-                    </tr>
-                    <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>
-                        <a href="view.html"><button class="btn btn-primary btn-sm">View</button></a>
-                        <a href="edit.html"><button class="btn btn-outline-primary btn-sm">Edit</button></a>
-                        <button class="btn btn-sm">Delete</button>
-                    </td>
-                    </tr>
+                    
                 </tbody>
             </table>
         </div>

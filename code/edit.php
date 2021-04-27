@@ -9,15 +9,17 @@
 
         echo "Ingresa a Actualizar";
         $id = $_POST['id'];
-        $namefull = $_POST['full_name'];
+        $namefull = $_POST['namefull'];
+        $email  = $_POST['email'];
+        $username =$_POST['username'];
         echo "valor en Actualizar: " . $namefull . " Id: " . $id;
 
         $db=connectDB();
-        $sql ="UPDATE users SET full_name=:full_name Where id=:id";
+        $sql ="UPDATE users SET full_name=:namefull, email=:email, user_name=:username Where id=:id";
         $stmt=$db->prepare($sql);
-        $stmt->bindParam(":full_name",$namefull);
-        //$stmt->bindParam(":var2",$email);
-        //$stmt->bindParam(":var3",$nameusu);
+        $stmt->bindParam(":namefull",$namefull);
+        $stmt->bindParam(":email",$email);
+        $stmt->bindParam(":username",$username);
         $stmt->bindParam(":id",$id);
         $stmt->execute();
         
@@ -98,8 +100,13 @@
                     <!--Asigna valores, agrega name------------->
                     <input type="text" class="form-control" id="id" name="id" value=<?=$id ?> placeholder="Enter name">
                     <small class="form-text text-muted">Help message here.</small>
-                    <input type="text" class="form-control" id="full_name" name="full_name" value=<?=$namefull ?> placeholder="Enter name">
+                    <input type="text" class="form-control" id="namefull" name="namefull" value=<?=$namefull ?> placeholder="Enter name">
                     <small class="form-text text-muted">Help message here.</small>
+                    <input type="text" class="form-control" id="email" name="email" value=<?=$email ?> placeholder="Enter name">
+                    <small class="form-text text-muted">Help message here.</small>
+                    <input type="text" class="form-control" id="username" name="username" value=<?=$username ?> placeholder="Enter name">
+                    <small class="form-text text-muted">Help message here.</small>
+
                 </div>
                 <!--Renombra botòn y asigna name------------>
                 <button type="submit" class="btn btn-primary" name="actualiza">Actualizar</button>

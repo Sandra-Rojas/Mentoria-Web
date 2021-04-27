@@ -23,11 +23,11 @@
         echo "Datos Actualizados: " . $namefull . " Id: " . $id;
          
 
-    }
+    }xº
     else
     {
 
-        echo "No actualizado: " . $_POST['btnactualiza'] ."*";
+        echo "No actualizado: " ;
     }
 ?>
 

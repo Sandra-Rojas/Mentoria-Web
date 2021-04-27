@@ -43,7 +43,11 @@
             </div>
         </nav>
     </div>
-        
+
+    <?php
+        $nombre =  if(!isset($_GET['var1'])
+    
+    ?>
     <main role="main" class="flex-shrink-0">
         <div class="container">
             <h1>Vista de Usuario</h1>

@@ -66,9 +66,9 @@
                     <tr>
                     <th scope="col">#</th>
                     <th scope="col">Id</th>
-                    <th scope="col">Nombre</th>
+                    <th scope="col">Nombre Completo</th>
                     <th scope="col">Correo</th>
-                    <th scope="col">Action</th>
+                    <th scope="col">Nombre de Usuario</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -79,12 +79,13 @@
                             <th scope="row"><?= $i ?> </th>
                             <td><?=  $user['id'] ?> </td>
                             <td><?=  $user['full_name'] ?? 'Sin Nombre Completo' ?> </td>
-                            <td><?=  $user['user_name'] ?? 'Sin nombre de usuario' ?></td>
                             <td><?=  $user['email'] ?? 'Sin Correo' ?></td>
+                            <td><?=  $user['user_name'] ?? 'Sin nombre de usuario' ?></td>
+                            
                             <td>
                                 <!--a href="view.php"><button class="btn btn-primary btn-sm">View</button></a>-->
-                                <a href="view.php?var1=<?php echo ($user['full_name']?? 'Sin Nombre Comnpleto') ?>&var2=<?php echo ($user['email'] ?? 'Sin correo') ?>&var3=<?php echo ($user['user_name'] ?? 'Sin Nombre de Usuario')?>"><button class="btn btn-primary btn-sm">View</button></a>
-                                <a href="edit.php"><button class="btn btn-outline-primary btn-sm">Edit</button></a>
+                                <a href="view.php?var1=<?php echo $user['full_name']?? 'Sin Nombre Comnpleto' ?>&var2=<?php echo $user['email'] ?? 'Sin correo' ?>&var3=<?php echo $user['user_name'] ?? 'Sin Nombre de Usuario'?>"><button class="btn btn-primary btn-sm">View</button></a>
+                                <a href="edit.php?var0=<?php echo $user['id'] ?>&var1=<?php echo $user['full_name']?? 'Sin Nombre Comnpleto' ?>&var2=<?php echo $user['email'] ?? 'Sin correo' ?>&var3=<?php echo $user['user_name'] ?? 'Sin Nombre de Usuario'?>"><button class="btn btn-outline-primary btn-sm">Edit</button></a>
                                 <button class="btn btn-sm">Delete</button>
                             </td>
                         </tr>

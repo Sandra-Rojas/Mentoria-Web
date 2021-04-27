@@ -1,3 +1,28 @@
+<?php
+
+    require "util/db.php";
+
+    $i=0;
+
+    if (isset($_POST['btnactualiza'])) {
+        $id= $_GET['var0'];
+        $namefull = $_GET['var1'] ?? 'Sin Nombre Completo';
+        $email = $_GET['var2'] ?? 'Sin correo';
+        $nameusu = $_GET['var3'] ?? 'Sin Nombre Usuario';
+
+        $db=connectDB();
+
+        $sql ="UPDATE users SET full_name=:var1 Where id=:var0";
+
+        $stmt=$db->prepare($sql);
+        $stmt->bindParam(":var1",$namefull);
+        //$stmt->bindParam(":var2",$email);
+        //$stmt->bindParam(":var3",$nameusu);
+        $stmt->bindParam(":var0",$id);
+        $stmt->execute();
+    }
+?>
+
 <!doctype html>
 <html lang="en" class="h-100">
   <head>
@@ -46,14 +71,15 @@
         
     <main role="main" class="flex-shrink-0">
         <div class="container">
-            <h1>Edit User</h1>
+            <h1>Actualización de Usuario</h1>
             <form action="" method="POST">
                 <div class="form-group">
                     <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" value="Nama saya Pisyek" placeholder="Enter name">
+                    <!--Asigna valores------------->
+                    <input type="text" class="form-control" id="name" value=<?= $namefull ?> placeholder="Enter name">
                     <small class="form-text text-muted">Help message here.</small>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary" name="btnActualiza">Actualiza</button>
             </form>
         </div>
     </main>

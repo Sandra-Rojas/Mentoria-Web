@@ -98,8 +98,8 @@
                     <input type="text" class="form-control" id="full_name" name="full_name" value=<?=$namefull ?> placeholder="Enter name">
                     <small class="form-text text-muted">Help message here.</small>
                 </div>
-                <!--Renombra botòn y asigna name------------->
-                <button type="submit" class="btn btn-primary" name="btnActualiza">Actualizar</button>
+                <!--Renombra botòn y asigna name---type="submit"---------->
+                <button  class="btn btn-primary" name="btnActualiza">Actualizar</button>
             </form>
         </div>
     </main>

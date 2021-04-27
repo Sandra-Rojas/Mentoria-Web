@@ -7,6 +7,7 @@
 
     if (isset($_POST['btnactualiza'])) {
 
+        echo "Ingresa a Actualizar";
         $id = $_POST['id'];
         $namefull = $_POST['full_name'];
         echo "valor en Actualizar: " . $namefull . " Id: " . $id;

@@ -5,7 +5,7 @@
     $i=0;
 
 
-    if (isset($_POST['btnactualiza'])) {
+    if (isset($_POST["btnactualiza"])) {
 
         echo "Ingresa a Actualizar";
         $id = $_POST['id'];
@@ -13,12 +13,12 @@
         echo "valor en Actualizar: " . $namefull . " Id: " . $id;
 
         $db=connectDB();
-        $sql ="UPDATE users SET full_name=:var1 Where id=:var0";
+        $sql ="UPDATE users SET full_name=:full_name Where id=:id";
         $stmt=$db->prepare($sql);
-        $stmt->bindParam(":var1",$namefull);
+        $stmt->bindParam(":full_name",$namefull);
         //$stmt->bindParam(":var2",$email);
         //$stmt->bindParam(":var3",$nameusu);
-        $stmt->bindParam(":var0",$id);
+        $stmt->bindParam(":id",$id);
         $stmt->execute();
         
         echo "Datos Actualizados: " . $namefull . " Id: " . $id;
@@ -27,6 +27,8 @@
     }
     else
     {
+        echo "Ingreso la primera vez";
+
         $id= $_GET['var0'] ?? 'Sin Id';;
         $namefull = $_GET['var1'] ?? 'Sin Nombre Completo';
         $email = $_GET['var2'] ?? 'Sin correo';

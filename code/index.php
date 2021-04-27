@@ -72,26 +72,23 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
                   <!---comentario-->
                     <?php foreach ($users as $user): ?>
                          <?php $i=$i+1; ?>
-                        <tr>
+                         <tr>
                             <th scope="row"><?= $i ?> </th>
                             <td><?=  $user['id'] ?> </td>
                             <td><?=  $user['full_name'] ?? 'Sin Nombre Completo' ?> </td>
                             <td><?=  $user['user_name'] ?? 'Sin nombre de usuario' ?></td>
                             <td><?=  $user['email'] ?? 'Sin Correo' ?></td>
+                            <td>
+                                <!--a href="view.php"><button class="btn btn-primary btn-sm">View</button></a>-->
+                                <a href="view.php?var1=<?php echo $user['full_name'] ?>&var2=<?php echo $user['email'] ?>&var3=<?php echo $user['user_name'] ?>"><button class="btn btn-primary btn-sm">View</button></a>
+                                <a href="edit.php"><button class="btn btn-outline-primary btn-sm">Edit</button></a>
+                                <button class="btn btn-sm">Delete</button>
+                            </td>
                         </tr>
                     <?php endforeach; ?>    
-                    
-                    <td>
-                        <a href="view.php"><button class="btn btn-primary btn-sm">View</button></a>
-                        <a href="edit.php"><button class="btn btn-outline-primary btn-sm">Edit</button></a>
-                        <button class="btn btn-sm">Delete</button>
-                    </td>
-                    </tr>
-                    
                 </tbody>
             </table>
         </div>

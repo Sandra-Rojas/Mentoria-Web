@@ -51,7 +51,15 @@
             <p>Email: pisyek@gmail.com</p>
         </div>
     </main>
-      
+    <main role="main" class="flex-shrink-0">
+        <div class="container">
+            <h1>Vista de Usuario</h1>
+            </p> Nombre: <?= $_GET['var1'] ?></p>
+            </p> Email: <?= $_GET['var2'] ?></p>
+            </p> User Name: <?= $_GET['var3'] ?></p>
+        </div>
+    </main>
+
     <footer class="footer mt-auto py-3">
         <div class="container pb-5">
             <hr>

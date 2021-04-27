@@ -27,7 +27,8 @@
     else
     {
 
-        echo "No actualizado: " ;
+        echo "No actualizado: " . $namefull . " Id: " . $id;
+        ;
     }
 ?>
 

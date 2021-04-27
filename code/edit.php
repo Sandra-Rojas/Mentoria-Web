@@ -5,34 +5,36 @@
     $i=0;
 
 
-    if (isset($_POST['actualiza'])) {
+    if (isset($_POST["actualiza"])) {
 
-        echo "Actualizar";
-        //rescata valores enviado por url
+        echo "Actualizar ";
+        //si se agrega en form action edit.php, no es posiblerescatar nuevamente valores de Id cuando hay 
+        //ingreso de datos se pierde el valor de la variable por url
         $id = $_GET['id'];
         //rescata valor de la pagina edit, caja texto
-        $namefull = $_POST['namefull'];
-        $username =$_POST['username'];
-        $email  = $_POST['email'];
-        echo "valor en Actualizar: " . $namefull . " Id: " . $id;
+        $namefull = $_POST["namefull"];
+        $username2 =$_POST["username"];
+        $email  = $_POST["email"];
+        echo  " Name Full: " . $namefull . " username: ". $username2 . " Email: " . $email  ." Id: " . $id;
 
         $db=connectDB();
         $sql ="UPDATE users SET full_name=:namefull, email=:email, user_name=:username Where id=:id";
         $stmt=$db->prepare($sql);
         $stmt->bindParam(":namefull",$namefull);
         $stmt->bindParam(":email",$email);
-        $stmt->bindParam(":username",$username);
+        $stmt->bindParam(":username",$username2);
         $stmt->bindParam(":id",$id);
         $stmt->execute();
         
-        echo "Datos Actualizados: " . $namefull . " Id: " . $id;
+        //echo "Datos Actualizados: " . $namefull . " Id: " . $id;
              }
     else
     {
-        echo "Ingreso la primera vez";
+        echo "Ingreso la primera vez...";
         //Recata datos de bd con id y los disponibiliza para utilizar en caja de texto
         $id=$_GET['id'];
-        
+        echo " Id: " . $id . "----";
+
         $db=connectDB();
         $sql = "SELECT * FROM users WHERE id = '$id'";
         //Statement, conectarse a BD con PDO
@@ -41,10 +43,11 @@
         $users = $stmt->fetch(PDO::FETCH_ASSOC);
         print_r($users);
 
-        $namefull = $users['full_name']; 
-        $username = $users['user_name']; 
-        $email  = $users['email']; 
+        $namefull = $users["full_name"]; 
+        $username2 = $users["user_name"]; 
+        $email  = $users["email"]; 
         
+        echo ' VALOR username: ' . $username2;
     }
 ?>
 
@@ -99,17 +102,17 @@
         <div class="container">
             <h1>Actualización de Usuario</h1>
             <!-- importante agregar action= edit.php !! -->
-            <form method="POST" action="edit.php">
+            <form method="POST" action="">
                 <div class="form-group">
                     <label for="name">Nombre Completo</label>
                     <!--Asigna valores, agrega name------------->
-                    <input type="text" class="form-control" id="namefull" name="namefull" value=<?=$namefull ?> placeholder="Enter name">
+                    <input type="text" class="form-control" id="namefull" name="namefull" value=<?=$namefull ?? "Sin Nombre Completo"?> >
                     <small class="form-text text-muted"></small>
                     <label for="name">Nombre Usuario</label>
-                    <input type="text" class="form-control" id="username" name="username" value=<?=$username ?> placeholder="Enter name">
+                    <input type="text" class="form-control" id="username" name="username" value=<?= $username2 ?? "Sin Nombre de Usuario"?> >
                     <small class="form-text text-muted"></small>
                     <label for="name">Email</label>
-                    <input type="text" class="form-control" id="email" name="email" value=<?=$email ?> placeholder="Enter name">
+                    <input type="text" class="form-control" id="email" name="email" value=<?=$email ?? "Sin Correo"?> >
                     <small class="form-text text-muted"></small>
                    
                 </div>

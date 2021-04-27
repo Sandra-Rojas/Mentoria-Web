@@ -17,6 +17,8 @@
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
+    <!--meta charset="utf8mb4_unicode_ci"-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
@@ -84,8 +86,8 @@
                             
                             <td>
                                 <!--a href="view.php"><button class="btn btn-primary btn-sm">View</button></a>-->
-                                <a href="view.php?id=<? $user['id'] ?>"><button class="btn btn-primary btn-sm">View</button></a>
-                                <a href="edit.php?var0=<? $user['id'] ?>"><button class="btn btn-outline-primary btn-sm">Edit</button></a>
+                                <a href="view.php?id=<?= $user['id'] ?>"><button class="btn btn-primary btn-sm">View</button></a>
+                                <a href="edit.php?id=<?= $user['id'] ?>"><button class="btn btn-outline-primary btn-sm">Edit</button></a>
                                 <button class="btn btn-sm">Delete</button>
                             </td>
                         </tr>

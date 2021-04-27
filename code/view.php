@@ -2,15 +2,27 @@
 <?php
 
 require "util/db.php";
-$id= $_GET['id'];
-        
+
+//echo " Imprime contenido de id: ";
+//print_r($_GET['id']);
+//echo "\n****";
+//echo "\n Imprime Contenido de Arreglo: ";
+//print_r($_GET);
+//print_r($_REQUEST);
+//echo "\n****";
+
+$id=$_GET['id'];
+//echo "\n Imprime valor de variable id: " . $id . "**********fin";
+
+
+
 $db=connectDB();
 $sql = "SELECT * FROM users WHERE id = '$id'";
 //Statement, conectarse a BD con PDO
 $stmt = $db->prepare($sql); 
 $stmt->execute(); 
 $users = $stmt->fetch(PDO::FETCH_ASSOC);
-print_r($users);
+//print_r($users);
 
 $namefull = $users['full_name']; 
 $username = $users['user_name']; 

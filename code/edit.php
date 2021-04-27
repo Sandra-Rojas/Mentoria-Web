@@ -8,12 +8,12 @@
     if (isset($_POST["actualiza"])) {
 
         echo "Actualizar ";
-        //si se agrega en form action edit.php, no es posiblerescatar nuevamente valores de Id cuando hay 
+        //si se agrega en form action edit.php, no es posible rescatar nuevamente valores de Id cuando hay 
         //ingreso de datos se pierde el valor de la variable por url
         $id = $_GET['id'];
         //rescata valor de la pagina edit, caja texto
         $namefull = $_POST["namefull"];
-        $username2 =$_POST["username"];
+        $username2 = $_POST["username"];
         $email  = $_POST["email"];
         echo  " Name Full: " . $namefull . " username: ". $username2 . " Email: " . $email  ." Id: " . $id;
 
@@ -56,7 +56,7 @@
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <!--meta http-equiv="X-UA-Compatible" content="IE=edge"-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
@@ -106,13 +106,13 @@
                 <div class="form-group">
                     <label for="name">Nombre Completo</label>
                     <!--Asigna valores, agrega name------------->
-                    <input type="text" class="form-control" id="namefull" name="namefull" value=<?=$namefull ?? "Sin Nombre Completo"?> >
+                    <input type="text" class="form-control" id="namefull" name="namefull" value=<?= $namefull ?? "Sin Nombre Completo"?> >
                     <small class="form-text text-muted"></small>
                     <label for="name">Nombre Usuario</label>
-                    <input type="text" class="form-control" id="username" name="username" value=<?= $username2 ?? "Sin Nombre de Usuario"?> >
+                    <input type="text" class="form-control" id="username" name="username" value=<?= $username2 ?? "Sin_Nombre_de_Usuario"?> >
                     <small class="form-text text-muted"></small>
                     <label for="name">Email</label>
-                    <input type="text" class="form-control" id="email" name="email" value=<?=$email ?? "Sin Correo"?> >
+                    <input type="text" class="form-control" id="email" name="email" value=<?= $email ?? "Sin Correo"?> >
                     <small class="form-text text-muted"></small>
                    
                 </div>

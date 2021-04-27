@@ -53,7 +53,8 @@
                     <input type="text" class="form-control" id="name" placeholder="Enter name">
                     <small class="form-text text-muted">Help message here.</small>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <!--Renombra botón y agrega name-->
+                <button type="submit" class="btn btn-primary" name= "Crear">Crear</button>
             </form>
         </div>
     </main>

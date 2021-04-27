@@ -9,7 +9,23 @@
     $stmt->execute(); 
     $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
-    //$i=0;
+    $i=$i++;
+    //$idborrar=1;
+    echo 'por aca: ' .$i;
+    //extract($_GET);
+    /*if($idborrar==2){
+        echo 'borrar ...';
+
+        $db=connectDB();
+        $sql = "DELETE FROM users WHERE id= :id ";
+        $stmt = $db->prepare($sql); 
+        $stmt->bindParam(":id",$_GET['id'])_;
+        $stmt->execute();
+        
+        //echo '<script>alert("ELIMINADO")</script> ';
+        header("location: index.php");
+    
+    }*/
 ?>
 
 <!doctype html>
@@ -86,9 +102,11 @@
                             
                             <td>
                                 <!--a href="view.php"><button class="btn btn-primary btn-sm">View</button></a>-->
-                                <a href="view.php?id=<?= $user['id'] ?>"><button class="btn btn-primary btn-sm">View</button></a>
-                                <a href="edit.php?id=<?= $user['id'] ?>"><button class="btn btn-outline-primary btn-sm">Edit</button></a>
-                                <button class="btn btn-sm">Delete</button>
+                                <a href="view.php?id=<?= $user['id'] ?>"><button class="btn btn-primary btn-sm">Ver</button></a>
+                                <a href="edit.php?id=<?= $user['id'] ?>"><button class="btn btn-outline-primary btn-sm">Editar</button></a>
+                                <!--button class="btn btn-sm">Delete</button-->
+                                <!--a href="delete.php?id=<?= $user['id'] ?>&idborrar=2">Borrar</a-->
+                                <a href="delete.php?id=<?= $user['id'] ?>">Borrar</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>    

@@ -15,19 +15,23 @@
         $namefull = $_POST["namefull"];
         $username2 = $_POST["username"];
         $email  = $_POST["email"];
-        echo  " Name Full: " . $namefull . " username: ". $username2 . " Email: " . $email  ." Id: " . $id;
+        $password= password_hash($_POST["password"], PASSWORD_DEFAULT);
+
+        echo  " Name Full: " . $namefull . " username: ". $username2 . " Email: " . $email  ." Id: " . $id . " Clave:" .$password;
+        
 
         $db=connectDB();
-        $sql ="UPDATE users SET full_name=:namefull, email=:email, user_name=:username Where id=:id";
+        $sql ="UPDATE users SET full_name=:namefull, email=:email, user_name=:username, password=:password Where id=:id";
         $stmt=$db->prepare($sql);
         $stmt->bindParam(":namefull",$namefull);
         $stmt->bindParam(":email",$email);
         $stmt->bindParam(":username",$username2);
+        $stmt->bindParam(":password",$password);
         $stmt->bindParam(":id",$id);
         $stmt->execute();
         
         //echo "Datos Actualizados: " . $namefull . " Id: " . $id;
-             }
+        }
     else
     {
         echo "Ingreso la primera vez...";
@@ -113,6 +117,8 @@
                     <small class="form-text text-muted"></small>
                     <label for="name">Email</label>
                     <input type="text" class="form-control" id="email" name="email" value=<?= $email ?? "Sin Correo"?> >
+                    <small class="form-text text-muted"></small>
+                    <input type="password" class="form-control" id="password" name="password" value=<?= $password ?? "Sin Clave"?> >
                     <small class="form-text text-muted"></small>
                    
                 </div>

@@ -46,17 +46,10 @@
         
     <main role="main" class="flex-shrink-0">
         <div class="container">
-            <h1>View User Detail</h1>
-            <p>Name: Pisyek</p>
-            <p>Email: pisyek@gmail.com</p>
-        </div>
-    </main>
-    <main role="main" class="flex-shrink-0">
-        <div class="container">
             <h1>Vista de Usuario</h1>
-            </p> Nombre: <?= $_GET['var1'] ?></p>
-            </p> Email: <?= $_GET['var2'] ?></p>
-            </p> User Name: <?= $_GET['var3'] ?></p>
+            </p> Nombre: <?= $_GET['var1'] ?? 'Sin Nombre Completo' ?></p>
+            </p> Email: <?= $_GET['var2'] ?? 'Sin Correo' ?></p>
+            </p> User Name: <?= $_GET['var3'] ?? 'Sin Nombre de Usuario'?></p>
         </div>
     </main>
 

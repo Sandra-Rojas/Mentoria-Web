@@ -2,7 +2,7 @@
 <?php
 
 require "util/db.php";
-$id= $_GET['Id'];
+$id= $_GET['id'];
         
 $db=connectDB();
 $sql = "SELECT * FROM users WHERE id = '$id'";

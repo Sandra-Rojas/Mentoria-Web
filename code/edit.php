@@ -31,7 +31,7 @@
     {
         echo "Ingreso la primera vez";
         //Recata datos de bd con id y los disponibiliza para utilizar en caja de texto
-        $id= $_GET['Id'];
+        $id=$_GET['id'];
         
         $db=connectDB();
         $sql = "SELECT * FROM users WHERE id = '$id'";

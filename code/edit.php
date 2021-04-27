@@ -82,7 +82,7 @@
         <div class="container">
             <h1>Actualización de Usuario</h1>
             <!-- importante agregar action= edit.php -->
-            <form action="" method="POST" action="edit.php">
+            <form method="POST" action="edit.php">
                 <div class="form-group">
                     <label for="name">Nombre Completo</label>
                     <!--Asigna valores------------->

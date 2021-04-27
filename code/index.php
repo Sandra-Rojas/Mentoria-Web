@@ -1,12 +1,5 @@
 <?php
 
-    
-
-    session_start();
-    if(!isset($_SESSION['nombre'])) {
-        header("Location: index.php");
-    }
-
     require "util/db.php";
     $db=connectDB();
     $sql = "SELECT * FROM users";

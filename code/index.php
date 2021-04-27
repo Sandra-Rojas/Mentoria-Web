@@ -9,9 +9,9 @@
     $stmt->execute(); 
     $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
-    $i=$i++;
+    //$i=$i++;
     //$idborrar=1;
-    echo 'por aca: ' .$i;
+    //echo 'por aca: ' .$i;
     //extract($_GET);
     /*if($idborrar==2){
         echo 'borrar ...';

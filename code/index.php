@@ -83,7 +83,7 @@
                             <td><?=  $user['email'] ?? 'Sin Correo' ?></td>
                             <td>
                                 <!--a href="view.php"><button class="btn btn-primary btn-sm">View</button></a>-->
-                                <a href="view.php?var1=<?php echo $user['full_name'] ?>&var2=<?php echo is_null($user['email'] ? $user['email'] : 'Sin correo') ?>&var3=<?php echo $user['user_name'] ?>"><button class="btn btn-primary btn-sm">View</button></a>
+                                <a href="view.php?var1=<?php echo ($user['full_name']?? 'Sin Nombre Comnpleto') ?>&var2=<?php echo ($user['email'] ?? 'Sin correo') ?>&var3=<?php echo ($user['user_name'] ?? 'Sin Nombre de Usuario')?>"><button class="btn btn-primary btn-sm">View</button></a>
                                 <a href="edit.php"><button class="btn btn-outline-primary btn-sm">Edit</button></a>
                                 <button class="btn btn-sm">Delete</button>
                             </td>

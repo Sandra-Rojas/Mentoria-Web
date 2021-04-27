@@ -90,9 +90,9 @@
                 <div class="form-group">
                     <label for="name">Nombre Completo</label>
                     <!--Asigna valores, agrega name------------->
-                    <input type="text" class="form-control" id="name" name="id" value=<?=$id ?> placeholder="Enter name">
+                    <input type="text" class="form-control" id="id" name="id" value=<?=$id ?> placeholder="Enter name">
                     <small class="form-text text-muted">Help message here.</small>
-                    <input type="text" class="form-control" id="name" name="full_name" value=<?=$namefull ?> placeholder="Enter name">
+                    <input type="text" class="form-control" id="full_name" name="full_name" value=<?=$namefull ?> placeholder="Enter name">
                     <small class="form-text text-muted">Help message here.</small>
                 </div>
                 <!--Renombra botòn y asigna name------------->

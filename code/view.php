@@ -1,3 +1,23 @@
+
+<?php
+
+require "util/db.php";
+$id= $_GET['Id'];
+        
+$db=connectDB();
+$sql = "SELECT * FROM users WHERE id = '$id'";
+//Statement, conectarse a BD con PDO
+$stmt = $db->prepare($sql); 
+$stmt->execute(); 
+$users = $stmt->fetch(PDO::FETCH_ASSOC);
+print_r($users);
+
+$namefull = $users['full_name']; 
+$username = $users['user_name']; 
+$email  = $users['email']; 
+
+?>
+
 <!doctype html>
 <html lang="en" class="h-100">
   <head>
@@ -47,9 +67,9 @@
     <main role="main" class="flex-shrink-0">
         <div class="container">
             <h1>Vista de Usuario</h1>
-            </p> Nombre: <?= $_GET['var1'] ?? 'Sin Nombre Completo' ?></p>
-            </p> Email: <?= $_GET['var2'] ?? 'Sin Correo' ?></p>
-            </p> User Name: <?= $_GET['var3'] ?? 'Sin Nombre de Usuario'?></p>
+            </p> Nombre: <?= $namefull ?? 'Sin Nombre Completo' ?></p>
+            </p> User Name: <?= $username ?? 'Sin Nombre de Usuario'?></p>
+            </p> Email: <?= $email ?? 'Sin Correo' ?></p>
         </div>
     </main>
 

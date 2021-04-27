@@ -7,11 +7,13 @@
 
     if (isset($_POST['actualiza'])) {
 
-        echo "Ingresa a Actualizar";
-        $id = $_POST['id'];
+        echo "Actualizar";
+        //rescata valores enviado por url
+        $id = $_GET['id'];
+        //rescata valor de la pagina edit, caja texto
         $namefull = $_POST['namefull'];
-        $email  = $_POST['email'];
         $username =$_POST['username'];
+        $email  = $_POST['email'];
         echo "valor en Actualizar: " . $namefull . " Id: " . $id;
 
         $db=connectDB();
@@ -28,18 +30,21 @@
     else
     {
         echo "Ingreso la primera vez";
-        echo " var0: " . $_GET['var0'] . "*";
-        echo " var1: " . $_GET['var1'] . "*";
-        echo " var2: " . $_GET['var2'] . "*";
-        echo " var3: " . $_GET['var3'] . "*";
+        //Recata datos de bd con id y los disponibiliza para utilizar en caja de texto
+        $id= $_GET['Id'];
+        
+        $db=connectDB();
+        $sql = "SELECT * FROM users WHERE id = '$id'";
+        //Statement, conectarse a BD con PDO
+        $stmt = $db->prepare($sql); 
+        $stmt->execute(); 
+        $users = $stmt->fetch(PDO::FETCH_ASSOC);
+        print_r($users);
 
-        $id= $_GET['var0'] ?? 'Sin Id';;
-        $namefull = $_GET['var1'] ?? 'Sin Nombre Completo';
-        $email = $_GET['var2'] ?? 'Sin correo';
-        $nameusu = $_GET['var3'] ?? 'Sin Nombre Usuario';
-
-        echo "No actualizado: " . $namefull . " Id: " . $id;
-        ;
+        $namefull = $users['full_name']; 
+        $username = $users['user_name']; 
+        $email  = $users['email']; 
+        
     }
 ?>
 
@@ -98,15 +103,15 @@
                 <div class="form-group">
                     <label for="name">Nombre Completo</label>
                     <!--Asigna valores, agrega name------------->
-                    <input type="text" class="form-control" id="id" name="id" value=<?=$id ?> placeholder="Enter name">
-                    <small class="form-text text-muted">Help message here.</small>
                     <input type="text" class="form-control" id="namefull" name="namefull" value=<?=$namefull ?> placeholder="Enter name">
-                    <small class="form-text text-muted">Help message here.</small>
-                    <input type="text" class="form-control" id="email" name="email" value=<?=$email ?> placeholder="Enter name">
-                    <small class="form-text text-muted">Help message here.</small>
+                    <small class="form-text text-muted"></small>
+                    <label for="name">Nombre Usuario</label>
                     <input type="text" class="form-control" id="username" name="username" value=<?=$username ?> placeholder="Enter name">
-                    <small class="form-text text-muted">Help message here.</small>
-
+                    <small class="form-text text-muted"></small>
+                    <label for="name">Email</label>
+                    <input type="text" class="form-control" id="email" name="email" value=<?=$email ?> placeholder="Enter name">
+                    <small class="form-text text-muted"></small>
+                   
                 </div>
                 <!--Renombra botòn y asigna name------------>
                 <button type="submit" class="btn btn-primary" name="actualiza">Actualizar</button>

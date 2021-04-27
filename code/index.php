@@ -9,7 +9,7 @@
     $stmt->execute(); 
     $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
-    $i=0;
+    //$i=0;
 ?>
 
 <!doctype html>
@@ -73,10 +73,10 @@
                 </thead>
                 <tbody>
                   <!---comentario-->
-                    <?php foreach ($users as $user): ?>
-                         <?php $i=$i+1; ?>
+                    <?php foreach ($users as $key => $user): ?>
+                         <!--?php $i=$i+1; ?-->
                          <tr>
-                            <th scope="row"><?= $i ?> </th>
+                            <th scope="row"><?= $key = $key + 1  ?> </th>
                             <td><?=  $user['id'] ?> </td>
                             <td><?=  $user['full_name'] ?? 'Sin Nombre Completo' ?> </td>
                             <td><?=  $user['email'] ?? 'Sin Correo' ?></td>
@@ -84,8 +84,8 @@
                             
                             <td>
                                 <!--a href="view.php"><button class="btn btn-primary btn-sm">View</button></a>-->
-                                <a href="view.php?var1=<?php echo $user['full_name']?? 'Sin Nombre Comnpleto' ?>&var2=<?php echo $user['email'] ?? 'Sin correo' ?>&var3=<?php echo $user['user_name'] ?? 'Sin Nombre de Usuario'?>"><button class="btn btn-primary btn-sm">View</button></a>
-                                <a href="edit.php?var0=<?php echo $user['id'] ?>&var1=<?php echo $user['full_name']?? 'Sin Nombre Comnpleto' ?>&var2=<?php echo $user['email'] ?? 'Sin correo' ?>&var3=<?php echo $user['user_name'] ?? 'Sin Nombre de Usuario'?>"><button class="btn btn-outline-primary btn-sm">Edit</button></a>
+                                <a href="view.php?id=<? $user["id"] ?>"><button class="btn btn-primary btn-sm">View</button></a>
+                                <a href="edit.php?var0=<? $user['id'] ?>"><button class="btn btn-outline-primary btn-sm">Edit</button></a>
                                 <button class="btn btn-sm">Delete</button>
                             </td>
                         </tr>

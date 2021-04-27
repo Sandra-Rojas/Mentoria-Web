@@ -1,3 +1,25 @@
+<?php
+
+//controla botón crear
+if (isset($_POST["crear"])) {
+
+    echo 'Crear ...';
+    require "util/db.php";
+    $pass= password_hash($_POST['password'], PASSWORD_DEFAULT);
+
+    $db = connectDB();
+    $sql = "INSERT INTO users (full_name, email, user_name, password) values (:fullname, :email, :username, :password)";
+    $stmt = $db->prepare($sql); 
+    $stmt->bindParam(":fullname",$_POST['fullname']); /*rescata valor de caja de texto*/
+    $stmt->bindParam(":email",$_POST['email']); /*rescata valor de caja de texto*/
+    $stmt->bindParam(":username",$_POST['username']); /*rescata valor de caja de texto*/
+    $stmt->bindParam(":password",$pass); /*rescata valor de caja de texto*/
+    $stmt->execute();
+
+    header("location: index.php");
+}    
+?>
+
 <!doctype html>
 <html lang="en" class="h-100">
   <head>
@@ -46,15 +68,33 @@
         
     <main role="main" class="flex-shrink-0">
         <div class="container">
-            <h1>Create New User</h1>
+            <h1>Crear Nuevo Usuario</h1>
             <form action="" method="POST">
+                <!--agrega name-->
                 <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" placeholder="Enter name">
-                    <small class="form-text text-muted">Help message here.</small>
+                    <label for="name">Nombre Completo</label>
+                    <input type="text" class="form-control" id="fullname" name ="fullname" placeholder="Ingrese Nombre Completo">
+                    <small class="form-text text-muted"></small>
                 </div>
+                <!--agrega los otros campos y crea name-->
+                <div class="form-group">
+                    <label for="name">Nombre de Usuario</label>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Ingrese Nombre de Usuario">
+                    <small class="form-text text-muted"></small>
+                </div>
+                <div class="form-group">
+                    <label for="name">Email</label>
+                    <input type="text" class="form-control" id="mail" name="email" placeholder="Ingrese Mail">
+                    <small class="form-text text-muted"></small>
+                </div>
+                <div class="form-group">
+                    <label for="name">Clave</label>
+                    <input type="text" class="form-control" id="password" name="password" placeholder="Ingrese Clave">
+                    <small class="form-text text-muted"></small>
+                </div>
+
                 <!--Renombra botón y agrega name-->
-                <button type="submit" class="btn btn-primary" name= "Crear">Crear</button>
+                <button type="submit" class="btn btn-primary" name= "crear">Crear</button>
             </form>
         </div>
     </main>

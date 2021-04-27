@@ -21,8 +21,13 @@
         $stmt->execute();
         
         echo "Datos Actualizados: " . $namefull . " Id: " . $id;
-        
+         
 
+    }
+    else
+    {
+
+        echo "No actualizado: " . $_POST['btnactualiza'] ."*";
     }
 ?>
 

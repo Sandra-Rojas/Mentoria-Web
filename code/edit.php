@@ -23,7 +23,7 @@
         echo "Datos Actualizados: " . $namefull . " Id: " . $id;
          
 
-    }xº
+    }
     else
     {
 

@@ -89,7 +89,7 @@ if (isset($_POST["crear"])) {
                 </div>
                 <div class="form-group">
                     <label for="name">Clave</label>
-                    <input type="text" class="form-control" id="password" name="password" placeholder="Ingrese Clave">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Ingrese Clave">
                     <small class="form-text text-muted"></small>
                 </div>
 

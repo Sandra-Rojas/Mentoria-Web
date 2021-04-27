@@ -26,6 +26,10 @@
     else
     {
         echo "Ingreso la primera vez";
+        echo " var0: " . $_GET['var0'] . "*";
+        echo " var1: " . $_GET['var1'] . "*";
+        echo " var2: " . $_GET['var2'] . "*";
+        echo " var3: " . $_GET['var3'] . "*";
 
         $id= $_GET['var0'] ?? 'Sin Id';;
         $namefull = $_GET['var1'] ?? 'Sin Nombre Completo';

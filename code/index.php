@@ -79,12 +79,11 @@
                 </thead>
                 <tbody>
                     <tr>
-                  
+                  <!---comentario-->
                     <?php foreach ($users as $user): ?>
                          <?php $i=$i+1; ?>
                         <tr>
-                            
-                            <td><?=  $i ?> </td>
+                            <th scope= "row"><?= $i ?> </th>
                             <td><?=  $user['id'] ?> </td>
                             <td><?=  $user['full_name'] ?? 'Sin Nombre Completo' ?> </td>
                             <td><?=  $user['user_name'] ?? 'Sin nombre de usuario' ?></td>

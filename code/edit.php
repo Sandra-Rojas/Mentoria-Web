@@ -81,13 +81,15 @@
     <main role="main" class="flex-shrink-0">
         <div class="container">
             <h1>Actualización de Usuario</h1>
-            <form action="" method="POST">
+            <!-- importante agregar action= edit.php -->
+            <form action="" method="POST" action="edit.php">
                 <div class="form-group">
                     <label for="name">Nombre Completo</label>
                     <!--Asigna valores------------->
                     <input type="text" class="form-control" id="name" value=<?=$namefull ?> placeholder="Enter name">
                     <small class="form-text text-muted">Help message here.</small>
                 </div>
+                <!--Renombra botòn y asigna name------------->
                 <button type="submit" class="btn btn-primary" name="btnActualiza">Actualiza</button>
             </form>
         </div>

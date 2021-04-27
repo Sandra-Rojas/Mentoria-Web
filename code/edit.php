@@ -22,9 +22,7 @@
         $stmt->execute();
         
         echo "Datos Actualizados: " . $namefull . " Id: " . $id;
-         
-
-    }
+             }
     else
     {
         echo "Ingreso la primera vez";
@@ -44,6 +42,7 @@
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->

@@ -7,8 +7,10 @@
 
     if (isset($_POST['btnactualiza'])) {
 
+        $id = $_POST['id'];
         $namefull = $_POST['full_name'];
         echo "valor en Actualizar: " . $namefull . " Id: " . $id;
+
         $db=connectDB();
         $sql ="UPDATE users SET full_name=:var1 Where id=:var0";
         $stmt=$db->prepare($sql);
@@ -24,11 +26,11 @@
     }
     else
     {
-        $id= $_GET['var0'];
+        $id= $_GET['var0'] ?? 'Sin Id';;
         $namefull = $_GET['var1'] ?? 'Sin Nombre Completo';
         $email = $_GET['var2'] ?? 'Sin correo';
         $nameusu = $_GET['var3'] ?? 'Sin Nombre Usuario';
-        
+
         echo "No actualizado: " . $namefull . " Id: " . $id;
         ;
     }
@@ -88,11 +90,13 @@
                 <div class="form-group">
                     <label for="name">Nombre Completo</label>
                     <!--Asigna valores, agrega name------------->
+                    <input type="text" class="form-control" id="name" name="id" value=<?=$id ?> placeholder="Enter name">
+                    <small class="form-text text-muted">Help message here.</small>
                     <input type="text" class="form-control" id="name" name="full_name" value=<?=$namefull ?> placeholder="Enter name">
                     <small class="form-text text-muted">Help message here.</small>
                 </div>
                 <!--Renombra botòn y asigna name------------->
-                <button type="submit" class="btn btn-primary" name="btnActualiza">Actualiza</button>
+                <button type="submit" class="btn btn-primary" name="btnActualiza">Actualizar</button>
             </form>
         </div>
     </main>

@@ -1,6 +1,6 @@
 <?php
 
-    $i=0;
+    
 
     session_start();
     if(!isset($_SESSION['nombre'])) {
@@ -15,7 +15,8 @@
     $stmt = $db->prepare($sql); 
     $stmt->execute(); 
     $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
-               
+    
+    $i=0;
 ?>
 
 <!doctype html>
@@ -83,7 +84,7 @@
                     <?php foreach ($users as $user): ?>
                          <?php $i=$i+1; ?>
                         <tr>
-                            <th scope= "row"><?= $i ?> </th>
+                            <th scope="row"><?= $i ?> </th>
                             <td><?=  $user['id'] ?> </td>
                             <td><?=  $user['full_name'] ?? 'Sin Nombre Completo' ?> </td>
                             <td><?=  $user['user_name'] ?? 'Sin nombre de usuario' ?></td>

@@ -19,6 +19,10 @@
         //$stmt->bindParam(":var3",$nameusu);
         $stmt->bindParam(":var0",$id);
         $stmt->execute();
+        
+        echo "Datos Actualizados: " . $namefull . " Id: " . $id;
+        
+
     }
 ?>
 

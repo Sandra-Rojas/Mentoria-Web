@@ -11,6 +11,8 @@
 
     if (isset($_POST['btnactualiza'])) {
 
+        $namefull = $_POST['full_name'];
+        echo "valor en Actualizar: " . $namefull . " Id: " . $id;
         $db=connectDB();
         $sql ="UPDATE users SET full_name=:var1 Where id=:var0";
         $stmt=$db->prepare($sql);
@@ -81,12 +83,12 @@
     <main role="main" class="flex-shrink-0">
         <div class="container">
             <h1>Actualización de Usuario</h1>
-            <!-- importante agregar action= edit.php -->
+            <!-- importante agregar action= edit.php !! -->
             <form method="POST" action="edit.php">
                 <div class="form-group">
                     <label for="name">Nombre Completo</label>
-                    <!--Asigna valores------------->
-                    <input type="text" class="form-control" id="name" value=<?=$namefull ?> placeholder="Enter name">
+                    <!--Asigna valores, agrega name------------->
+                    <input type="text" class="form-control" id="name" name="full_name" value=<?=$namefull ?> placeholder="Enter name">
                     <small class="form-text text-muted">Help message here.</small>
                 </div>
                 <!--Renombra botòn y asigna name------------->

@@ -8,7 +8,10 @@ if (isset($_POST["crear"])) {
     $pass= password_hash($_POST['password'], PASSWORD_DEFAULT);
 
     $db = connectDB();
-    $sql = "INSERT INTO users (full_name, email, user_name, password) values (:fullname, :email, :username, :password)";
+    $sql = "INSERT INTO users 
+            (full_name, email, user_name, password) 
+            values
+            (:fullname, :email, :username, :password)";
     $stmt = $db->prepare($sql); 
     $stmt->bindParam(":fullname",$_POST['fullname']); /*rescata valor de caja de texto*/
     $stmt->bindParam(":email",$_POST['email']); /*rescata valor de caja de texto*/

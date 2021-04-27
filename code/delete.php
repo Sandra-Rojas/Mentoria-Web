@@ -3,7 +3,8 @@
     echo 'borrar ...';
     require "util/db.php";
     $db = connectDB();
-    $sql = "DELETE FROM users WHERE id= :id ";
+    $sql = "DELETE FROM users 
+            WHERE id= :id ";
     $stmt = $db->prepare($sql); 
     $stmt->bindParam(":id",$_GET['id']);
     $stmt->execute();

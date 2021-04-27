@@ -17,7 +17,8 @@ $id=$_GET['id'];
 
 
 $db=connectDB();
-$sql = "SELECT * FROM users WHERE id = '$id'";
+$sql = "SELECT * FROM users 
+        WHERE id = '$id'";
 //Statement, conectarse a BD con PDO
 $stmt = $db->prepare($sql); 
 $stmt->execute(); 

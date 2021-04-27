@@ -21,7 +21,12 @@
         
 
         $db=connectDB();
-        $sql ="UPDATE users SET full_name=:namefull, email=:email, user_name=:username, password=:password Where id=:id";
+        $sql ="UPDATE users 
+                SET full_name=:namefull, 
+                    email=:email, 
+                    user_name=:username, 
+                    password=:password 
+                Where id=:id";
         $stmt=$db->prepare($sql);
         $stmt->bindParam(":namefull",$namefull);
         $stmt->bindParam(":email",$email);

@@ -4,10 +4,6 @@
 
     $i=0;
 
-    $id= $_GET['var0'];
-    $namefull = $_GET['var1'] ?? 'Sin Nombre Completo';
-    $email = $_GET['var2'] ?? 'Sin correo';
-    $nameusu = $_GET['var3'] ?? 'Sin Nombre Usuario';
 
     if (isset($_POST['btnactualiza'])) {
 
@@ -28,7 +24,11 @@
     }
     else
     {
-
+        $id= $_GET['var0'];
+        $namefull = $_GET['var1'] ?? 'Sin Nombre Completo';
+        $email = $_GET['var2'] ?? 'Sin correo';
+        $nameusu = $_GET['var3'] ?? 'Sin Nombre Usuario';
+        
         echo "No actualizado: " . $namefull . " Id: " . $id;
         ;
     }

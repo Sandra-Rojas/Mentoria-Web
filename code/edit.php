@@ -4,20 +4,61 @@
 
     $i=0;
 
+    $siempre123= password_hash("123",PASSWORD_DEFAULT);
+    echo " siempre123:" . $siempre123;
+    $siempre123= password_hash("123",PASSWORD_DEFAULT);
+    echo " siempre123:" . $siempre123;
+    $siempre123= password_hash("123",PASSWORD_DEFAULT);
+    echo " siempre123:" . $siempre123;
+
+    $id = $_GET['id'];
 
     if (isset($_POST["actualiza"])) {
 
-        echo "Actualizar ";
+        echo "**** Actualizar*****"  ;
         //si se agrega en form action edit.php, no es posible rescatar nuevamente valores de Id cuando hay 
         //ingreso de datos se pierde el valor de la variable por url
-        $id = $_GET['id'];
+        
+        //$id = $_GET['id'];
+        
         //rescata valor de la pagina edit, caja texto
         $namefull = $_POST["namefull"];
         $username2 = $_POST["username"];
         $email  = $_POST["email"];
-        $password= password_hash($_POST["password"], PASSWORD_DEFAULT);
+ 
+        //password que carga inicialmente esta encriptada hash
+        $db=connectDB();
+        $sql = "SELECT * FROM users WHERE id = '$id'";
+        //Statement, conectarse a BD con PDO
+        $stmt = $db->prepare($sql); 
+        $stmt->execute(); 
+        $users = $stmt->fetch(PDO::FETCH_ASSOC);
+        $password = $users["password"]; 
 
-        echo  " Name Full: " . $namefull . " username: ". $username2 . " Email: " . $email  ." Id: " . $id . " Clave:" .$password;
+        $hashpasswordbd= $password;
+        echo "---clave de la bd hashpasswordbd: " . $hashpasswordbd;
+
+        //la password que rescata de la caja de texto podria ser modificada
+        //si esta modificada no es hash
+        $newpassword = $_POST["password"];
+        echo "---Clave ingresada por usuario newpassword: " . $newpassword;
+
+        //if (password_verify('rasmuslerdorf', $hash)) {
+        if ($hashpasswordbd == $newpassword){  
+            echo "****Las password son iguales****";
+            $password= $hashpasswordbd ; 
+            }   else {
+                        if (password_verify($newpassword, $hashpasswordbd)) {
+                            $password= $hashpasswordbd ; 
+                            echo "----- Password iguales, revisa con verify la nuevapassword vs la bd"; 
+                        }
+                        else{
+                            $password= password_hash($_POST["password"], PASSWORD_DEFAULT);
+                            echo "----- Password diferentes, encripta clave";
+                        }
+        }           
+             
+        echo  "ACTUALIZAR: Name Full: " . $namefull . " ---username: ". $username2 . " ----Email: " . $email  ." ---Id: " . $id . " ----Clave:" . $password;
         
 
         $db=connectDB();
@@ -39,9 +80,11 @@
         }
     else
     {
-        echo "Ingreso la primera vez...";
-        //Recata datos de bd con id y los disponibiliza para utilizar en caja de texto
-        $id=$_GET['id'];
+        echo "*****Ingreso la primera vez****";
+        //Recata alor de id de url y los disponibiliza para utilizar en caja de texto
+
+        //$id=$_GET['id'];
+        
         echo " Id: " . $id . "----";
 
         $db=connectDB();
@@ -50,13 +93,15 @@
         $stmt = $db->prepare($sql); 
         $stmt->execute(); 
         $users = $stmt->fetch(PDO::FETCH_ASSOC);
+        echo " VALORES DE BD: ";
         print_r($users);
-
+        echo " fin valores de BD********";
         $namefull = $users["full_name"]; 
         $username2 = $users["user_name"]; 
         $email  = $users["email"]; 
-        
-        echo ' VALOR username: ' . $username2;
+        $password = $users["password"]; 
+        echo " VALOR de BD leyendo el contenido del array: username: " . $username2 . " password: " . $password;
+        echo "**********";
     }
 ?>
 
@@ -111,18 +156,19 @@
         <div class="container">
             <h1>Actualización de Usuario</h1>
             <!-- importante agregar action= edit.php !! -->
-            <form method="POST" action="">
+            <form action="" method="POST">
                 <div class="form-group">
                     <label for="name">Nombre Completo</label>
                     <!--Asigna valores, agrega name------------->
-                    <input type="text" class="form-control" id="namefull" name="namefull" value=<?= $namefull ?? "Sin Nombre Completo"?> >
+                    <input type="text" class="form-control" id="namefull" name="namefull" value=<?= trim($namefull) ?? "Sin Nombre Completo"?> >
                     <small class="form-text text-muted"></small>
                     <label for="name">Nombre Usuario</label>
                     <input type="text" class="form-control" id="username" name="username" value=<?= $username2 ?? "Sin_Nombre_de_Usuario"?> >
                     <small class="form-text text-muted"></small>
                     <label for="name">Email</label>
-                    <input type="text" class="form-control" id="email" name="email" value=<?= $email ?? "Sin Correo"?> >
+                    <input type="text" class="form-control" id="email" name="email" value=<?= trim($email) ?? "Sin Correo"?> >
                     <small class="form-text text-muted"></small>
+                    <label for="name">Clave</label>
                     <input type="password" class="form-control" id="password" name="password" value=<?= $password ?? "Sin Clave"?> >
                     <small class="form-text text-muted"></small>
                    

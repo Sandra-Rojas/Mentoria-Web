@@ -26,6 +26,17 @@
         header("location: index.php");
     
     }*/
+
+    session_start();
+    If(isset($_SESSION["msg-delete"])){
+        $msg = $_SESSION["msg-delete"];
+        //limpia variable de session
+        unset($_SESSION["msg-delete"]);
+        // también limpia variable de sesion
+        //$_SESSION["msg-delete"]="";
+
+
+    }
 ?>
 
 <!doctype html>
@@ -47,6 +58,12 @@
   </head>
   <body class="d-flex flex-column h-100">
     
+    <!-- Implementa mensaje para eliminación-->
+    <?php if (isset($msg)): ?>
+        <p><?= $msg ?></p>
+    <?php endif; ?>
+    <!-------------->
+
     <div class="container pt-4 pb-4">
         <nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
             <a class="navbar-brand" href="#">HTML CRUD Template</a>
@@ -113,6 +130,10 @@
                 </tbody>
             </table>
         </div>
+        <!--Implementa subir archivo-->
+        <form action="UP.php" method="post" enctype="multipart/form-data">
+                <input type="file" name ="imagen" >
+        </form>        
     </main>
       
     <footer class="footer mt-auto py-3">

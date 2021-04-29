@@ -1,6 +1,6 @@
 <?php
 
-    echo 'borrar ...';
+    //echo 'borrar ...';
     require "util/db.php";
     $db = connectDB();
     $sql = "DELETE FROM users 
@@ -10,6 +10,9 @@
     $stmt->execute();
 
     //echo '<script>alert("ELIMINADO")</script> ';
+    //Implementa mensajes con variable de session
+    session_start();
+    $_SESSION["msg-delete"] = "Registro eliminado correctamente";
     header("location: index.php");
 
 ?>

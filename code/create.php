@@ -4,9 +4,10 @@
 if (isset($_POST["crear"])) {
 
     echo 'Crear ...';
+    echo $_POST['password'];
     require "util/db.php";
+    
     $pass= password_hash($_POST['password'], PASSWORD_DEFAULT);
-
     $db = connectDB();
     $sql = "INSERT INTO users 
             (full_name, email, user_name, password) 

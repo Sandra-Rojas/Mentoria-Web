@@ -7,21 +7,42 @@
     $siempre123= password_hash("123",PASSWORD_DEFAULT);
     echo " siempre123:" . $siempre123;
     $siempre123= password_hash("123",PASSWORD_DEFAULT);
-    echo " siempre123:" . $siempre123;
-    $siempre123= password_hash("123",PASSWORD_DEFAULT);
-    echo " siempre123:" . $siempre123;
+    echo " ------ siempre123:" . $siempre123;
+    
 
-    $id = $_GET['id'];
+    if (isset($_GET['id'])){
+        echo "*****Ingresa la primera****";
+        //Recata valor de id de url, busca valores en bd y los disponibiliza para utilizar en caja de texto
+        $id=$_GET['id'];
+        
+        echo " Id: " . $id . "----";
+
+        $db=connectDB();
+        $sql = "SELECT * FROM users WHERE id = '$id'";
+        //Statement, conectarse a BD con PDO
+        $stmt = $db->prepare($sql); 
+        $stmt->execute(); 
+        $users = $stmt->fetch(PDO::FETCH_ASSOC);
+        echo " VALORES DE BD: ";
+        print_r($users);
+        echo " fin valores de BD********";
+        /*variables a imprimir en caja de texto*/
+        $namefull = $users["full_name"]; 
+        $username2 = $users["user_name"]; 
+        $email  = $users["email"]; 
+        $password = $users["password"]; 
+        echo " VALOR de BD leyendo el contenido del array: username: " . $username2 . " password: " . $password;
+        echo "**********";
+    }
+    
 
     if (isset($_POST["actualiza"])) {
 
         echo "**** Actualizar*****"  ;
-        //si se agrega en form action edit.php, no es posible rescatar nuevamente valores de Id cuando hay 
-        //ingreso de datos se pierde el valor de la variable por url
-        
-        //$id = $_GET['id'];
         
         //rescata valor de la pagina edit, caja texto
+        $id = $_POST["id"];
+        echo " Id: " . $id . "----";
         $namefull = $_POST["namefull"];
         $username2 = $_POST["username"];
         $email  = $_POST["email"];
@@ -77,31 +98,7 @@
         $stmt->execute();
         
         //echo "Datos Actualizados: " . $namefull . " Id: " . $id;
-        }
-    else
-    {
-        echo "*****Ingreso la primera vez****";
-        //Recata alor de id de url y los disponibiliza para utilizar en caja de texto
-
-        //$id=$_GET['id'];
-        
-        echo " Id: " . $id . "----";
-
-        $db=connectDB();
-        $sql = "SELECT * FROM users WHERE id = '$id'";
-        //Statement, conectarse a BD con PDO
-        $stmt = $db->prepare($sql); 
-        $stmt->execute(); 
-        $users = $stmt->fetch(PDO::FETCH_ASSOC);
-        echo " VALORES DE BD: ";
-        print_r($users);
-        echo " fin valores de BD********";
-        $namefull = $users["full_name"]; 
-        $username2 = $users["user_name"]; 
-        $email  = $users["email"]; 
-        $password = $users["password"]; 
-        echo " VALOR de BD leyendo el contenido del array: username: " . $username2 . " password: " . $password;
-        echo "**********";
+     
     }
 ?>
 
@@ -156,10 +153,12 @@
         <div class="container">
             <h1>Actualización de Usuario</h1>
             <!-- importante agregar action= edit.php !! -->
-            <form action="" method="POST">
+            <form action="edit.php" method="POST">
                 <div class="form-group">
                     <label for="name">Nombre Completo</label>
                     <!--Asigna valores, agrega name------------->
+                    <input type="hidden" class="form-control" id="id" name="id" value=<?= trim($id) ?? "Sin Id"?> >
+                    <small class="form-text text-muted"></small>
                     <input type="text" class="form-control" id="namefull" name="namefull" value=<?= trim($namefull) ?? "Sin Nombre Completo"?> >
                     <small class="form-text text-muted"></small>
                     <label for="name">Nombre Usuario</label>

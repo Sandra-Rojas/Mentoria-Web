@@ -1,13 +1,18 @@
-<<?php
+<?php
 
+echo "Subiendo archivo ...";
 
 $target_dir = "uploads/";
 //imagen es el nombre de archivo a subir
 $target_file = $target_dir . basename($_FILES["imagen"]["name"]);
+echo "****";
+print_r($target_file);
 
 //mueve el arhivo desde la direccion temporal del servidor a carpeta uploads
 //tmp_name tiene la direccion temporal de archivo servidor
+echo "****";
 print_r($_FILES["imagen"]);
+
 if (move_uploaded_file($_FILES["imagen"]["tmp_name"], $target_file)) {
     echo "The file  has been uploaded.";
   } else {

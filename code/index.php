@@ -130,10 +130,13 @@
                 </tbody>
             </table>
         </div>
+        <div class="container">
         <!--Implementa subir archivo-->
-        <form action="UP.php" method="post" enctype="multipart/form-data">
+        <form action="up.php" method="post" enctype="multipart/form-data">
                 <input type="file" name ="imagen" >
-        </form>        
+                <input type="submit" value ="Enviar" >
+        </form>
+        </div>        
     </main>
       
     <footer class="footer mt-auto py-3">

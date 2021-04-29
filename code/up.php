@@ -1,6 +1,6 @@
 <?php
 
-echo "Subiendo archivo ...";
+echo "Subiendo archivo...";
 
 $target_dir = "uploads/";
 //imagen es el nombre de archivo a subir

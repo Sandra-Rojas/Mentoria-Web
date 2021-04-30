@@ -9,24 +9,6 @@
     $stmt->execute(); 
     $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
-    //$i=$i++;
-    //$idborrar=1;
-    //echo 'por aca: ' .$i;
-    //extract($_GET);
-    /*if($idborrar==2){
-        echo 'borrar ...';
-
-        $db=connectDB();
-        $sql = "DELETE FROM users WHERE id= :id ";
-        $stmt = $db->prepare($sql); 
-        $stmt->bindParam(":id",$_GET['id'])_;
-        $stmt->execute();
-        
-        //echo '<script>alert("ELIMINADO")</script> ';
-        header("location: index.php");
-    
-    }*/
-
     session_start();
     If(isset($_SESSION["msg-delete"])){
         $msg = $_SESSION["msg-delete"];
@@ -34,9 +16,19 @@
         unset($_SESSION["msg-delete"]);
         // también limpia variable de sesion
         //$_SESSION["msg-delete"]="";
-
-
     }
+    session_start();
+    If(isset($_SESSION["msg-create"])){
+        $msg = $_SESSION["msg-create"];
+        unset($_SESSION["msg-create"]);
+    }
+
+    session_start();
+    If(isset($_SESSION["msg-update"])){
+        $msg = $_SESSION["msg-update"];
+        unset($_SESSION["msg-update"]);
+    }
+
 ?>
 
 <!doctype html>
@@ -54,13 +46,20 @@
     <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
 
     <title>Lista de Usuario</title>
-   
+
+    <style>
+		.msg-form{
+			margin:1em;
+			color: red
+		}
+    </style>
   </head>
+ 
   <body class="d-flex flex-column h-100">
     
-    <!-- Implementa mensaje para eliminación-->
+    <!-- Implementa mensaje para delete, create, update-->
     <?php if (isset($msg)): ?>
-        <p><?= $msg ?></p>
+        <p class="msg-form"><?= $msg ?></p>
     <?php endif; ?>
     <!-------------->
 
@@ -121,9 +120,10 @@
                                 <!--a href="view.php"><button class="btn btn-primary btn-sm">View</button></a>-->
                                 <a href="view.php?id=<?= $user['id'] ?>"><button class="btn btn-primary btn-sm">Ver</button></a>
                                 <a href="edit.php?id=<?= $user['id'] ?>"><button class="btn btn-outline-primary btn-sm">Editar</button></a>
+                                
                                 <!--button class="btn btn-sm">Delete</button-->
-                                <!--a href="delete.php?id=<?= $user['id'] ?>&idborrar=2">Borrar</a-->
-                                <a href="delete.php?id=<?= $user['id'] ?>">Borrar</a>
+                                <!-- Implementa estilo a link delete-->
+                                <a href="delete.php?id=<?= $user['id'] ?>" class="btn btn-outline-primary btn-sm" >Borrar</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>    

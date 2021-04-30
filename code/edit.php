@@ -1,21 +1,13 @@
 <?php
 
     require "util/db.php";
-
-    $i=0;
-
-    $siempre123= password_hash("123",PASSWORD_DEFAULT);
-    echo " siempre123:" . $siempre123;
-    $siempre123= password_hash("123",PASSWORD_DEFAULT);
-    echo " ------ siempre123:" . $siempre123;
-    
-
+         
     if (isset($_GET['id'])){
-        echo "*****Ingresa la primera****";
+        //echo "*****Ingresa la primera vez****";
         //Recata valor de id de url, busca valores en bd y los disponibiliza para utilizar en caja de texto
         $id=$_GET['id'];
         
-        echo " Id: " . $id . "----";
+        //echo " Id: " . $id . "----";
 
         $db=connectDB();
         $sql = "SELECT * FROM users WHERE id = '$id'";
@@ -23,26 +15,23 @@
         $stmt = $db->prepare($sql); 
         $stmt->execute(); 
         $users = $stmt->fetch(PDO::FETCH_ASSOC);
-        echo " VALORES DE BD: ";
-        print_r($users);
-        echo " fin valores de BD********";
+        //print_r($users);
+        
         /*variables a imprimir en caja de texto*/
         $namefull = $users["full_name"]; 
         $username2 = $users["user_name"]; 
         $email  = $users["email"]; 
         $password = $users["password"]; 
-        echo " VALOR de BD leyendo el contenido del array: username: " . $username2 . " password: " . $password;
-        echo "**********";
+       
     }
-    
 
     if (isset($_POST["actualiza"])) {
 
-        echo "**** Actualizar*****"  ;
+        //echo "**** Actualizar*****"  ;
         
         //rescata valor de la pagina edit, caja texto
         $id = $_POST["id"];
-        echo " Id: " . $id . "----";
+        //echo " Id: " . $id . "----";
         $namefull = $_POST["namefull"];
         $username2 = $_POST["username"];
         $email  = $_POST["email"];
@@ -57,31 +46,28 @@
         $password = $users["password"]; 
 
         $hashpasswordbd= $password;
-        echo "---clave de la bd hashpasswordbd: " . $hashpasswordbd;
+        //echo "---clave de la bd hashpasswordbd: " . $hashpasswordbd;
 
         //la password que rescata de la caja de texto podria ser modificada
         //si esta modificada no es hash
         $newpassword = $_POST["password"];
-        echo "---Clave ingresada por usuario newpassword: " . $newpassword;
+        //echo "---Clave ingresada por usuario newpassword: " . $newpassword;
 
         //if (password_verify('rasmuslerdorf', $hash)) {
         if ($hashpasswordbd == $newpassword){  
-            echo "****Las password son iguales****";
+            //echo "****Las password son iguales****";
             $password= $hashpasswordbd ; 
             }   else {
                         if (password_verify($newpassword, $hashpasswordbd)) {
                             $password= $hashpasswordbd ; 
-                            echo "----- Password iguales, revisa con verify la nuevapassword vs la bd"; 
+                            //echo "----- Password iguales, revisa con verify la nuevapassword vs la bd"; 
                         }
                         else{
                             $password= password_hash($_POST["password"], PASSWORD_DEFAULT);
-                            echo "----- Password diferentes, encripta clave";
+                            //echo "----- Password diferentes, encripta clave";
                         }
         }           
              
-        echo  "ACTUALIZAR: Name Full: " . $namefull . " ---username: ". $username2 . " ----Email: " . $email  ." ---Id: " . $id . " ----Clave:" . $password;
-        
-
         $db=connectDB();
         $sql ="UPDATE users 
                 SET full_name=:namefull, 
@@ -97,8 +83,11 @@
         $stmt->bindParam(":id",$id);
         $stmt->execute();
         
-        //echo "Datos Actualizados: " . $namefull . " Id: " . $id;
-     
+        //Implementa mensajes con variable de session
+        session_start();
+        $_SESSION["msg-delete"] = "Registro actualizado correctamente";
+        header("location: index.php");
+       
     }
 ?>
 
@@ -107,7 +96,7 @@
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--meta http-equiv="X-UA-Compatible" content="IE=edge"-->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
@@ -116,10 +105,22 @@
     <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
 
     <title>List of User</title>
-   
-  </head>
-  <body class="d-flex flex-column h-100">
     
+    <style>
+		.msg-form{
+			margin:1em;
+			color: red
+		}
+    </style>
+  </head>
+  
+  <body class="d-flex flex-column h-100">
+     <!-- Implementa mensaje para actualizacióm-->
+     <?php if (isset($msg)): ?>
+        <p class="msg-form"><?= $msg ?></p>
+     <?php endif; ?>
+     <!-------------->
+
     <div class="container pt-4 pb-4">
         <nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
             <a class="navbar-brand" href="#">HTML-PHP CRUD Template</a>
@@ -157,18 +158,18 @@
                 <div class="form-group">
                     <label for="name">Nombre Completo</label>
                     <!--Asigna valores, agrega name------------->
-                    <input type="hidden" class="form-control" id="id" name="id" value=<?= trim($id) ?? "Sin Id"?> >
+                    <input type="hidden" class="form-control" id="id" name="id" value="<?= trim($id) ?? "Sin Id"?>" >
                     <small class="form-text text-muted"></small>
-                    <input type="text" class="form-control" id="namefull" name="namefull" value=<?= trim($namefull) ?? "Sin Nombre Completo"?> >
+                    <input type="text" class="form-control" id="namefull" name="namefull" value="<?= trim($namefull) ?? "Sin Nombre Completo"?>">
                     <small class="form-text text-muted"></small>
                     <label for="name">Nombre Usuario</label>
-                    <input type="text" class="form-control" id="username" name="username" value=<?= $username2 ?? "Sin_Nombre_de_Usuario"?> >
+                    <input type="text" class="form-control" id="username" name="username" value="<?= $username2 ?? "Sin_Nombre_de_Usuario"?>">
                     <small class="form-text text-muted"></small>
                     <label for="name">Email</label>
-                    <input type="text" class="form-control" id="email" name="email" value=<?= trim($email) ?? "Sin Correo"?> >
+                    <input type="text" class="form-control" id="email" name="email" value="<?= trim($email) ?? "Sin Correo"?>" >
                     <small class="form-text text-muted"></small>
                     <label for="name">Clave</label>
-                    <input type="password" class="form-control" id="password" name="password" value=<?= $password ?? "Sin Clave"?> >
+                    <input type="password" class="form-control" id="password" name="password" value="<?= $password ?? "Sin Clave"?>" >
                     <small class="form-text text-muted"></small>
                    
                 </div>

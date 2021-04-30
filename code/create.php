@@ -1,12 +1,14 @@
 <?php
 
+require "util/db.php";
+
+
 //controla botón crear
 if (isset($_POST["crear"])) {
 
     echo 'Crear ...';
     echo $_POST['password'];
-    require "util/db.php";
-    
+
     $pass= password_hash($_POST['password'], PASSWORD_DEFAULT);
     $db = connectDB();
     $sql = "INSERT INTO users 
@@ -20,6 +22,9 @@ if (isset($_POST["crear"])) {
     $stmt->bindParam(":password",$pass); /*rescata valor de caja de texto*/
     $stmt->execute();
 
+    //Implementa mensajes con variable de session
+    session_start();
+    $_SESSION["msg-create"] = "Registro creado correctamente";
     header("location: index.php");
 }    
 ?>
@@ -37,10 +42,19 @@ if (isset($_POST["crear"])) {
     <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
 
     <title>List of User</title>
-   
+    <style>
+		.msg-form{
+			margin:1em;
+			color: red
+		}
+    </style>
   </head>
   <body class="d-flex flex-column h-100">
-    
+    <!-- Implementa mensaje para Creación-->
+    <?php if (isset($msg)): ?>
+        <p class="msg-form"><?= $msg ?></p>
+     <?php endif; ?>
+     <!-------------->
     <div class="container pt-4 pb-4">
         <nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
             <a class="navbar-brand" href="#">HTML-PHP CRUD Template</a>

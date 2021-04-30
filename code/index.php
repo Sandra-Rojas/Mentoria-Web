@@ -17,13 +17,12 @@
         // también limpia variable de sesion
         //$_SESSION["msg-delete"]="";
     }
-    session_start();
+    
     If(isset($_SESSION["msg-create"])){
         $msg = $_SESSION["msg-create"];
         unset($_SESSION["msg-create"]);
     }
-
-    session_start();
+    
     If(isset($_SESSION["msg-update"])){
         $msg = $_SESSION["msg-update"];
         unset($_SESSION["msg-update"]);

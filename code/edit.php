@@ -67,7 +67,7 @@
                             //echo "----- Password diferentes, encripta clave";
                         }
         }           
-             
+         
         $db=connectDB();
         $sql ="UPDATE users 
                 SET full_name=:namefull, 

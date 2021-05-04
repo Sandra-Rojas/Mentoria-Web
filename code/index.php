@@ -94,6 +94,7 @@
     <main role="main" class="flex-shrink-0">
         <div class="container">
             <h1>Lista de Usuario</h1>
+            <a href="excel.php"><button class="btn btn-primary btn-sm">Excel</button></a><br><br>
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>

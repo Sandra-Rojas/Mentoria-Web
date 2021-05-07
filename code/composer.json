@@ -1,5 +1,17 @@
 {
-    "require": {
-        "phpoffice/phpspreadsheet": "^1.17"
-    }
+    "name": "sandrarojas/phpmvc-framework",
+    "description": "Framework de prueba",
+    "autoload": {
+        "psr-4": {
+            "app\\": "./"
+        }
+    },
+    "authors": [
+        {
+            "name": "sandra.rojas",
+            "email": "sandra.rojas@segic.usach.cl"
+        }
+    ],
+    "require": {}
+   
 }

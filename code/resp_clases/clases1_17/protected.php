@@ -8,3 +8,4 @@ if (!isset($_SESSION['valido']))
   
 }
 echo "Info super secreta";
+

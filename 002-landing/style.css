@@ -1,0 +1,142 @@
+* {
+margin: 0px;
+padding: 0px;
+box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+header {
+    display: flex;
+    width: 90%;
+    /*height:10em; se basa en la fuente definida, si la fuente del doc es 12puntos, 1em es = 12 pt*/
+    height: 10vh;/*medida relativa de acuerdo al viewport, corresponde a un 10% de altura del viewport*/
+    margin:auto;
+    align-items: center;
+  /* border: 1px solid black; un borde (una caja) sobre los elementos imagen,  specs, products, contact, cart*/
+}
+
+.logo-container, .nav-links, .cart {
+    display: flex;
+}
+
+.logo{
+font-weight: 400;
+margin: 5px;
+font-size: 30px;
+}
+
+.logo-container {
+    flex:1;
+}
+
+nav {
+    flex: 2; /*2:asigna el doble de espacio, caja tiene el doble de tamaño*/ 
+}
+
+.cart {
+    flex: 1; /* 1:todos las cajas tienen el mismo tamaño, se divide el espacio en partes iguales */
+    justify-content: flex-end;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #5f5f79;
+  font-size: 20px;
+}
+
+.nav-links {
+list-style: none;
+justify-content: space-evenly;
+
+}
+
+.presentation {
+    display: flex;
+    width: 90%;
+    margin: auto;
+    min-height: 80vh;
+    align-items: center;
+} 
+
+.introduction {
+    flex: 1;
+}
+
+.intro-text h1 {
+    font-size: 44px;
+    font-weight: 500;
+    background: linear-gradient(to right, #494964, #6f6f89);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.cta{
+    padding 50px 0px 0px 0px;
+}
+
+.cta-select{
+    border: 2px solid #c36cbb;
+    width:150px;
+    height:50px;
+    background: transparent;
+    color: #c36cbb;
+    font-size: 16px;
+}
+
+.cta-add{
+    width: 150px;
+    height:50px;
+    font-size: 16px;
+    background: #c36cbb;
+    border:none;
+    color: white;
+    margin 30px 0px 0px 3px
+}
+.intro-text p {
+    margin-top: 5px;
+    font-size:22px;
+    color: #585772;
+}
+
+.cover {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    height: 60vh;
+}
+
+.cover img{
+    height: 100%;
+    filter:drop-shadow(0px 5px 3px black);
+    animation: drop 1.5s ease;
+}
+
+.big-circle{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    height: 80%;
+    z-index: -1;
+    opacity: 0.5;
+}
+
+.medium-circle{
+    position: absolute;
+    top: 30%;
+    right: 30%;
+    height: 60%;
+    z-index: -1;
+    opacity: 0.4;
+}
+
+.small-circle{
+    position: absolute;
+    bottom: 0%;
+    left: 20%;
+    height: 40%;
+    z-index: -1; 
+    
+}

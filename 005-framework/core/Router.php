@@ -20,7 +20,7 @@ class Router
 
     public function resolve()
     {
-        //evita dar formato a lo que sigue
+        //da formato a lo que sigue
         echo "<pre>";
         var_dump($_SERVER);
         echo "chao";

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+           /* h1{
+                color:blue;
+                text-decoration: underline;
+            } */
+            .destacado{
+                text-decoration: underline;
+            }
+            #primero,
+            #datoMuyImportante{
+                color: red;
+            }
+            #segundo{
+                color: blue;
+            }
+            table
+            th,
+            td{
+                border:1.5px solid black;
+
+            }
+            th,
+            td{
+                background-color: cyan;
+                padding:10px;
+            }
+            div h2{
+                color:blueviolet;
+            }
+
+            #segundoDiv{
+                border:5px solid yellow;
+                /* padding:10px; */
+                padding-top: 40px;
+                padding-left: 70px;
+                margin: 100px;
+            } 
+            /* con punto entra a la clase*/
+            .cuadrado{
+                width: 100px;
+                height: 100px;
+            }
+            /*con # entra al id identificador*/
+            #uno{
+                background-color: darkblue;
+                flex:1;
+            }
+            #dos{
+                background-color:red;
+                flex:1;
+            }
+            #tres{
+                background-color: darkcyan;
+                flex:1;
+            }
+
+    </style>
+</head>
+
+<body>
+    algo de texto
+    y mas texto
+    <div id="container-test">
+        <div id="uno"class="cuadrado"></div>
+        <div id="dos"class="cuadrado"></div>
+        <div id="tres"class="cuadrado"></div>
+    </div>
+
+    <h1><class="destacado" id = "primero">Titulo 1</h1>
+    <IMG src="https://www.google.cl/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" alt="google">
+    
+    <h1><class="destacado" id = "segundo">Titulo 2</h1> 
+    
+    <p class="destacado"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea sit adipisci nam doloremque! Libero quis eligendi autem, excepturi ab dolorem molestiae, quaerat illo ut nisi aliquid explicabo maiores recusandae distinctio. </p>
+
+    <table>
+        <caption>Listado Alumnos 1</caption>
+        <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Age</th>
+            <th>Compromisos</th>
+        </tr>
+        <tr>
+            <td>Jill</td>
+            <td>Smith</td>
+            <td>50</td>
+            <td>1.000.000</td>
+        </tr>
+        <tr>
+            <td>Eve</td>
+            <td>Jackson</td>
+            <td>94</td>
+            <td>1.000.000</td>
+        </tr>
+        <tr>
+            <td>Juan</td>
+            <td>Perez</td>
+            <td style="color:tomato">94</td>
+            <td id="datoMuyImportante">1.000.000</td>
+        </tr>
+    </table>
+
+    <table id="segundaTabla">
+        <caption>Listado Alumnos 2</caption>
+        <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Age</th>
+            <th>Compromisos</th>
+        </tr>
+        <tr>
+            <td>Jill</td>
+            <td>Smith</td>
+            <td>50</td>
+            <td>1.000.000</td>
+        </tr>
+        <tr>
+            <td>Eve</td>
+            <td>Jackson</td>
+            <td>94</td>
+            <td>1.000.000</td>
+        </tr>
+        <tr>
+            <td>Juan</td>
+            <td>Perez</td>
+            <td>94</td>
+            <td>1.000.000</td>
+        </tr>
+    </table>
+
+    <div>
+        <h2>Titulo más pequeño</h2>
+    </div>
+    
+    <div id="segundoDiv">
+        <h2>Segundo div</h2>
+    </div>
+
+</body>
+</html>

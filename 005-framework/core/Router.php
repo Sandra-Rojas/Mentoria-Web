@@ -3,6 +3,7 @@ namespace app\core;
 
 class Router
 {
+    public Request $request;
     protected array $routes =[];
     /**
      * [
@@ -11,6 +12,11 @@ class Router
      *  * ]
      *  
      */
+    public function __construct(\app\core\Request $request)
+    {
+        $this->request = $request;
+
+    }
 
     public function get($path, $callback)
     {
@@ -21,12 +27,29 @@ class Router
     public function resolve()
     {
         //da formato a lo que sigue
-        echo "<pre>";
+        /*echo "<pre>";
         var_dump($_SERVER);
         echo "chao";
         echo "</pre>";
-        exit;
+        exit;*/
+        $path = $this->request->getPath();
+        $method = $this->request->getMethod();
 
+        //$closure
+        $callback = $this->routes[$method][$path] ?? false;
+        If ($callback == false)
+        {
+            echo "Not Found";
+            exit;
+        }
+
+        //print_r($this->routes);    
+        /*var_dump($path);
+        var_dump($method);*/
+
+        echo call_user_func($callback);
     }
+
+    
 
 }

@@ -19,11 +19,13 @@ $app = new Application();
 // por lo que cambia a $app->router->get
 //y ya no se necesita la definicion de crear ruta 
 //router->get('/', function(){
+//$app->router->get('/005-framework/', function(){
 $app->router->get('/005-framework/', function(){
     return "Hola Mundo";
-});
+}); 
 
 $app->router->get('/005-framework/contact', function(){
+//$app->router->get('/contact', function(){
     return "Contact";
 });
 

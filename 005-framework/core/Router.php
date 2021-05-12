@@ -15,7 +15,7 @@ class Router
     public function __construct(\app\core\Request $request)
     {
         $this->request = $request;
-
+       
     }
 
     public function get($path, $callback)
@@ -37,16 +37,27 @@ class Router
 
         //$closure
         $callback = $this->routes[$method][$path] ?? false;
-        If ($callback == false)
+        echo "<pre>";
+        echo 'De Router.php';
+        echo "</pre>";
+        echo "<pre>";
+        echo '$path:';
+        var_dump($path);
+        echo '$method:';
+        var_dump($method);
+        //echo '$callback:'; . $callback ;
+        echo "</pre>";
+
+        If ($callback === false)
         {
-            echo "Not Found";
+            echo "Not Found!";
             exit;
         }
 
-        //print_r($this->routes);    
-        /*var_dump($path);
-        var_dump($method);*/
-
+        /*print_r($this->routes);    
+        var_dump($path);
+        var_dump($method);
+*/
         echo call_user_func($callback);
     }
 

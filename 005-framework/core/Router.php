@@ -54,12 +54,25 @@ class Router
             //exit;
             return "Not Found";
         }
+//principio SOLID  revisar
 
+        if (is_string($callback)){
+            return $this->renderView($callback);
+
+        }
+
+        public function renderView($view)
+        {
+            //interpolacion de variables
+            include_once __DIR__ . "../views/$view.php";
+
+
+        }
         /*print_r($this->routes);    
         var_dump($path);
         var_dump($method);
 */
-        echo call_user_func($callback);
+        //echo call_user_func($callback);
     }
 
     

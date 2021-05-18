@@ -1,7 +1,7 @@
 <?php
 
 //envez de incluir el archivo con require 
-require_once __DIR__ .'/vendor/autoload.php';
+require_once __DIR__ .'/../vendor/autoload.php';
 
 //usando application.php
 use app\core\Application;

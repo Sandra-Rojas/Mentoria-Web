@@ -54,9 +54,9 @@ class Router
             //exit;
             return "Not Found";
         }
-    //principio SOLID  revisar
+        //principio SOLID  revisar
 
-        if (is_string($callback)){
+        if(is_string($callback)){
             return $this->renderView($callback);
 
         }

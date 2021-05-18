@@ -23,8 +23,8 @@ $app = new Application();
 //$app->router->get('/005-framework/', function(){
 //    return "Hola Mundo";
 //}); 
-$app->router->get('/005-framework/', 'home');
-
+$app->router->get('/005-framework/public/','home');
+//$app->router->get('/','home');    
 //$app->router->get('/005-framework/contact', function(){
     $app->router->get('/005-framework/contact','contact');
 

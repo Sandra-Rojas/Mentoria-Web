@@ -18,7 +18,8 @@ class Application
     //run resuelve la ruta a ejecutar
     public function run()
     {
-        $this->router->resolve();
+        //$this->router->resolve();
+        echo $this->router->resolve();
 
     }
 }

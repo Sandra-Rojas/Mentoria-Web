@@ -50,8 +50,9 @@ class Router
 
         If ($callback === false)
         {
-            echo "Not Found!";
-            exit;
+            //echo "Not Found!";
+            //exit;
+            return "Not Found";
         }
 
         /*print_r($this->routes);    

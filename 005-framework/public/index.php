@@ -24,10 +24,8 @@ $app->router->get('/005-framework/', function(){
     return "Hola Mundo";
 }); 
 
-$app->router->get('/005-framework/contact', function(){
-//$app->router->get('/contact', function(){
-    return "Contact";
-});
+//$app->router->get('/005-framework/contact', function(){
+    $app->router->get('/005-framework/contact','contact');
 
 /*$app->$router->post('/contact', function(){
     return "Contact";

@@ -64,7 +64,7 @@ class Router
         public function renderView($view)
         {
             //interpolacion de variables
-            include_once __DIR__ . "../views/$view.php";
+            include_once __DIR__ . "/../views/$view.php";
 
 
         }

@@ -69,17 +69,30 @@ class Router
     {
 
         $layoutContent = $this->layoutContent();
-
+        $viewContent = $this->renderOnlyView($view);    
         //interpolacion de variables
-        include_once Application::$ROOT_DIR . "/views/$view.php";
+        //include_once Application::$ROOT_DIR . "/views/$view.php";
 
+        return str_replace('{{content}}', $viewContent, $layoutContent);
 
     }
 
     public function layoutContent()
     {
-
+        //envia a memoria
+        ob_start();
         include_once Application::$ROOT_DIR . "/views/layouts/main.php";
+        //devuelve contenido que tiene en memoria
+        return ob_get_clean();
+    }
+
+    public function renderOnlyView($view)
+    {
+        //envia a memoria
+        ob_start();
+        include_once Application::$ROOT_DIR . "/views/$view.php";
+        //devuelve contenido que tiene en memoria
+        return ob_get_clean();
     }
     /*print_r($this->routes);    
     var_dump($path);

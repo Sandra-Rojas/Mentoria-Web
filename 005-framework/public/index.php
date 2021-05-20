@@ -9,11 +9,12 @@ use app\core\Application;
 //echo "Hello Framework";
 //Application :inicializacion de componente bases de framework
 //$app = new app\core\Application();
-$app = new Application();
+$app = new Application(dirname(__DIR__));
 
-echo __DIR__;
-echo "<br>";
-echo dirname(__DIR__);
+//echo __DIR__;
+//echo "<br>";
+//esta es la ruta padre en mi caso hasta 005-framework
+//echo dirname(__DIR__);
 
 //definiciones , crear rutas
 //$router= new Router();

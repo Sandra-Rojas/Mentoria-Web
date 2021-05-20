@@ -76,7 +76,7 @@ class Router
 
     }
 
-    public function ayoutContent()
+    public function layoutContent()
     {
 
         include_once Application::$ROOT_DIR . "/views/layouts/main.php";

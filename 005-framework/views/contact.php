@@ -12,7 +12,7 @@
             <a class="nav-link active" aria-current="page" href="/005-framework/public/">Home</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="/contact">Contact</a>
+            <a class="nav-link" href="/005-framework/contact">Contact</a>
             </li>
         </ul>
         </div>

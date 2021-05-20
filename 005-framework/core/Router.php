@@ -67,10 +67,19 @@ class Router
      
     public function renderView($view)
     {
+
+        $layoutContent = $this->layoutContent();
+
         //interpolacion de variables
         include_once Application::$ROOT_DIR . "/views/$view.php";
 
 
+    }
+
+    public function ayoutContent()
+    {
+
+        include_once Application::$ROOT_DIR . "/views/layouts/main.php";
     }
     /*print_r($this->routes);    
     var_dump($path);

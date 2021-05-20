@@ -11,6 +11,10 @@ use app\core\Application;
 //$app = new app\core\Application();
 $app = new Application();
 
+echo __DIR__;
+echo "<br>";
+echo dirname(__DIR__);
+
 //definiciones , crear rutas
 //$router= new Router();
 
@@ -19,7 +23,6 @@ $app = new Application();
 // por lo que cambia a $app->router->get
 //y ya no se necesita la definicion de crear ruta 
 //router->get('/', function(){
-//$app->router->get('/005-framework/', function(){
 //$app->router->get('/005-framework/', function(){
 //    return "Hola Mundo";
 //}); 

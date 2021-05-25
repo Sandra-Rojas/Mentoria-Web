@@ -32,7 +32,11 @@
     </div>
     </nav>
 
-   {{content}}
+    <div class="container">
+      {{content}}
+    </div>
+
+   
 
     <!-- Optional JavaScript; choose one of the two! -->
 

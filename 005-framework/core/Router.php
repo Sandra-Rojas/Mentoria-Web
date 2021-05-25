@@ -4,6 +4,8 @@ namespace app\core;
 class Router
 {
     public Request $request;
+    public Response $response;
+
     protected array $routes =[];
     /**
      * [
@@ -12,9 +14,10 @@ class Router
      *  * ]
      *  
      */
-    public function __construct(\app\core\Request $request)
+    public function __construct(Request $request, Response $response)
     {
         $this->request = $request;
+        $this->response = $response;
        
     }
 
@@ -54,8 +57,11 @@ class Router
         {
             //echo "Not Found!";
             //exit;
-            Application::$app->response->setStatusCode(404);
-            return "Not Found";
+            //Application::$app->response->setStatusCode(404);
+            $this->response->setStatusCode(404);
+            //return $this->renderContent("Not Found");
+            return $this->renderView("_404");
+            //return "Not Found";
         }
         //principio SOLID  revisar
 
@@ -67,7 +73,14 @@ class Router
         //echo call_user_func($callback);
         return call_user_func($callback);
     }    
-     
+
+    public function renderContent($viewContent)
+    {
+
+        $layoutContent = $this->layoutContent();
+        return str_replace('{{content}}', $viewContent, $layoutContent);
+
+    }   
     public function renderView($view)
     {
 

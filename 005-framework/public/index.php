@@ -30,7 +30,11 @@ $app = new Application(dirname(__DIR__));
 $app->router->get('/005-framework/public/','home');
 //$app->router->get('/','home');    
 //$app->router->get('/005-framework/contact', function(){
-    $app->router->get('/005-framework/contact','contact');
+$app->router->get('/005-framework/contact','contact');
+$app->router->post('/005-framework/contact',function(){
+return "Procesando información";
+
+});
 
 /*$app->$router->post('/contact', function(){
     return "Contact";

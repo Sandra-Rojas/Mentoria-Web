@@ -19,7 +19,7 @@ class Application
         self::$app = $this;
         $this->request = new Request();
         $this->response = new Response();
-        $this->router = new Router($this->request);
+        $this->router = new Router($this->request, $this->response);
     }
 
     //run resuelve la ruta a ejecutar

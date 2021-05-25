@@ -48,10 +48,13 @@ class Router
         //echo '$callback:'; . $callback ;
         echo "</pre>";
 
+        //
+
         If ($callback === false)
         {
             //echo "Not Found!";
             //exit;
+            Application::$app->response->setStatusCode(404);
             return "Not Found";
         }
         //principio SOLID  revisar

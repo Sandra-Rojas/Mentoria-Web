@@ -11,9 +11,9 @@
 </div>
 <div class="mb-3">
     <label class="form-label">Body</label>
-    <textarea name="body" id="form-control" cols="30" rows="10"></textarea>
+    <textarea name="body" class="form-control" id="" cols="30" rows="10"></textarea>
 </div>
-
+<div class="segic"></div>
 <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 

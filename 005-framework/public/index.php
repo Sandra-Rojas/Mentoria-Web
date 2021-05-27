@@ -27,18 +27,16 @@ $app = new Application(dirname(__DIR__));
 //$app->router->get('/005-framework/', function(){
 //    return "Hola Mundo";
 //}); 
-$app->router->get('/005-framework/public/','home');
-//$app->router->get('/','home');    
-//$app->router->get('/005-framework/contact', function(){
+
+/*$app->router->get('/005-framework/public/','home');
 $app->router->get('/005-framework/contact','contact');
 $app->router->post('/005-framework/contact',function(){
 return "Procesando información";
-
-});
-
-/*$app->$router->post('/contact', function(){
-    return "Contact";
 });*/
+
+$app->router->get('/005-framework/public/',[\app\controllers\SiteController::class, 'home']);
+$app->router->get('/005-framework/contact',[\app\controllers\SiteController::class, 'home']);
+$app->router->get('/005-framework/contact',[\app\controllers\SiteController::class, 'home']);
 
 //ejecuta todo lo que tienen framework
 $app->run();

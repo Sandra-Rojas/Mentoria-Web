@@ -73,7 +73,11 @@ class Router
 
         if(is_string($callback)){
             return $this->renderView($callback);
+        }
 
+        if(is_array($callback)){
+            var_dump($callback);
+            exit;
         }
 
         //echo call_user_func($callback);

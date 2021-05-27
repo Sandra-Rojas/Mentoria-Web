@@ -35,8 +35,8 @@ return "Procesando información";
 });*/
 
 $app->router->get('/005-framework/public/',[\app\controllers\SiteController::class, 'home']);
-$app->router->get('/005-framework/contact',[\app\controllers\SiteController::class, 'home']);
-$app->router->get('/005-framework/contact',[\app\controllers\SiteController::class, 'home']);
+$app->router->get('/005-framework/contact',[\app\controllers\SiteController::class, 'contact']);
+$app->router->get('/005-framework/contact',[\app\controllers\SiteController::class, 'handle/contact']);
 
 //ejecuta todo lo que tienen framework
 $app->run();

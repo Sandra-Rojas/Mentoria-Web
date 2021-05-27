@@ -106,7 +106,7 @@ class Router
         $layoutContent = $this->layoutContent();
         $viewContent = $this->renderOnlyView($view);    
         //interpolacion de variables
-        //include_once Application::$ROOT_DIR . "/views/$view.php";
+        include_once Application::$ROOT_DIR . "/views/$view.php";
 
         return str_replace('{{content}}', $viewContent, $layoutContent);
 

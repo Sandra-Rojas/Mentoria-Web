@@ -75,9 +75,18 @@ class Router
             return $this->renderView($callback);
         }
 
+        //array(2) { 
+        //        [0]=> string(30) "app\controllers\SiteController" 
+        //        [1]=> string(4) "home" }
+
         if(is_array($callback)){
+            
+            //$bla = new app\controllers\SiteController();
+            //$bla = $callback[0]();
+            $callback[0] = new $callback[0]();
             var_dump($callback);
             exit;
+            
         }
 
         //echo call_user_func($callback);

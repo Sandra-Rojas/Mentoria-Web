@@ -84,8 +84,8 @@ class Router
             //$bla = new app\controllers\SiteController();
             //$bla = $callback[0]();
             $callback[0] = new $callback[0]();
-            var_dump($callback);
-            exit;
+            //var_dump($callback);
+            //exit;
             
         }
 

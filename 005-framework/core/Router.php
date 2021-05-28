@@ -127,14 +127,14 @@ class Router
         //exit;
         
         foreach ($params as $key => $value){
-            echo "$key => $value";
+            //echo "$key => $value";
             
-            $algo = 1;
+            //$algo = 1;
             // $ +cadena => variable
             $$key = $value;
             //$name = $value;
         }
-        exit;
+        //exit;
 
         //envia a memoria
         ob_start();

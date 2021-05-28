@@ -106,7 +106,7 @@ class Router
         $layoutContent = $this->layoutContent();
         $viewContent = $this->renderOnlyView($view, $params);    
         //interpolacion de variables
-        include_once Application::$ROOT_DIR . "/views/$view.php";
+        //include_once Application::$ROOT_DIR . "/views/$view.php";
 
         return str_replace('{{content}}', $viewContent, $layoutContent);
 
@@ -123,8 +123,19 @@ class Router
 
     public function renderOnlyView($view, $params)
     {
-        var_dump($params);
+        //var_dump($params);
+        //exit;
+        
+        foreach ($params as $key => $value){
+            echo "$key => $value";
+            
+            $algo = 1;
+            // $ +cadena => variable
+            $$key = $value;
+            //$name = $value;
+        }
         exit;
+
         //envia a memoria
         ob_start();
         include_once Application::$ROOT_DIR . "/views/$view.php";

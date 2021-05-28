@@ -1,8 +1,10 @@
 <?php
 
 namespace app\controllers;
+
 //use app\core\Application;
 use app\core\Controller;
+use app\core\Request;
 
 class SiteController extends Controller
 {
@@ -24,10 +26,25 @@ class SiteController extends Controller
     }
 
     //se ejecuta con POST
-    public function handleContact()
+    public function handleContact(Request $request)
     {
-        return "Procesando información";
-    }
+        //var_dump($_POST);
+        //exit;
+     
+        /*$body = Application::$app->request->getBody();
+        var_dump($body);*/
+        //exit;
+        $body = $request->getBody();
+        //var_dump($body);
+        //exit;
 
+        //Validar datos
+        //Crear modelo
+
+        return "Procesando información";
+
+    }
+        
+    
     //se podria crear aca render pero no es optimo, se debe generar como clase padre
 }

@@ -38,6 +38,13 @@ $app->router->get('/005-framework/public/',[\app\controllers\SiteController::cla
 $app->router->get('/005-framework/contact',[\app\controllers\SiteController::class, 'contact']);
 $app->router->post('/005-framework/contact',[\app\controllers\SiteController::class, 'handleContact']);
 
+$app->router->get('/005-framework/register',[\app\controllers\AuthController::class, 'register']);
+$app->router->post('/005-framework/register',[\app\controllers\AuthController::class, 'register']);
+
+$app->router->get('/005-framework/login',[\app\controllers\AuthController::class, 'login']);
+$app->router->post('/005-framework/login',[\app\controllers\AuthController::class, 'login']);
+
+
 //ejecuta todo lo que tienen framework
 $app->run();
 

@@ -83,7 +83,9 @@ class Router
             
             //$bla = new app\controllers\SiteController();
             //$bla = $callback[0]();
-            $callback[0] = new $callback[0]();
+            Application::$app->controller = new $callback[0]();
+            //$callback[0] = new $callback[0]();
+            $callback[0] = Application::$app->controller;
             //var_dump($callback);
             //exit;
             
@@ -114,9 +116,11 @@ class Router
 
     public function layoutContent()
     {
+        $layout = Application::$app->controller->layout;
         //envia a memoria
         ob_start();
-        include_once Application::$ROOT_DIR . "/views/layouts/main.php";
+        //include_once Application::$ROOT_DIR . "/views/layouts/main.php";
+        include_once Application::$ROOT_DIR . "/views/layouts/$layout.php";
         //devuelve contenido que tiene en memoria
         return ob_get_clean();
     }

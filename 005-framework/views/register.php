@@ -15,11 +15,11 @@
   </div>
   <div class="mb-3">
     <label class="form-label">Password</label>
-    <textarea name="body" class="password" id="" cols="30" rows="10"></textarea>
+    <textarea type="text" class="password" class="form-control"></textarea>
   </div>
   <div class="mb-3">
     <label class="form-label">Confirm Password</label>
-    <textarea name="body" class="confirmPassword" id="" cols="30" rows="10"></textarea>
+    <textarea type="text" class="confirmPassword" class="form-control"></textarea>
   </div>
   
 

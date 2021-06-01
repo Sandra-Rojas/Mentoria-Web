@@ -10,6 +10,7 @@ class Application
     public Router $router;
     public Request $request;
     public Response $response;
+    public Controller $controller;
 
     public static Application $app;
 

@@ -29,7 +29,7 @@ abstract class Model
 
     public function validate()
     {
-        foreach($this->rules() as $attribute => $rules)
+        foreach($this->rules() as $attribute => $rules){
             $value = $this->$attribute; // $this->firstaname
             foreach($rules as $rule){
                 $rulename = $rule;
@@ -43,7 +43,8 @@ abstract class Model
                     $this->addError($attribute, self::RULE_REQUIRED);
                 }
             }
-            return empty($this->errors);
+        }
+        return empty($this->errors);
     }
 
     public function addError ($attribute, $rule)
@@ -63,4 +64,5 @@ abstract class Model
         self::RULE_MATCH => 'This fiels must be the same as {attribute}',
         ];
     }
-}
+
+}    

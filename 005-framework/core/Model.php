@@ -40,26 +40,31 @@ abstract class Model
 
                 if($rulename === self:: RULE_REQUIRED && !$value){
                     //agregar error
+                    // echo "\nRULE_REQUIRED ".$rule. "\n";
                     $this->addError($attribute, self::RULE_REQUIRED, $rule);
                 }
 
                 if($rulename === self:: RULE_EMAIL && !filter_var($value, FILTER_VALIDATE_EMAIL)){
                     //agregar error
+                    // echo "\nRULE_EMAIL ". $rule. "\n";
                     $this->addError($attribute, self::RULE_EMAIL, $rule);
                 }
 
                 if($rulename === self:: RULE_MIN && strlen($value) < $rule['min']){
                     //agregar error
+                    // echo "\nRULE_MIN ". $rule. "\n";
                     $this->addError($attribute, self::RULE_MIN, $rule);
                 }
 
                 if($rulename === self:: RULE_MAX && strlen($value) > $rule['max']){
                     //agregar error
+                    // echo "\nRULE_MAX ". $rule. "\n";
                     $this->addError($attribute, self::RULE_MAX, $rule);
                 }
 
                 if($rulename === self:: RULE_MATCH && $value != $this->{$rule['match']}){
                     //agregar error
+                    // echo "\nRULE_MATCH ". $rule. "\n";
                     $this->addError($attribute, self::RULE_MATCH, $rule);
                 }
 
@@ -71,9 +76,21 @@ abstract class Model
     public function addError ($attribute, $rule, $params = [])
     {
         $message = $this->errorMessages()[$rule] ?? '';
-        
-        foreach($params as $key => $param){
-            $message = str_replace("{{$key}}", $param, $message);
+        //echo "\n message tiene error:". $message. "****************\n";
+        if (is_array($params) || is_object($params)){
+            foreach($params as $key => $param){
+                // echo "<pre>";
+                // echo "----------\n";
+                // echo "params: " ;
+                // print_r($params);
+                // echo "\n param: ". $param;
+                // echo "\n key: ". $key;
+                // echo "\n message: " . $message;
+                
+                $message = str_replace("{{$key}}", $param, $message);
+                // echo "\n Despues de reemplazar message: " . $message;
+                // echo "<pre>";
+            }
         }
         
 

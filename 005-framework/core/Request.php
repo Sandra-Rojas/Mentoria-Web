@@ -9,15 +9,15 @@ class Request
     {
         $path= $_SERVER['REQUEST_URI'] ?? '/';
         $position=strpos($path, '?');
-        echo "<pre>";
-        echo "De Request.php";
-        echo "</pre>";
-        echo "<pre>";
-        echo '$path:' . $path ;
-        echo "</pre>";
-        echo "<pre>";
-        echo '$position(?):' . $position ;
-        echo "</pre>";
+        // echo "<pre>";
+        // echo "De Request.php";
+        // echo "</pre>";
+        // echo "<pre>";
+        // echo '$path:' . $path ;
+        // echo "</pre>";
+        // echo "<pre>";
+        // echo '$position(?):' . $position ;
+        // echo "</pre>";
 
         //para que compare Absolutamente igual, $position podria ser 0 y eso es diferente a false
         //no hace conversion de datos al comparar

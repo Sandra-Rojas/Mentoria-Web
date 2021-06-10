@@ -2,12 +2,17 @@
 
 <form method="POST">
   <div class="mb-3">
-    <label class="form-label">First</label>
-    <input type="text" name = "firstname" value = "<? $model->firstaname?>" class="form-control" >
+    <label class="form-label">Firstname</label>
+    <input type="text" name = "firstname" value="<?= $model->firstname?>" class="form-control" >
+       class="form-control <?= $model->hasError('firstname') ? 'is-invalid' : '' ?>">
+       
+    <div class="invalid-feedback">   
+      <?= $model->getFirstError('firstname')?>
+    </div>
   </div>
   <div class="mb-3">
     <label class="form-label">LastName</label>
-    <input type="text" name = "lastname" value = "<? $model->lastname?>" class="form-control" >
+    <input type="text" name = "lastname" value = "<?= $model->lastname?>" class="form-control" >
   </div>
   <div class="mb-3">
     <label class="form-label">Email</label>

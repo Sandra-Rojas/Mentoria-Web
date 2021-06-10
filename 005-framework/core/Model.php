@@ -58,6 +58,11 @@ abstract class Model
                     $this->addError($attribute, self::RULE_MAX, $rule);
                 }
 
+                if($rulename === self:: RULE_MATCH && $value != $this->{$rule['match']}){
+                    //agregar error
+                    $this->addError($attribute, self::RULE_MATCH, $rule);
+                }
+
             }
         }
         return empty($this->errors);

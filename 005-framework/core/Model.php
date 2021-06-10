@@ -42,6 +42,22 @@ abstract class Model
                     //agregar error
                     $this->addError($attribute, self::RULE_REQUIRED);
                 }
+
+                if($rulename === self:: RULE_EMAIL && filter_var($value, FILTER_VALIDATE_EMAIL)){
+                    //agregar error
+                    $this->addError($attribute, self::RULE_EMAIL);
+                }
+
+                if($rulename === self:: RULE_MIN && strlen($value) < $rule['min']){
+                    //agregar error
+                    $this->addError($attribute, self::RULE_MIN);
+                }
+
+                if($rulename === self:: RULE_MAX && strlen($value) < $rule['max']){
+                    //agregar error
+                    $this->addError($attribute, self::RULE_MAX);
+                }
+
             }
         }
         return empty($this->errors);

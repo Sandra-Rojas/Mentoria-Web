@@ -3,9 +3,9 @@
 <form method="POST">
   <div class="mb-3">
     <label class="form-label">Firstname</label>
-    <input type="text" name = "firstname" value="<?= $model->firstname?>" class="form-control" >
+    <input type="text" name = "firstname" value="<?= $model->firstname?>" 
        class="form-control <?= $model->hasError('firstname') ? 'is-invalid' : '' ?>">
-       
+
     <div class="invalid-feedback">   
       <?= $model->getFirstError('firstname')?>
     </div>

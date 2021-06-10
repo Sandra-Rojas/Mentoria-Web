@@ -3,11 +3,11 @@
 <form method="POST">
   <div class="mb-3">
     <label class="form-label">First</label>
-    <input type="text" name = "firstname" class="form-control" >
+    <input type="text" name = "firstname" value = "<? $model->firstaname?>" class="form-control" >
   </div>
   <div class="mb-3">
     <label class="form-label">LastName</label>
-    <input type="text" name = "lastname" class="form-control" >
+    <input type="text" name = "lastname" value = "<? $model->lastname?>" class="form-control" >
   </div>
   <div class="mb-3">
     <label class="form-label">Email</label>

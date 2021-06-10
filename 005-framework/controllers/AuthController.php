@@ -21,10 +21,9 @@ class AuthController extends Controller
             return "Procesando datos del formulario":
         }*/
         $this->setLayout('auth');
+        $registerModel = new RegisterModel();
 
         if ($request->isPost()){
-            $registerModel = new RegisterModel();
-
             //var_dump($request->getBody());
             
             $registerModel->loadData($request->getBody());
@@ -34,13 +33,15 @@ class AuthController extends Controller
                 return 'succes';
             }
 
-            echo "<pre>";
-            var_dump($registerModel);
-            return "Procesando datos del formulario";
-            echo "</pre>";
+            // echo "<pre>";
+            // var_dump($registerModel);
+            // return "Procesando datos del formulario";
+            // echo "</pre>";
         }    
 
-       return $this->render('register');
+       return $this->render('register', [
+           'model' =>$registerModel
+       ]);
     }
 
     //se podria crear aca public functionsetlayout() pero no es optimo se debe crear en clase padre en el controller.php

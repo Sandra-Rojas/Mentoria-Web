@@ -1,15 +1,17 @@
 <h1>Register</h1>
 
-
-<!-- <?= \app\core\widgets\Form::begin('', 'POST') ?>
-<?= \app\core\widgets\Form::end() ?> -->
-
-<?php $form = \app\core\widgets\Form::begin('', 'POST') ?>
-  <?= $form->field($model, 'firstname') ?>
-  <?= $form->field($model, 'lastname') ?>
-  <?= $form->field($model, 'email') ?>
-  <?= $form->field($model, 'password') ?>
-  <?= $form->field($model, 'confirmPassword') ?>
+<?php $form= \app\core\widgets\Form::begin('', 'POST') ?>
+<div class="row">
+  <div class="col">
+    <?= $form->field($model, 'firstname')->textField() ?>
+  </div>  
+  <div class="col">
+    <?= $form->field($model, 'lastname')->textField() ?>
+  </div>
+</div>
+<?= $form->field($model, 'email')->emailField() ?>
+<?= $form->field($model, 'password')->passwordField() ?>
+<?= $form->field($model, 'confirmPassword')->passwordField() ?>
   
   <button type="submit" class="btn btn-primary">Save</button>
 <?php \app\core\widgets\Form::end() ?> 

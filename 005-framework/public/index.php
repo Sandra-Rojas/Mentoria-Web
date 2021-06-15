@@ -1,15 +1,34 @@
 <?php
 
 //envez de incluir el archivo con require 
-require_once __DIR__ .'/../vendor/autoload.php';
-
+require_once __DIR__ . '/../vendor/autoload.php';
 //usando application.php
 use app\core\Application;
+//use app\vendor\vlucas\phpdotenv\src;
+try {
+    //echo "1 antes de DotEnv\n";
+    $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
+    //echo "2 DotEnv\n";
+    $dotenv->load();
+    //echo "3 cargo DotEnv\n";
+}
+ catch(Error $ex){
+        echo $ex->getMessage();
+}
+
+$config = [
+    'db' => [
+        'dsn'=> $_ENV['DSN'],
+        'username'=> $_ENV['USERNAME'],
+        'password'=> $_ENV['PASSWORD'],
+    ]
+];
+
 
 //echo "Hello Framework";
 //Application :inicializacion de componente bases de framework
 //$app = new app\core\Application();
-$app = new Application(dirname(__DIR__));
+$app = new Application(dirname(__DIR__), $config);
 
 //echo __DIR__;
 //echo "<br>";

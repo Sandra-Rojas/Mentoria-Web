@@ -49,16 +49,16 @@ class Router
 
         //$closure
         $callback = $this->routes[$method][$path] ?? false;
-        echo "<pre>";
-        echo 'De Router.php';
-        echo "</pre>";
-        echo "<pre>";
-        echo '$path:';
-        var_dump($path);
-        echo '$method:';
-        var_dump($method);
-        //echo '$callback:'; . $callback ;
-        echo "</pre>";
+        // echo "<pre>";
+        // echo 'De Router.php';
+        // echo "</pre>";
+        // echo "<pre>";
+        // echo '$path:';
+        // var_dump($path);
+        // echo '$method:';
+        // var_dump($method);
+        // //echo '$callback:'; . $callback ;
+        // echo "</pre>";
 
         //
 

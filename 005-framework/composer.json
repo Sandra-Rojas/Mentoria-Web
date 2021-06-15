@@ -12,6 +12,8 @@
             "email": "sandra.rojas@segic.usach.cl"
         }
     ],
-    "require": {}
+    "require": {
+        "vlucas/phpdotenv": "^5.3"
+    }
    
 }

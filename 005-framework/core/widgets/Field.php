@@ -32,7 +32,7 @@ class Field
             <div class="invalid-feedback">   
                 %s
             </div>
-  </div>
+        </div>
    ',
    $this->attribute,
    $this->type,

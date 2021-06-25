@@ -50,7 +50,8 @@ class RegisterModel extends DbModel
 
             $sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS 
                      WHERE TABLE_SCHEMA= 'registro' 
-                     AND TABLE_NAME= 'users2'";
+                     AND TABLE_NAME= 'users2'
+                     ORDER BY ORDINAL_POSITION";
 
             $statement = $pdo->prepare($sql);
             $statement->execute();

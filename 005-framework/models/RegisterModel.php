@@ -1,6 +1,6 @@
 <?php
-namespace app\models; /***lo agregue por Application */
-namespace app\core;
+namespace app\models;
+//namespace app\core;
 //use app\core\Model;
 use app\core\DbModel;
 
@@ -44,12 +44,15 @@ class RegisterModel extends DbModel
             //         'email',
             //         'password',
             // ];
-            $pdo = Application::$app->db->pdo;
-            $sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS 
-                    WHERE TABLE_SCHEMA= 'registro' 
-                    AND TABLE_NAME= 'users2'";
+            //$pdo = Application::$app->db->pdo;
+ 
+            $pdo = \app\core\Application::$app->db->pdo;
 
-            $statement = $this->pdo->prepare($sql);
+            $sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS 
+                     WHERE TABLE_SCHEMA= 'registro' 
+                     AND TABLE_NAME= 'users2'";
+
+            $statement = $pdo->prepare($sql);
             $statement->execute();
 
             return $statement->fetchAll(\PDO::FETCH_COLUMN);//devuelve array unidimensional

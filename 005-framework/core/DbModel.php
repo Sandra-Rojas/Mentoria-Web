@@ -13,8 +13,8 @@ abstract class DbModel extends Model
         $pdo = Application::$app->db->pdo;
         $tableName = $this->tableName();
         $attributes = $this->attributes();
-        var_dump($attributes);
-         
+        //var_dump($attributes);
+
         //funcion arrow (fn())
         //array_map mapea(formatea) un atributo(valor) de un arreglo y le antepone :
         $params = array_map(fn ($attr) => ":$attr", $attributes);

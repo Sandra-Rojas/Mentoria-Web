@@ -4,7 +4,7 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 //usando application.php
 use app\core\Application;
-//use app\vendor\vlucas\phpdotenv\src;
+
 try {
     //echo "1 antes de DotEnv\n";
     $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__));
@@ -16,10 +16,12 @@ try {
         echo $ex->getMessage();
 }
 
+
+
 $config = [
     'db' => [
         'dsn'=> $_ENV['DSN'],
-        'username'=> $_ENV['USERNAME'],
+        'user'=> $_ENV['USUARIO'],
         'password'=> $_ENV['PASSWORD'],
     ]
 ];

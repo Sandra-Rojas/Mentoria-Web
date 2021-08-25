@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Prueba Javascript</title>
+
+    <style>
+        .square{
+            width: 100px;
+            height: 100px;
+        }
+
+        .red{
+            background-color: red;
+        }
+
+        .blue{
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="parentDiv">
+        <div id ="squareDiv" class="square red"></div> 
+        <!-- <button id="changeColorButton">Change color</button> -->
+        <button id="changeColorButton">Load User</button>
+    </div>
+
+     <img id = "imgLoad" src="" alt="">   
+
+     <table>
+         <thead>
+         <tr>
+             <th>Nombre Completo</th>
+         </tr>
+        </thead>
+        <tbody id= "userTable">
+        </tbody>
+     </table>
+
+    <script>
+        //Ejemplo de uso de Dom, provee api para acceder a los abjetos
+
+        //Consumir API , creda en API/index.php
+        $('#changeColorButton').click(function(event){
+            $.getJSON("http://mentoria.local/API/index.php", function(data) {//endpoint es la URL
+             console.log(data);
+	         
+             // rescatar solamente nombre y apellido
+             //(user) puede ser cualquier nombre sirve apara la funcionalidad de mapear campo
+             let names = data.map((user) => user.firstname + " " + user.lastname);
+             console.log(names);
+             
+             //a.recorre arreglo names que tiene nombre y apellido y lo despliega en una tabla
+             //name nombre de variable
+             //b. eliminar elemento alclickearlo (ocultarlo sin eliminarlo delarrevlo)
+             //c. eliminar el elemento y eliminarlo del arreglo
+             names.forEach(name => {
+                 let trElement = "<tr><td>" + name + "</td></tr>"
+                 $('#userTable').append(trElement);
+                 //b.
+                 $('#userTable > tr').click(function(){
+                    //$(this).fadeOut("slow");
+                    //});
+                    //c. efecto desvanecer y luego remover de la tb
+                    //con la sgte instrucción se pierde el efecto desvanecer y sólo se visualiza que lo remueve 
+                    //no espera a que termine la funcion desvancer y remueve
+                    //$(this).fadeOut("slow").remove();
+
+                    //con la sgte instrucción donde hay una funcion callback dentro del fadeOut 
+                    //el callback remover(remover nodo) se ejecuta, sólo despues que termina la ejecucioń del primer parametro:desvanecer, 
+                    $(this).fadeOut("slow", function(){
+                        $(this).remove();
+                    });
+                 });
+             });
+             
+
+            });
+        });    
+      
+        //Selectores jquery
+        if (document.querySelector)
+            document.write ("API Query Selector soportado");
+        else
+            document.write ("API Query Selector NO soportado");
+
+        var elem = document.querySelector("#parentDiv");
+        //por consola muestra la estructura de parentDiv: estructura squareDiv y changeColorButton
+        console.log("El contenido de parentDiv '" + parentDiv.innerHTML + "'");
+
+
+        // //Ajax eventos en segundo plano, asincronos
+        // // Al presionar boton ejecuta json api publica, imagenes de gatos
+        // $('#changeColorButton').click(function(event){
+        //     $.getJSON( "https://aws.random.cat/meow?ref=public-apis", function(data) {
+        //     console.log(data);
+            
+        //     $('#imgLoad')
+        //         .attr('src',data.file)
+        //         .fadeIn("slow")//aparece la imagen al clickear el botón
+        //         .click(function(){
+        //             $("#imgLoad").fadeOut("slow");//desvance la imagen (no la elimina) al clickear la imagen!
+        //         });
+        //     });        
+        // });
+
+        //Ahora con jscript
+        //botón cambia de color rojo a azul y desaparece    
+        // $('#changeColorButton').click(function(event){
+        //     console.log("El click!!");
+        //     // if ($('#squareDiv').hasClass('red')){
+        //     //     $('#squareDiv')
+        //     //     .removeClass('red')
+        //     //     .addClass('blue');
+        //     // }else {
+        //     //     $('#squareDiv')
+        //     //         .removeClass('blue')
+        //     //         .addClass('red');
+        //     // }
+
+        //     //para desvanecer el boton en vez de que cambie de color
+        //     $("#squareDiv").fadeOut("slow",function(){
+        //         console.log('termino de desaparecer');
+        //     });
+        // });
+
+        // ////Ejemplo de uso de DOM    
+        // ////Event bubbling (burbujeo)    
+        // ////cambia de color botón de rojo a azul
+        // // let button = 
+        // // document
+        // //     .getElementById('changeColorButton')
+        // //     console.log(button);//por consola muestra objeto botton y propiedades
+        
+        // // ya no se necesita let button, porque getElementById devuelve una refrencia y se puede utilizar
+        // //Al hacer click en id=changeColorButton que es el button
+        // //entrega mensaje me hicieron click
+        // document
+        //     .getElementById('changeColorButton')
+        //     .addEventListener('click', function(event){ //event es opcional
+        //         //console.log("Me hicieron click!!!"); 
+        //         event.stopPropagation();//detiene event bubbling,(event bubbling nodo hijo propaga evento a nodo padre)
+        //         //console.log(event); //para visualizar informacion de event
+
+
+        //         //cambiar color de botón
+        //         let divElement = document
+        //             .getElementById('squareDiv');
+        //             //classList la lista de las clases definidas para el id
+        //             //para squareDiv tiene class .red .square
+        //             if (divElement.classList.contains('red')){  
+        //                 //divElement.classList.remove('red')
+        //                 divElement.classList.replace('red', 'blue');
+        //             }else{
+        //                 divElement.classList.replace('blue', 'red');
+        //             }
+
+        //      });
+        
+        //     ////Al presionar button escribe por consola yeah baby
+        //     ////PERO el que posee ese mensaje no es el id de button,
+        //     ////sino el id=parentDiv que es de Div padre
+        //     ////esto se llama event bubling (burbujeo), para detenerlo agregar stopPropagation en el nodo hijo
+        //     document
+        //         .getElementById('parentDiv')
+        //         .addEventListener('click', function(event){
+        //             console.log('yeah baby');
+        //         });
+
+        ///Para la proxima clase/////////////////
+        //DOM prox clase
+        //Document Object Model
+        //biblioteca axios y jquery (Yii)
+        //juego
+        ///Para la proxima clase/////////////////
+
+        /////////////////////////////////////////
+        //Introducción a Java Script
+
+        //alert('hola mundo');
+
+        //Definición de variables con var
+        // var greeting= 'Hola Mundo desde variable';
+        // alert(greeting);
+
+        // var edad = 70;
+        //let nombre= 'Juan Perez';
+
+        // //altert detiene ejecución
+        // if (edad <= 60){
+        //     alert("joven");
+        // } else {
+        //     alert("viejito");
+        // }
+
+        // console.log(nombre);
+        // console.error("oops algo paso");
+
+        // //largodel nombre
+        // console.log(nombre.length);
+        
+        // //Extrae una parte del nombre
+        // console.log(nombre.slice(5,10));//Perez
+        
+        // //Reemplaza un nombre
+        //console.log(nombre.replace('Perez','Martinez'));
+        
+        ////////////////////////////////////////////////
+        var tasks = [
+            {   
+                "name":"Estudiar Javascript",
+                "duration":60
+            },
+            {   
+                "name":"Estudiar vue",
+                "duration":150
+            },
+            {   
+                "name":"Estudiar Laravel",
+                "duration":100
+            }
+           
+        ];
+        //console.log(tasks);
+
+        let taskNames = [];
+        //solucion:1
+        // for (let i=0; i < tasks.length; i++){
+        //     taskNames.push(tasks[i].name);
+        //     //console.log(tasks[i]);
+
+        // }
+        // console.log(taskNames);
+
+        //solucion:2
+        //version con callback: funcion ejecutable, funcion que se pasa como parametro a otra funcion
+        // tasks.forEach(function(task){
+        //     taskNames.push(task.name);
+        // })
+        // console.log(taskNames);
+
+        //solucion 3,mas optimo
+        //map transformacion de un arreglo 
+        //map(ejecuta un callback sobre cada elemento),filter,reduce
+        //arrow function  JS PHP Dart,arrow function evita escribir la palabra function
+        //sintaxis (parametros) => return implicito
+        // let taskNames = tasks.map((task)=> task.name);
+        // console.log(taskNames);
+
+        //Filtrar datos bajo un criterio
+        //solucion sin filter
+        // let difficulTasks=[];
+        // tasks.forEach(function(task){
+        //     if (task.duration >= 100){
+        //         difficulTasks.push(task.name);
+        //     }
+        // })
+        // console.log(difficulTasks); 
+
+        //solucion con filter
+        //obtiene las tareas mayor a 100,pero lo que obtiene es
+        //un arreglo con los dos objetos,cada objeto tiene el name y duration
+        //por lo que de todas formas se requiere map para obtener solo nombre
+        // let difficulTasks = tasks.filter(function(task){
+        //     return task.duration >=100;
+        // });
+        // console.log(difficulTasks); 
+
+        //mejora al anterior
+        //obtiene un arreglo con valores de name: "Estudiar vue", "Estudiar Laravel"
+        // let difficulTasks=tasks
+        //     .filter((task) => task.duration >=100)
+        //     .map((task) => task.name);
+        //     console.log(difficulTasks);            
+
+
+        // let nombre = "Juan Perez";
+        
+        // //concatenaciones con +
+        // console.log('Hola,' + nombre.toUpperCase());
+
+        // //Funcionalidad de splice, elimina elementos en el arreglo
+        // let frutas = ['Manzana','Peras','Naranjas', 'Platano'] ;
+        // frutas.splice(0,1);//desde la posicion 0, elimina 1 elemento(manzana): salida por consola; [ "Peras", "Naranjas", "Platano" ]
+        // console.log(frutas);
+        // frutas.splice(0,2);//desde la posicion 0, elimina 2 elemento(manzanas, peras): salida por consola;[ "Naranjas", "Platano" ]
+        // console.log(frutas);
+        // frutas.splice(1,2);//desde la posicion 1, elimina 2 elemento(pera y naranja): salida por consola  [ "Manzana", "Platano" ]
+        // console.log(frutas); 
+
+        // let frutas = ['Manzana','Peras','Naranjas', 'Platano'] ;
+        // let frutasEliminadas = frutas.splice(1,2,'Durazno', 'Uva');//elimina peras y naranjas y en su lugar deja Durazno y uva
+        // console.log(frutas); //por consola: [ "Manzana", "Durazno", "Uva", "Platano" ]
+        // console.log(frutasEliminadas);//por consola:[ "Peras", "Naranjas" ]
+        
+        // let frutas = ['Manzana','Peras','Naranjas', 'Platano'] ;
+        // let frutasEliminadas = frutas.splice(1,1,'Uva');//elimina pera y reemplaza por uva
+        // console.log(frutasEliminadas);// Array [ "Peras" ]
+        // console.log(frutas); //[ "Manzana", "Uva", "Naranjas", "Platano" ]
+        // console.log(frutas.indexOf('Platano'));//posicion de platano: 3
+        
+        // //simil entre jcript y php no ejecuta php aca    
+        // //frutas.map((element) => element.name);
+        // // array_map(fn($element) => $element->name);
+
+    </script>
+</body>
+</html>

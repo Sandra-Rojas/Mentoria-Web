@@ -30,6 +30,7 @@ abstract class DbModel extends Model
         ");
 
         foreach($attributes as $attribute){
+            
             $statement->bindValue(":$attribute", $this->{$attribute});
             //$statement->bindValue(":firstname", $this->firstanme);
             //$statement->bindParam(); tercer parametro indica tipo string o int, 

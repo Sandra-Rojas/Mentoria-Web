@@ -17,12 +17,141 @@
             <th></th>  
             <th> Temas</th>
             <th> Contenidos revisados</th>
-        </tr>
+       
+        <tr></tr>
+        <tr></tr>
         <tr> 
             <td></td> 
-            <td> <A HREF="/005-framework/public">Framework </A> </td>
+            <td> <A HREF="http://127.0.0.1:8000">Laravel rutas</A> </td>
+            <td>Rutas posts.Para ejecutar localmente proyecto-->por consola utilizar comando: php artisan serve e ingresar a la ruta desplegada "http://127.0.0.1:8000</br>
+                Ruta post: 127.0.0.1:8000/post/my-first-post</br>
+            - Estructura laravel: vistas: resources/views , modelos: Models, rutas: routes/web modificado para controlar páginas</br>
+            - Instruccion: file_get_contents (trae contenido de un archivo, ej de un html) </br>
+            - Slug (Esta palabra define la parte final de la URL que identifica una página dentro de un sitio web, la parte de la URL que resume el contenido de la página, útil para SEO)</br>
+            - tipo de Constraint: validar url ingresada con expresones regulares</br>
+            - Helper: resource_path (encuentra ruta de carpeta resource) otros: app_path, config_path, database_path, etc</br>
+            - Helper: dd, ddd (depuración) dd:lanza el mensaje y detiene la ejecución del sistema), ddd: dump, died, and debug</br>
+            - Helper: cache (tiempo en que una pag esta en memoria, antes de cargar nuevamente) cache()->remember(indice_unico, tiempo_seg, func_trae_pagina)</br>
+            - Helper: now()->addMinutes(52), now()->addDays(3), now()->addHours(24) obtiene diferentes tiempos en seg</br>
+            - function callback, importar variable externas a la function con palabra clave use </br>
+            - funcion callback para utilizar variables externas utilizar use </br>
+            - function arrow (flecha), arrow no  utiliza  use para accesar a valores de variables externas </br>
+            - ambas function pueden utilizar parametro(s) de entrada </br>
+            - sintaxis:</br>
+            -- $ejemplo1 = function () use ($mensaje1, $mensaje2) {$mensaje1.' ' .$mensaje2;} con funcion arrow $eje1=fn() => $mensaje1.' ' .$mensaje2;</br>
+            -- $ejemplo2 = function($mensaje1, $mensaje2) {$mensaje1.' ' .$mensaje2;} con function arrow $eje2=fn($mensaje1, $mensaje2)=>$mensaje1.' ' .$mensaje2;</br>
+            -- $ejemplo3 = function($mensaje1) use($mensaje2) {$mensaje1.' ' .$mensaje2;} con function arrow $eje3=fn($mensaje1)=>$mensaje1.' ' .$mensaje2;</br>
+            -*****************************************</br>
+            - CONSOLA LARAVEL: php artisan tinker</br>
+            -*****************************************</br>
+            --cache('nombre_indice') (entrega estructura de la página)</br>
+            --cache('posts.all')</br>
+            -Se puede hacer operaciones dejar en memoria en un indice un valor</br>
+            --cache()->put('bla', 'test'); (devuelve true) indice bla, valor test</br>
+            --cache('bla', 'test'); (devuelve "test")</br>
+            -Se puede guardar como un arreglo y darle caducidad al caching</br>
+            --cache()-->put(['frase' => 'una frase'], now()->->addSeconds(10)); (devuelve true)</br>
+            -consulta por la variable frase</br>
+            --cache('frase'); (devuelve 'una frase')</br>
+            --pasado los 10 seg se vuelve a consultar</br>
+            --cache('frase'); (devuelve null) </br>   
+            -Si el cache se hace con forever, para reconstruir caching, limpiar cache</br>
+            --cache()->forget('posts.all') (devuelve true, limpia cache, por consola afecta al proyecto!!)</br>
+            --exit (salir de la consola)</br>
+            -Catching es configurable para guardar: ver config/cache.php usa FILE, puede guardar en bd, </br>
+            -en memoria cache de de la maquina es lo más rápido, si hay problema con la máquina se pierde cached y hay que reconstruir</br>
+            --</br>
+            --Layouts: proy antiguos trabajan con smarty (motor de plantillas) </br>
+            --Laravel tiene un motor de template (plantillas) llamado blade, solo al tener incluida la palabra blade se pueden utilizar</br>
+            --</br>
+            -Layout una vista que contiene a otras vistas. (tiene css)</br>
+            -Layout guarda codigo que es compratido por varias vistas <b>(layout.blade.php)</b></br>
+            --utiliza instrucción @yield('nombre_de_contenido')</br>
+            --</br>
+            -Vista blade (posts.blade.php)</br>
+            --utiliza instruccion @extends('layout')</br>
+            --@section('nombre_otro_conmtenido')</br>
+            --@endsection</br>
+            --@section('nombre_contenido')</br>
+            --@foreach @endforeach</br>
+            --@endsection</br>
+            --</br>
+            ---se utilizan las instrucciones @foreach, @if @elseif</br>
+            --</br>
+            -Archivo de configuración deberian ir todas en .env , mail_host simular envio de correo, DB_CONNECTION=mysql, db_host=127.0.0.1 (es el localhost, </br>
+            --hace referencia al propio computador)</br>
+            --.gitignore tiene .env, es decir se ignora al momento de subir a repositorio, el .env se construye para cada servidor</br>
+            --Config/database.php por defecto 'default'=>env('DB_CONNECTION', 'mysql') utiliza archivo definido en .env si no esta definido utiliza </br>
+            --el que indica database.php</br>
+           </td> 
+            
+        </tr>
+        <tr></tr>
+        <tr> 
+        <tr></tr>
+        <tr></tr>
+        <tr></tr>
+        <tr> 
+            <td></td> 
+            <td> <A HREF="/008-mario-game/index.html">Mario Game</A> </td>
+            <td>Libreria js: kabom.js juegos (https://kaboomjs.com/lib/0.5.1/kaboom.js)</br></td>
+        </tr>
+        <tr></tr>
+        <tr></tr>
+        <tr> 
+            <td></td> 
+            <td> <A HREF="/007-jump-game/index.html">Juego cubo </A> </td>
+            <td> Hoja de estilo - Archivo javascript (Incorporar archivo .js en index.html en head o body) 
+                - Evento en javascript DOMContentLoaded (disparado cuando el doc HTML ha sido completamente cargado y parseado, en jquery es .ready 
+                - Evento addEventListener (ejecución de código cuando un evento ocurre) 
+                - setInterval (ejecución de código cada cierta cant de miliseg)
+                - evento en DOM classList (add remove clases) </td>
+        </tr>
+        <tr></tr>
+        <tr></tr>
+        <tr> 
+            <td></td> 
+            <td> <A HREF="/006-JavaScript/asincrono.html">Java script </A> </td>
+            <td> Promesas (objeto son operaciones asíncronas) en javascript se usa .then .catch 
+                - Promesas async await fetch .json() loadData() 
+                - Promesas ejecución en paralelo: async await Promise.all .map .json() </br></td>
+        </tr>
+        <tr></tr>
+        <tr></tr>
+        <tr> 
+            <td></td> 
+            <td> <A HREF="/API/index.php">API</A> </td>
+            <td>API usuarios de tb users2</br></td>
+        </tr>
+        <tr></tr>
+        <tr></tr>
+        <tr> 
+            <td></td> 
+            <td> <A HREF="/006-JavaScript/index.html">Java script </A> </td>
+            <td>java script - DOM (Document Object Model, es una interfaz permite acceder a elementos html,y modificar sus propiedades. 
+                Objetivo es el acceso a los componentes de un proyecto web para que puedan añadir, eliminar o editar contenido, atributos y estilos)
+                - consumir API - Leer datos API (map rescatar nombre y apellido) y desplegar en una tabla 
+                - jquery (libreria de javascript)  metodos fadeout 
+                - Ajax (intercambiar datos con un servidor y actualizar partes de una página web, sin recargar toda la página) 
+                AJAX significa JavaScript asíncrono y XML, y permite recuperar contenido del servidor de forma asíncrona, sin una actualización de página. 
+                Por lo tanto, permite actualizar el contenido de una página web sin volver a cargarla.
+                metodo .getJSON (Carga datos codificados en JSON desde un servidor mediante una solicitud HTTP GET)</br></td>
+        </tr>
+        <tr></tr>
+        <tr></tr>
+        <tr> 
+            <td></td> 
+            <td> <A HREF="/005-framework/register">Framework / vista Register</A> </td>
+            <td>Migrations, activeRecord, clases abstract</br></td>
+        </tr>
+        <tr></tr>
+        <tr></tr>
+        <tr> 
+            <td></td> 
+            <td> <A HREF="/005-framework/public">Framework / vista Public Contact  </A> </td>
             <td>Clases, composicion, namespace, especificacion PSR-4(composer.json),variable $_SERVER</br></td>
         </tr>
+        <tr></tr>
         <tr></tr>
         <tr> 
             <td></td> 
@@ -31,27 +160,44 @@
                 subir archivo-imagen, generar excel, composer para generar excel, carpeta vendor</td>
         </tr>
         <tr></tr>
+        <tr></tr>
         <tr> 
             <td></td> 
             <td> <A HREF="/003-registro/index.php">Registro </A> </td>
             <td>Registro usuario, mysqli conexion bd, variable de sesion $_SESSION</td>
         </tr>
         <tr></tr>
-        <tr> 
-            <td></td> 
-            <td> <A HREF="/002-landing/index.html">Landing </A></td>
-            <td>html, css</td>
-        </tr>
         <tr></tr>
         <tr> 
             <td></td> 
-            <td>  <A HREF="/001-html-style/index.html">html </A></td>
-            <td>html , style</td>
+            <td> <A HREF="/002-landing/index.html">Landing </A></td>
+            <td>HTML, CSS</td>
+        </tr>
+        <tr></tr>
+        <tr></tr>
+        <tr> 
+            <td></td> 
+            <td>  <A HREF="/001-html-style/index.html">HTML </A></td>
+            <td>HTML , style</td>
         </tr>
             
         </div>
     </table>
     
+    <TABLE BORDER=0>
+        <!-- <TR><TH ROWSPAN=3> <A HREF="/index.html"> NombreTema </A></TH>
+            <TD> desc1</TD> </TR>
+        <TR><TD> desc2</TD> </TR> -->
+    
+
+        <TR><TH ROWSPAN=3> <A HREF="/003-registro/index.php">Registro </A> </TH>
+            <TD> Registro usuario</TD> 
+        <TR><TD>mysqli conexion BD </TD> </TR>   
+        <TR><TD>variable de sesion $_SESSION </TD> </TR>  
+     
+    </TABLE>
+
+
 </body>
 </html>
 

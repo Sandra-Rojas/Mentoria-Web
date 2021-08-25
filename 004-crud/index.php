@@ -108,6 +108,7 @@
                 <tbody>
                   <!---comentario-->
                     <?php foreach ($users as $key => $user): ?>
+                         <!--como incrementar valor de i-->
                          <!--?php $i=$i+1; ?-->
                          <tr>
                             <th scope="row"><?= $key = $key + 1  ?> </th>

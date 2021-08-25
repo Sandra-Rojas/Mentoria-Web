@@ -1,0 +1,22 @@
+body{
+    background-color:white;
+    color:#222222;
+    margin: auto;
+    max-width: 600px;
+    font-family: sans-serif;
+}
+/*margin auto, centra el contenido*/
+
+p{
+    line-height:1.5;
+}
+/*parrafo se le da interlineado 1.5*/
+
+/* al primer articulo no aplicar estilo, por lo que se aplicara 
+desde el segundo en adelante (escribir dos veces article)*/
+article + article{
+    border-top: 1px solid #c5c5c5;
+    margin-top: 2em;
+    padding-top: 2em;
+}
+/*aplicar borde a todas las etiquetas article*/

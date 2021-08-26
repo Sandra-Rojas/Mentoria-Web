@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             //se puede modificar no requerido verific mail
             //$table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            //requerido un campo admin
+            //requerido un campo admin.
             $table->boolean('isAdmin')->default(false);
             $table->rememberToken();
             $table->timestamps();

@@ -238,12 +238,20 @@ Route::get('/', function () {
 //         //ir a la vista (posts.blade.php) hacer foreach de los contenidos de cada pagina y sacar codigo en duro que esta en vista
 // });
 
-//reemplaza slug por id, ya que se implementa por bd los blogs, title, resumen, body en tb blogs
-Route::get('/post/{post}', function ($id) {
+//otra forma es utilizar Post en vez de id
+Route::get('/post/{post}', function (Post $post) {
     return view('post', [
-     'post' => Post::findOrFail($id), //si no encuentra registro entregara una excepcion con instruccion findOrFail
+     'post' => $post, 
     ]);
 });
+
+
+// //reemplaza slug por id, ya que se implementa por bd los blogs, title, resumen, body en tb blogs
+// Route::get('/post/{post}', function ($id) {
+//     return view('post', [
+//      'post' => Post::findOrFail($id), //si no encuentra registro entregara una excepcion con instruccion findOrFail
+//     ]);
+// });
 
 // //al implementar la pagina blog con bd para recstar los diferentes blog con id=1 etc
 // //se modifican las rutas de $slug por $id

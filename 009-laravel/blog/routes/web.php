@@ -28,6 +28,22 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
 
+    
+    /*se lleva collect al modelo Post*/
+    /***revisar con video*/
+    //sacar cache para no limpiar
+    // $posts = cache()->rememberForever(
+    //     'posts.all', 
+    //     fn () =>Post::all() 
+    // );
+    $posts = Post::all(); 
+    
+
+    return view('posts', [
+        //'posts' => Post::all()
+        'posts' => $posts
+    ]);
+
     //solo para mostrar datos------------
     //al instalar con composer la biblioteca queda accesible desde cualquier parte del proyecto
     //YamlFrontMatter::parse toma el contenido del archivo
@@ -186,17 +202,18 @@ Route::get('/', function () {
     );*/
     //ddd($posts);
 
-    /*se lleva collect al modelo Post*/
-    /***revisar con video*/
-    $posts = cache()->rememberForever(
-        'posts.all', 
-        fn () =>Post::all() 
-    );
+    // //traslata codigo arriba
+    // /*se lleva collect al modelo Post*/
+    // /***revisar con video*/
+    // $posts = cache()->rememberForever(
+    //     'posts.all', 
+    //     fn () =>Post::all() 
+    // );
 
-    return view('posts', [
-        //'posts' => Post::all()
-        'posts' => $posts
-    ]);
+    // return view('posts', [
+    //     //'posts' => Post::all()
+    //     'posts' => $posts
+    // ]);
 });
 
 //     Route::get('/', function () {

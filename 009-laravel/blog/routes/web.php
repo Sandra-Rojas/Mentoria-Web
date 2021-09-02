@@ -238,17 +238,27 @@ Route::get('/', function () {
 //         //ir a la vista (posts.blade.php) hacer foreach de los contenidos de cada pagina y sacar codigo en duro que esta en vista
 // });
 
-Route::get('/post/{post}', function ($slug) {
-    //se puede colocar la instrucción directamente, sin necesidad de utilizar una variable $post, 
-     //ya que con esa variable no se hará nada más, a esto se le llama inline
-    //$post = Post::find($slug);
+//reemplaza slug por id, ya que se implementa por bd los blogs, title, resumen, body en tb blogs
+Route::get('/post/{post}', function ($id) {
     return view('post', [
-     //'post' => $post,   
-     'post' => Post::find($slug), //se agrega el modelo Post con metodo find
+     'post' => Post::findOrFail($id), //si no encuentra registro entregara una excepcion con instruccion findOrFail
     ]);
+});
 
-    //el codigo existente de obtener ruta, de definir cache se movio a Post.php metodo find
-})->where('post', '[A-Za-z\-_]+'); //con esto carga bien la pagina e impide que ingresen a la url carcateres extraños
+// //al implementar la pagina blog con bd para recstar los diferentes blog con id=1 etc
+// //se modifican las rutas de $slug por $id
+// //y se elimina el control de caracteres extraños ya que se obtiene los valores de bd
+// Route::get('/post/{post}', function ($slug) {
+//     //se puede colocar la instrucción directamente, sin necesidad de utilizar una variable $post, 
+//      //ya que con esa variable no se hará nada más, a esto se le llama inline
+//     //$post = Post::find($slug);
+//     return view('post', [
+//      //'post' => $post,   
+//      'post' => Post::find($slug), //se agrega el modelo Post con metodo find
+//     ]);
+
+//     //el codigo existente de obtener ruta, de definir cache se movio a Post.php metodo find
+// })->where('post', '[A-Za-z\-_]+'); //con esto carga bien la pagina e impide que ingresen a la url carcateres extraños
 
 
 

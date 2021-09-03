@@ -14,6 +14,7 @@ class Post extends Model
     //sin proteger ninguna propiedad
     //public $guarded = [];
     //proteger id
-    public $guarded = ['id'];
+    //public $guarded = ['id'];
+    protected $guarded = ['id'];
 
 }

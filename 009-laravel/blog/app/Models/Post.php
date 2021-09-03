@@ -11,5 +11,6 @@ class Post extends Model
 
     //public $fillable = ['title', 'resumen', 'body'];
 
-   // public $guarded = ['id'];
+    //sin proteger ninguna propiedad
+    public $guarded = [];
 }

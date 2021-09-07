@@ -17,7 +17,8 @@
                 <article>
                     <h1> 
                          <!-- modifica $post->slug> -->
-                         <a href="/post/<?= $post->id?>">
+                         <!-- a href="/post/<?= $post->id?>"> -->
+                         <a href="/post/<?= $post-> slug?>">
                             <!-- < $post->title ?> -->
                             {{$post->title}}
                             <!-- {!!$post->title!!} -->

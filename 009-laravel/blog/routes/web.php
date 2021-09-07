@@ -239,7 +239,8 @@ Route::get('/', function () {
 // });
 
 //otra forma es utilizar Post en vez de id
-Route::get('/post/{post}', function (Post $post) {
+//Route::get('/post/{post}', function (Post $post) {
+Route::get('/post/{post}', function (Post $post) {    
     return view('post', [
      'post' => $post, 
     ]);

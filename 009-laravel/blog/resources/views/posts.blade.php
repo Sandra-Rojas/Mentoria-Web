@@ -1,4 +1,4 @@
-a<!-- codigo html cabecera hoja de estilo se llevo a la plantilla -->
+<!-- codigo html cabecera hoja de estilo se llevo a la plantilla -->
 <!-- para que tome esa plantilla se debe hacer une extends de la plantilla padre -->
 <!-- luego se debe definir cual es el contenido que sera reemplazado en la plantilla con ection -->
     

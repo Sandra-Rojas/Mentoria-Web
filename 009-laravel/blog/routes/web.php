@@ -28,7 +28,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', function () {
-    
+
     \Illuminate\Support\Facades\DB::listen(function($query){
         logger($query->sql);
     });
@@ -252,7 +252,7 @@ Route::get('/post/{post}', function (Post $post) {
 });
 
 
-Route::get('/category/{category:$slug}', function (Category $category) {    
+Route::get('/category/{category:slug}', function (Category $category) {    
     return view('posts', [
      'posts' => $category->posts, 
     ]);

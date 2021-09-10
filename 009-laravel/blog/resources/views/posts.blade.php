@@ -24,7 +24,7 @@ a<!-- codigo html cabecera hoja de estilo se llevo a la plantilla -->
                             <!-- {!!$post->title!!} -->
                         </a>  
                     </h1> 
-                    <p> <a href= "/category/{{$post->category->id}}">
+                    <p> <a href= "/category/{{$post->category->slug}}">
                             {{$post->category->name}}  
                         </a>
                     </p>   

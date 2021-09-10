@@ -30,7 +30,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
 
     \Illuminate\Support\Facades\DB::listen(function($query){
-        logger($query->sql);
+        logger($query->sql, $query->bindings);
     });
     
     /*se lleva collect al modelo Post*/

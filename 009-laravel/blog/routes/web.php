@@ -251,7 +251,7 @@ Route::get('/post/{post}', function (Post $post) {
 
 Route::get('/category/{category}', function (Category $category) {    
     return view('posts', [
-     'posts' => $category->post, 
+     'posts' => $category->posts, 
     ]);
 });
 

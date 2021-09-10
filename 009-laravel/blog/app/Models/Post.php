@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Post extends Model
 {
@@ -22,10 +22,10 @@ class Post extends Model
         return 'slug';
     }
 
-    //hasone, hasMany, belongsTo, belongsToMany
+    //relation: hasone, hasMany, belongsTo, belongsToMany
     public function category()
     {
-        
+        //nombre clase la primera con mayuscula
         return $this->belongsTo(Category::class);
     }   
 

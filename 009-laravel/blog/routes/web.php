@@ -1,7 +1,8 @@
 <?php
 
 use App\Models\Post;
-use Illuminate\Support\Facades\File;
+use App\Models\Category;
+//use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
 //biblioteca nueva Yaml: permite leer metadata
 //requiere instacion de composer, se ejecuta al mismo nivel de archivo composer (ejec dentro de carpeta blog)
@@ -247,6 +248,13 @@ Route::get('/post/{post}', function (Post $post) {
     ]);
 });
 
+
+Route::get('/category/{category}', function (Category $category) {    
+    return 'categorias';
+    /*return view('post', [
+     'post' => $post, 
+    ]);*/
+});
 
 // //reemplaza slug por id, ya que se implementa por bd los blogs, title, resumen, body en tb blogs
 // Route::get('/post/{post}', function ($id) {

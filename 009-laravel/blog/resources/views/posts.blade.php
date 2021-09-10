@@ -1,4 +1,4 @@
-<!-- codigo html cabecera hoja de estilo se llevo a la plantilla -->
+a<!-- codigo html cabecera hoja de estilo se llevo a la plantilla -->
 <!-- para que tome esa plantilla se debe hacer une extends de la plantilla padre -->
 <!-- luego se debe definir cual es el contenido que sera reemplazado en la plantilla con ection -->
     
@@ -16,14 +16,18 @@
             <!-- ?php foreach($posts as $post): ?> -->
                 <article>
                     <h1> 
-                         <!-- modifica $post->slug> -->
-                         <!-- a href="/post/<?= $post->id?>"> -->
-                         <a href="/post/<?= $post-> slug?>">
+                         <!-- modifica $post->slug a $post->id> -->
+                         <!-- modifica $post->id a $post->slug , slug ahora en bd> -->
+                         <a href="/post/<?= $post->slug?>">
                             <!-- < $post->title ?> -->
                             {{$post->title}}
                             <!-- {!!$post->title!!} -->
                         </a>  
-                    </h1>    
+                    </h1> 
+                    <p> <a href= "/category/{{$post->category->id}}">
+                            {{$post->category->name}}  
+                        </a>
+                    </p>   
                     <p><?= $post->resumen ?></p> 
             </article>
             <!-- ?php endforeach; ?> -->

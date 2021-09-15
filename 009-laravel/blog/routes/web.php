@@ -45,7 +45,8 @@ Route::get('/', function () {
 
     return view('posts', [
         //'posts' => Post::all()
-        'posts' => $posts
+        //'posts' => $posts
+        'posts' => Post::with('category')->get()
     ]);
 
     //solo para mostrar datos------------

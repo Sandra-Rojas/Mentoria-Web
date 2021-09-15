@@ -24,7 +24,9 @@
                             <!-- {!!$post->title!!} -->
                         </a>  
                     </h1> 
-                    <p> <a href= "/category/{{$post->category->slug}}">
+                    <p> 
+                        By <a href ="#"> Juan Perez </a> in
+                        <a href= "/category/{{$post->category->slug}}">
                             {{$post->category->name}}  
                         </a>
                     </p>   

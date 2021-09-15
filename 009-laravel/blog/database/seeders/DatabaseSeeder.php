@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
+use App\Models\Post;
 use App\Models\User;
 use App\Models\Category;
+use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -21,21 +22,30 @@ class DatabaseSeeder extends Seeder
          //\App\Models\User::factory(10)->create();
          //\App\Models\User::factory()->create();
 
-         User::factory()->create();
+         $user = User::factory()->create();
 
-         Category::create([
+         $personal = Category::create([
             'name' => 'Personal',
             'slug' => 'personal',
          ]);
 
-         Category::create([
+         $work = Category::create([
             'name' => 'Work',
             'slug' => 'worh',
          ]);
-         Category::create([
+         
+         $hobbies = Category::create([
             'name' => 'Hobbies',
             'slug' => 'hobbies',
          ]);
 
+         Post::create([
+             'category_id' => $work->id,
+             'user_id' => $user->id,
+             'slug' => 'my-firt-post',
+             'title' => 'My First Post',
+             'resumen' => 'The are many',
+             'body' => 'Teha are many viartions',
+         ]);
         }
 }

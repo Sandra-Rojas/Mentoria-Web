@@ -29,4 +29,10 @@ class Post extends Model
         return $this->belongsTo(Category::class);
     }   
 
+    public function user()
+    {
+        //nombre clase la primera con mayuscula
+        return $this->belongsTo(User::class);
+    }   
+
 }

@@ -25,7 +25,7 @@
                         </a>  
                     </h1> 
                     <p> 
-                        By <a href ="#"> Juan Perez </a> in
+                        By <a href ="#"> {{$post->user->name}} </a> in
                         <a href= "/category/{{$post->category->slug}}">
                             {{$post->category->name}}  
                         </a>

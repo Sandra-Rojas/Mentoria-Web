@@ -23,242 +23,265 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Route::get('/', function () {
-
-    \Illuminate\Support\Facades\DB::listen(function($query){
-        logger($query->sql, $query->bindings);
-    });
-    
-    /*se lleva collect al modelo Post*/
-    /***revisar con video*/
-    //sacar cache para no limpiar
-    // $posts = cache()->rememberForever(
-    //     'posts.all', 
-    //     fn () =>Post::all() 
-    // );
-    $posts = Post::all(); 
-    
-
     return view('posts', [
-        //'posts' => Post::all()
-        //'posts' => $posts
-        'posts' => Post::with('category')->get()
+        //'posts' => Post::with('category')->get()
+        //agrega orden, el ultimo en publicar encabeza listado de post
+        'posts' => Post::lasted('published_at')
+            ->with('category')
+            ->get()
+        
     ]);
-
-    //solo para mostrar datos------------
-    //al instalar con composer la biblioteca queda accesible desde cualquier parte del proyecto
-    //YamlFrontMatter::parse toma el contenido del archivo
-    // toma el archivo
-    // $document = YamlFrontMatter::parseFile(
-    //     resource_path('posts/my-first-post.html')
-    // );
-    //ddd($document);//devuelve un array con los campos definidos comometadata en my-first-post.html
-    //con matter lee cada campo definido , titulo, resumen,date, slug
-    //ddd($document->matter('title')); //entrega My first post
-
-    //
-    //se leeran todos los archivos de la carpeta posts
-    //$files = File::files(resource_path("posts/"));
-    //$documents = [];
-    //$posts = [];
-
-    //versión con foreach!!
-    //arreglo posee cada uno de los archivos que posee metadata y el contenido
-    /*foreach($files as $file){
-       // $documents[] = YamlFrontMatter::parseFile($file);
-       $document = YamlFrontMatter::parseFile($file);
-       //nueva instancia del modelo y pasa varables al constructoor
-       $posts[] = new Post(
-           $document->title,
-           $document->resumen,
-           $document->date,
-           $document->slug,
-           $document->body()
-       );
-    }
-    ddd($posts); //entrega los archivos con metadas y body
-    
-    //lectura de metada o bd debe estar en el modelo y eso enviar a la vista
-    //ir al modelo Post, y crear las variables necesarias para obtener title, resumne, date, slug
-    */
-
-    //version con array_map
-    //mejorar el codigo de arriba con array_map
-    //array map toma function itera sobre $files y sobre un arreglo $files
-    /*
-    $posts = array_map(function($file) {
-        $document = YamlFrontMatter::parseFile($file);
-        //nueva instancia del modelo y pasa varables al constructoor
-        return new Post(
-            $document->title,
-            $document->resumen,
-            $document->date,
-            $document->slug,
-            $document->body()
-        );    
-    }, $files);
-    */
-
-    //en laravel existen las collectio
-    //version con collection
-    //collection tiene varios metodos uno es map
-    //tiene ventajas sobre arraymap
-    //NO CREAR VARIABLES que no aportan
-    // una mejora es: si la variable se utiliza sólo para una fin, 
-    //no definirla sino utilizarla directamente
-    //ese concepto es llamado inline, usar variables utilizan mucha memoria
-  
-    ////$posts = collect($files)
-    /*
-    $posts = collect(File::files(resource_path("posts/")))
-            ->map(function($file) {
-                $document = YamlFrontMatter::parseFile($file);
-                //nueva instancia del modelo y pasa varables al constructoor
-                return new Post(
-                    $document->title,
-                    $document->resumen,
-                    $document->date,
-                    $document->slug,
-                    $document->body()
-                );    
-            });
-    */       
-    
-    //con las collections se pueden hacer map de mapas
-    /*$posts = collect(File::files(resource_path("posts/")))
-    ->map(function($file){
-        //este return pasa a ser la entrada a la sgte function 
-        //toma el valor de la variable $document
-        return YamlFrontMatter::parseFile($file);
-    })
-    ->map(function($document) {
-        return new Post(
-            $document->title,
-            $document->resumen,
-            $document->date,
-            $document->slug,
-            $document->body()
-        );    
-    });*/
-
-    //sintaxis de collections con funcion arrow
-    //utilizando clase y constructor
-    /*$posts = collect(File::files(resource_path("posts/")))
-            ->map(function($file){
-                //este return pasa a ser la entrada a la sgte function 
-                //toma el valor de la variable $document
-                return YamlFrontMatter::parseFile($file);
-            })
-            ->map(function($document) {
-                //crea nueva instancia y ejecuta constructor
-                //por lo que de document rescata title, resumen ..y se los pasa al constructor
-                return new Post(
-                    $document->title,
-                    $document->resumen,
-                    $document->date,
-                    $document->slug,
-                    $document->body()
-                );    
-            });
-    */  
-    
-    //sintaxis de collections con funcion arrow
-    //utiliza clase con static, parecido a constructores nombrados
-    /*
-    $posts = collect( File::files(resource_path("posts/")))
-            ->map(fn ($file) => YamlFrontMatter::parseFile($file))
-            //llama a la clase Post y a traves de la funcion createFromDocument
-            //obtiene los valores de title, resumen, date que tiene $document
-            ->map(fn ($document) => Post::createFromDocument($document));
-    */
-
-    //sintaxis de colecctions con funcion arrow y manejo de cache rememberforever
-    //************************************************************************/
-    //NOTA: al quedar por siempre en memoria, al hacer cambios a la página no se
-    //visualizaran en el navegador
-    //se debe reiniciar la cache manualmente            
-    //por consola ir al proyecto y ejecutar comando:php artisan tinker
-    //luwgo:cache()->forget('posts.all'); donde posts.all es el identificador
-    //*************************************************************************/
-     
-   /*oki, se obtiene la pagina con el listado de post desde la cache*/ 
-    /*$posts = cache()->rememberForever('posts.all', function () {
-        return collect( File::files(resource_path("posts/")))
-            ->map(fn ($file) => YamlFrontMatter::parseFile($file))
-            //llama a la clase Post y a traves de la funcion createFromDocument
-            //obtiene los valores de title, resumen, date que tiene $document
-            ->map(fn ($document) => Post::createFromDocument($document));
-   });*/
-   
-
-    //sintaxis de colecctions con funcion arrow y manejo de cache rememberforever con funcion arrow
-    /*$posts = cache()->rememberForever(
-        'posts.all', 
-        fn () =>
-        collect( File::files(resource_path("posts/")))
-            ->map(fn ($file) => YamlFrontMatter::parseFile($file))
-            //llama a la clase Post y a traves de la funcion createFromDocument
-            //obtiene los valores de title, resumen, date que tiene $document
-            ->map(fn ($document) => Post::createFromDocument($document))
-    );*/
-    //ddd($posts);
-
-    // //traslata codigo arriba
-    // /*se lleva collect al modelo Post*/
-    // /***revisar con video*/
-    // $posts = cache()->rememberForever(
-    //     'posts.all', 
-    //     fn () =>Post::all() 
-    // );
-
-    // return view('posts', [
-    //     //'posts' => Post::all()
-    //     'posts' => $posts
-    // ]);
 });
 
-//     Route::get('/', function () {
-//         //los posts aca estan en duro
-//         //return view('posts');
-//         //se pasar la variable $post directamente en el arreglo de la vista
-//         //$posts = Post::all();
-//         //ejecutar ruta 127.0.0.1:8000/post
-//         //dd($posts); //entrega el arreglo con los 3 elementos, pero no entrega el nombre de la pagina, tampoco contenido sino symfony
-//         //ir a la documentacion con symfomy\Component ..se obtiene a getContents
-//         //dd($posts[0]->getContents());//entrega el contenido del primer archivo, pagina html
-//         //por lo que se debe modificar metodo all von getcontents
-//         //luego volver a imprimir el resultado de dd($posts)
-//         // $posts = Post::all();
-//         // ddd($posts); //entregara un array con 3 elemtnos pero con el contenido de cada pagina
-
-//         //probado el metodo all pasarlo a la vista
-//         return view('posts', [
-//             'posts' => Post::all()
-//         ]);
-
-//         //ir a la vista (posts.blade.php) hacer foreach de los contenidos de cada pagina y sacar codigo en duro que esta en vista
-// });
-
-//otra forma es utilizar Post en vez de id
-//Route::get('/post/{post}', function (Post $post) {
-//Route::get('/post/{post:slug}', function (Post $post) {    //se agrega metodo en model getRouteKeyName por lo que ya no es requerido:slug
-
-    Route::get('/post/{post}', function (Post $post) {    
+Route::get('/post/{post}', function (Post $post) {    
     return view('post', [
      'post' => $post, 
     ]);
 });
-
 
 Route::get('/category/{category:slug}', function (Category $category) {    
     return view('posts', [
      'posts' => $category->posts, 
     ]);
 });
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+// Route::get('/', function () {
+
+//     \Illuminate\Support\Facades\DB::listen(function($query){
+//         logger($query->sql, $query->bindings);
+//     });
+    
+//     /*se lleva collect al modelo Post*/
+//     /***revisar con video*/
+//     //sacar cache para no limpiar
+//     // $posts = cache()->rememberForever(
+//     //     'posts.all', 
+//     //     fn () =>Post::all() 
+//     // );
+//     $posts = Post::all(); 
+    
+
+//     return view('posts', [
+//         //'posts' => Post::all()
+//         //'posts' => $posts
+//         'posts' => Post::with('category')->get()
+//     ]);
+
+//     //solo para mostrar datos------------
+//     //al instalar con composer la biblioteca queda accesible desde cualquier parte del proyecto
+//     //YamlFrontMatter::parse toma el contenido del archivo
+//     // toma el archivo
+//     // $document = YamlFrontMatter::parseFile(
+//     //     resource_path('posts/my-first-post.html')
+//     // );
+//     //ddd($document);//devuelve un array con los campos definidos comometadata en my-first-post.html
+//     //con matter lee cada campo definido , titulo, resumen,date, slug
+//     //ddd($document->matter('title')); //entrega My first post
+
+//     //
+//     //se leeran todos los archivos de la carpeta posts
+//     //$files = File::files(resource_path("posts/"));
+//     //$documents = [];
+//     //$posts = [];
+
+//     //versión con foreach!!
+//     //arreglo posee cada uno de los archivos que posee metadata y el contenido
+//     /*foreach($files as $file){
+//        // $documents[] = YamlFrontMatter::parseFile($file);
+//        $document = YamlFrontMatter::parseFile($file);
+//        //nueva instancia del modelo y pasa varables al constructoor
+//        $posts[] = new Post(
+//            $document->title,
+//            $document->resumen,
+//            $document->date,
+//            $document->slug,
+//            $document->body()
+//        );
+//     }
+//     ddd($posts); //entrega los archivos con metadas y body
+    
+//     //lectura de metada o bd debe estar en el modelo y eso enviar a la vista
+//     //ir al modelo Post, y crear las variables necesarias para obtener title, resumne, date, slug
+//     */
+
+//     //version con array_map
+//     //mejorar el codigo de arriba con array_map
+//     //array map toma function itera sobre $files y sobre un arreglo $files
+//     /*
+//     $posts = array_map(function($file) {
+//         $document = YamlFrontMatter::parseFile($file);
+//         //nueva instancia del modelo y pasa varables al constructoor
+//         return new Post(
+//             $document->title,
+//             $document->resumen,
+//             $document->date,
+//             $document->slug,
+//             $document->body()
+//         );    
+//     }, $files);
+//     */
+
+//     //en laravel existen las collectio
+//     //version con collection
+//     //collection tiene varios metodos uno es map
+//     //tiene ventajas sobre arraymap
+//     //NO CREAR VARIABLES que no aportan
+//     // una mejora es: si la variable se utiliza sólo para una fin, 
+//     //no definirla sino utilizarla directamente
+//     //ese concepto es llamado inline, usar variables utilizan mucha memoria
+  
+//     ////$posts = collect($files)
+//     /*
+//     $posts = collect(File::files(resource_path("posts/")))
+//             ->map(function($file) {
+//                 $document = YamlFrontMatter::parseFile($file);
+//                 //nueva instancia del modelo y pasa varables al constructoor
+//                 return new Post(
+//                     $document->title,
+//                     $document->resumen,
+//                     $document->date,
+//                     $document->slug,
+//                     $document->body()
+//                 );    
+//             });
+//     */       
+    
+//     //con las collections se pueden hacer map de mapas
+//     /*$posts = collect(File::files(resource_path("posts/")))
+//     ->map(function($file){
+//         //este return pasa a ser la entrada a la sgte function 
+//         //toma el valor de la variable $document
+//         return YamlFrontMatter::parseFile($file);
+//     })
+//     ->map(function($document) {
+//         return new Post(
+//             $document->title,
+//             $document->resumen,
+//             $document->date,
+//             $document->slug,
+//             $document->body()
+//         );    
+//     });*/
+
+//     //sintaxis de collections con funcion arrow
+//     //utilizando clase y constructor
+//     /*$posts = collect(File::files(resource_path("posts/")))
+//             ->map(function($file){
+//                 //este return pasa a ser la entrada a la sgte function 
+//                 //toma el valor de la variable $document
+//                 return YamlFrontMatter::parseFile($file);
+//             })
+//             ->map(function($document) {
+//                 //crea nueva instancia y ejecuta constructor
+//                 //por lo que de document rescata title, resumen ..y se los pasa al constructor
+//                 return new Post(
+//                     $document->title,
+//                     $document->resumen,
+//                     $document->date,
+//                     $document->slug,
+//                     $document->body()
+//                 );    
+//             });
+//     */  
+    
+//     //sintaxis de collections con funcion arrow
+//     //utiliza clase con static, parecido a constructores nombrados
+//     /*
+//     $posts = collect( File::files(resource_path("posts/")))
+//             ->map(fn ($file) => YamlFrontMatter::parseFile($file))
+//             //llama a la clase Post y a traves de la funcion createFromDocument
+//             //obtiene los valores de title, resumen, date que tiene $document
+//             ->map(fn ($document) => Post::createFromDocument($document));
+//     */
+
+//     //sintaxis de colecctions con funcion arrow y manejo de cache rememberforever
+//     //************************************************************************/
+//     //NOTA: al quedar por siempre en memoria, al hacer cambios a la página no se
+//     //visualizaran en el navegador
+//     //se debe reiniciar la cache manualmente            
+//     //por consola ir al proyecto y ejecutar comando:php artisan tinker
+//     //luwgo:cache()->forget('posts.all'); donde posts.all es el identificador
+//     //*************************************************************************/
+     
+//    /*oki, se obtiene la pagina con el listado de post desde la cache*/ 
+//     /*$posts = cache()->rememberForever('posts.all', function () {
+//         return collect( File::files(resource_path("posts/")))
+//             ->map(fn ($file) => YamlFrontMatter::parseFile($file))
+//             //llama a la clase Post y a traves de la funcion createFromDocument
+//             //obtiene los valores de title, resumen, date que tiene $document
+//             ->map(fn ($document) => Post::createFromDocument($document));
+//    });*/
+   
+
+//     //sintaxis de colecctions con funcion arrow y manejo de cache rememberforever con funcion arrow
+//     /*$posts = cache()->rememberForever(
+//         'posts.all', 
+//         fn () =>
+//         collect( File::files(resource_path("posts/")))
+//             ->map(fn ($file) => YamlFrontMatter::parseFile($file))
+//             //llama a la clase Post y a traves de la funcion createFromDocument
+//             //obtiene los valores de title, resumen, date que tiene $document
+//             ->map(fn ($document) => Post::createFromDocument($document))
+//     );*/
+//     //ddd($posts);
+
+//     // //traslata codigo arriba
+//     // /*se lleva collect al modelo Post*/
+//     // /***revisar con video*/
+//     // $posts = cache()->rememberForever(
+//     //     'posts.all', 
+//     //     fn () =>Post::all() 
+//     // );
+
+//     // return view('posts', [
+//     //     //'posts' => Post::all()
+//     //     'posts' => $posts
+//     // ]);
+// });
+
+// //     Route::get('/', function () {
+// //         //los posts aca estan en duro
+// //         //return view('posts');
+// //         //se pasar la variable $post directamente en el arreglo de la vista
+// //         //$posts = Post::all();
+// //         //ejecutar ruta 127.0.0.1:8000/post
+// //         //dd($posts); //entrega el arreglo con los 3 elementos, pero no entrega el nombre de la pagina, tampoco contenido sino symfony
+// //         //ir a la documentacion con symfomy\Component ..se obtiene a getContents
+// //         //dd($posts[0]->getContents());//entrega el contenido del primer archivo, pagina html
+// //         //por lo que se debe modificar metodo all von getcontents
+// //         //luego volver a imprimir el resultado de dd($posts)
+// //         // $posts = Post::all();
+// //         // ddd($posts); //entregara un array con 3 elemtnos pero con el contenido de cada pagina
+
+// //         //probado el metodo all pasarlo a la vista
+// //         return view('posts', [
+// //             'posts' => Post::all()
+// //         ]);
+
+// //         //ir a la vista (posts.blade.php) hacer foreach de los contenidos de cada pagina y sacar codigo en duro que esta en vista
+// // });
+
+// //otra forma es utilizar Post en vez de id
+// //Route::get('/post/{post}', function (Post $post) {
+// //Route::get('/post/{post:slug}', function (Post $post) {    //se agrega metodo en model getRouteKeyName por lo que ya no es requerido:slug
+
+//     Route::get('/post/{post}', function (Post $post) {    
+//     return view('post', [
+//      'post' => $post, 
+//     ]);
+// });
+
+
+// Route::get('/category/{category:slug}', function (Category $category) {    
+//     return view('posts', [
+//      'posts' => $category->posts, 
+//     ]);
+// });
 
 // //reemplaza slug por id, ya que se implementa por bd los blogs, title, resumen, body en tb blogs
 // Route::get('/post/{post}', function ($id) {

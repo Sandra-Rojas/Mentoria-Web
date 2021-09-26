@@ -49,6 +49,12 @@ Route::get('/category/{category:slug}', function (Category $category) {
     ]);
 });
 
+Route::get('/author/{author}', function (Category $category) {    
+    return view('posts', [
+     'posts' => $category->posts, 
+    ]);
+});
+
 // Route::get('/', function () {
 //     return view('welcome');
 // });

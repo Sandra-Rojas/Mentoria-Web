@@ -31,7 +31,7 @@ class Post extends Model
 
     public function user()
     {
-        //nombre clase la primera con mayuscula
+        //Post pertenece a un usuario
         return $this->belongsTo(User::class);
     }   
 

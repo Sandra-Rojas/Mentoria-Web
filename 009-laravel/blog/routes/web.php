@@ -246,7 +246,8 @@ Route::get('/', function () {
 //otra forma es utilizar Post en vez de id
 //Route::get('/post/{post}', function (Post $post) {
 //Route::get('/post/{post:slug}', function (Post $post) {    //se agrega metodo en model getRouteKeyName por lo que ya no es requerido:slug
-Route::get('/post/{post}', function (Post $post) {    
+
+    Route::get('/post/{post}', function (Post $post) {    
     return view('post', [
      'post' => $post, 
     ]);

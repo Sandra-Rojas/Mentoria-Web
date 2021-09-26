@@ -45,6 +45,7 @@ class User extends Authenticatable
 
     public function posts()
     {
+        //todos los post que ha escrito un usuario
         return $this->hasmany(Post::class);
 
     }

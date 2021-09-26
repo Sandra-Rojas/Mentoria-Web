@@ -20,8 +20,17 @@ class DatabaseSeeder extends Seeder
         User::truncate();
         Category::truncate();
         Post::truncate();
-
-        Post::factory(5)->create();
+        
+        $user= User::factory()->create([
+         'name' => 'Juan Perez', //con esto el nombre de usuario no es falso, no lo crea faker
+         ]);
+         
+         //indica creación de 3 post, y a usuario le asigna el user creado anteriormente (Juan Perez)
+         Post::factory(3)->create([
+         'user_id' => $user->id,
+         ]);
+         
+        Post::factory(10)->create();
         //se comenta para agregar truncate de Post llamar a post factory  para crear una cantidad de post
          //\App\Models\User::factory(10)->create();
          //\App\Models\User::factory()->create();

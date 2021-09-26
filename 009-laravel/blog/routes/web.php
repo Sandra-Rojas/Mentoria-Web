@@ -27,7 +27,7 @@ Route::get('/', function () {
     return view('posts', [
         //'posts' => Post::with('category')->get()
         //agrega orden, el ultimo en publicar encabeza listado de post
-        'posts' => Post::lasted('published_at')
+        'posts' => Post::latest('published_at')
             ->with('category')
             ->get()
         

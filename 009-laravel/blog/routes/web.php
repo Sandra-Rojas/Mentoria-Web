@@ -1,8 +1,9 @@
 <?php
 
 use App\Models\Post;
-use App\Models\Category;
+use App\Models\User;
 //use Illuminate\Support\Facades\File;
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 //biblioteca nueva Yaml: permite leer metadata
 //requiere instacion de composer, se ejecuta al mismo nivel de archivo composer (ejec dentro de carpeta blog)
@@ -49,9 +50,10 @@ Route::get('/category/{category:slug}', function (Category $category) {
     ]);
 });
 
-Route::get('/author/{author}', function (Category $category) {    
+Route::get('/author/{author}', function (User $author) {    
+    ddd($author->posts);
     return view('posts', [
-     'posts' => $category->posts, 
+     'posts' => $author->posts, 
     ]);
 });
 

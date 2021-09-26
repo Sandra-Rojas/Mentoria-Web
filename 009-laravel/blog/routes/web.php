@@ -30,7 +30,8 @@ Route::get('/', function () {
         'posts' => Post::latest('published_at')
         //para que la consulta a la bd realice una precarga, y no consulte uno a uno los uusarios, se agrega arreglo con user
         //    ->with('category')
-        ->with(['category', 'user'])
+        //->with(['category', 'user'])
+        ->with(['category', 'author'])
             ->get()
         
     ]);

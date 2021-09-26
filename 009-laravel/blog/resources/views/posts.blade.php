@@ -25,7 +25,8 @@
                         </a>  
                     </h1> 
                     <p> 
-                        By <a href ="#"> {{$post->user->name}} </a> in
+                        <!-- By <a href ="#"> {{$post->user->name}} </a> in -->
+                        By <a href ="#"> {{$post->author->name}} </a> in
                         <a href= "/category/{{$post->category->slug}}">
                             {{$post->category->name}}  
                         </a>

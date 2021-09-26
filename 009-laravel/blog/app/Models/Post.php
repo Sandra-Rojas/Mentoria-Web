@@ -29,10 +29,14 @@ class Post extends Model
         return $this->belongsTo(Category::class);
     }   
 
+    //modifica de user a author, laravel supone que en bd el campo es author_id
+    //para que no suceda esto, belong tiene como campo opcional paso de llave foranea
+    //en este caso user_id 
     public function user()
     {
         //Post pertenece a un usuario
-        return $this->belongsTo(User::class);
+        //return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }   
 
 }

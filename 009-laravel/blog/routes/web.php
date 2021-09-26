@@ -28,7 +28,9 @@ Route::get('/', function () {
         //'posts' => Post::with('category')->get()
         //agrega orden, el ultimo en publicar encabeza listado de post
         'posts' => Post::latest('published_at')
-            ->with('category')
+        //para que la consulta a la bd realice una precarga, y no consulte uno a uno los uusarios, se agrega arreglo con user
+        //    ->with('category')
+        ->with(['category', 'user'])
             ->get()
         
     ]);

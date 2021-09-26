@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
         Category::truncate();
         Post::truncate();
 
-        Post::factory()->create();
+        Post::factory(5)->create();
         //se comenta para agregar truncate de Post llamar a post factory  para crear una cantidad de post
          //\App\Models\User::factory(10)->create();
          //\App\Models\User::factory()->create();

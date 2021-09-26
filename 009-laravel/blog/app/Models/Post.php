@@ -32,7 +32,8 @@ class Post extends Model
     //modifica de user a author, laravel supone que en bd el campo es author_id
     //para que no suceda esto, belong tiene como campo opcional paso de llave foranea
     //en este caso user_id 
-    public function user()
+    //public function user()
+    public function author()
     {
         //Post pertenece a un usuario
         //return $this->belongsTo(User::class);

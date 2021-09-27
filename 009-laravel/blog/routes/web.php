@@ -30,6 +30,7 @@ Route::get('/', function () {
         //agrega orden, el ultimo en publicar encabeza listado de post
         'posts' => Post::latest('published_at')
         //para que la consulta a la bd realice una precarga, y no consulte uno a uno los uusarios, se agrega arreglo con user
+        //with es utilizado sólo cuando se llama estaticamente al modelo
         //    ->with('category')
         //->with(['category', 'user'])
         ->with(['category', 'author'])
@@ -53,7 +54,11 @@ Route::get('/category/{category:slug}', function (Category $category) {
 Route::get('/author/{author}', function (User $author) {    
     ddd($author->posts);
     return view('posts', [
-     'posts' => $author->posts, 
+     //utiliza load para recargar las relations requeridas
+     //se utiliza cuando se crea una variable de un modelo   
+     //eager loading (load, with)
+     //por defecto es lazy loading
+     'posts' => $author->posts->load(['category', 'author']), 
     ]);
 });
 

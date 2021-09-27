@@ -52,7 +52,7 @@ Route::get('/category/{category:slug}', function (Category $category) {
 });
 
 Route::get('/author/{author}', function (User $author) {    
-    ddd($author->posts);
+    ddd( $author->posts->load(['category', 'author']), );
     return view('posts', [
      //utiliza load para recargar las relations requeridas
      //se utiliza cuando se crea una variable de un modelo   

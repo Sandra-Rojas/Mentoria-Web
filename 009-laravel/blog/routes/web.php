@@ -57,7 +57,8 @@ Route::get('/author/{author}', function (User $author) {
      //utiliza load para recargar las relations requeridas
      //se utiliza cuando se crea una variable de un modelo   
      //eager loading (load, with)
-     //por defecto es lazy loading
+     //eager loading permite cargar los datos relacionados en una sola consulta.
+     //por defecto es lazy loading (carga pasiva)
      'posts' => $author->posts->load(['category', 'author']), 
     ]);
 });

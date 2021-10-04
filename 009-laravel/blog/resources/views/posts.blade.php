@@ -3,4 +3,3 @@
         Hola SEGIC!
     </x-slot>
 </x-layout>
-

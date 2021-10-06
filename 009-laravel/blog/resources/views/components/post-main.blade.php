@@ -1,4 +1,4 @@
-@props[['post']]
+@props(['post'])
 <article class="transition-colors duration-300 hover:bg-gray-100 border border-black border-opacity-0 hover:border-opacity-5 rounded-xl">
     <div class="py-6 px-5 lg:flex">
         <div class="flex-1 lg:mr-8">
@@ -28,10 +28,6 @@
             <div class="text-sm mt-2">
                 <p>
                     {{ $post->resumen }}
-                </p>
-
-                <p class="mt-4">
-                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
                 </p>
             </div>
 

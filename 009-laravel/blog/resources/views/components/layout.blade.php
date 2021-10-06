@@ -7,6 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    {{ $content }}
+    <!-- {{ $content }} -->
+    {{ $slot }}
 </body>
 </html>

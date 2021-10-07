@@ -8,10 +8,15 @@
 
             <div class="mt-8 flex flex-col justify-between">
                 <header>
-                    @foreach ($posts->skip(1) as $post)
-                        <x-category-button :post="$post" />
-                    @endforeach 
-                    
+                    <div class="space-x-2">
+                        <a href="#"
+                            class="px-3 py-1 border border-blue-300 rounded-full text-blue-300 text-xs uppercase font-semibold"
+                            style="font-size: 10px">
+                            {{ $post->category->name }}
+                        </a>
+                        
+                    </div>
+
                     <div class="mt-4">
                         <h1 class="text-3xl">
                             {{ $post->title }}

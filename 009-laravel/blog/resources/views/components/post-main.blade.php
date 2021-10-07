@@ -9,7 +9,7 @@
             <header class="mt-8 lg:mt-0">
                 <div class="space-x-2">
                     @if ($post->count())    
-                        <x-category-button :post="$post[0]" />
+                        <x-category-button :post="$post" />
                     @else
                             <p class="text-center">No posts yet. </p>
                     @endif

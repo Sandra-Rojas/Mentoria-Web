@@ -29,7 +29,7 @@ Route::get('/', function () {
         /*'posts' => Post::latest('published_at')
         ->with(['category', 'author'])
             ->get()*/
-        'posts' => [], //simular que no hay data    
+        'posts' => collect([]), //simular que no hay data    
 
         //'posts' => Post::with('category')->get()
         //agrega orden, el ultimo en publicar encabeza listado de post

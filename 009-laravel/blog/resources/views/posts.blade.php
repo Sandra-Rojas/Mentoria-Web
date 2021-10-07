@@ -7,7 +7,7 @@
             <div class="lg:grid lg:grid-cols-6">
                 @foreach ($posts->skip(1) as $post) 
                     @dd($loop)           
-                    <x-post-card :post="$post" class="{{} $lopp->iteration < 3 ? 'col-span-3' : 'col-span-2'}}"/>
+                    <x-post-card :post="$post" class="{{ $lopp->iteration < 3 ? 'col-span-3' : 'col-span-2'}}"/>
                 @endforeach   
             </div>
         </main>

@@ -26,15 +26,20 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('posts', [
+        /*'posts' => Post::latest('published_at')
+        ->with(['category', 'author'])
+            ->get()*/
+        'posts' => [], //simular que no hay data    
+
         //'posts' => Post::with('category')->get()
         //agrega orden, el ultimo en publicar encabeza listado de post
-        'posts' => Post::latest('published_at')
+        //'posts' => Post::latest('published_at')
         //para que la consulta a la bd realice una precarga, y no consulte uno a uno los uusarios, se agrega arreglo con user
         //with es utilizado sólo cuando se llama estaticamente al modelo
         //    ->with('category')
         //->with(['category', 'user'])
-        ->with(['category', 'author'])
-            ->get()
+
+       
         
     ]);
 });

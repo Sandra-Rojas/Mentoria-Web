@@ -26,10 +26,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('posts', [
-        /*'posts' => Post::latest('published_at')
+        'posts' => Post::latest('published_at')
         ->with(['category', 'author'])
-            ->get()*/
-        'posts' => collect([]), //simular que no hay data    
+            ->get()
+        //'posts' => collect([]), //simular que no hay data    
 
         //'posts' => Post::with('category')->get()
         //agrega orden, el ultimo en publicar encabeza listado de post

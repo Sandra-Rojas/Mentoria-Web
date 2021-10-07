@@ -5,8 +5,9 @@
             <x-post-main :post="$posts[0]" />
 
             <div class="lg:grid lg:grid-cols-6">
-                @foreach ($posts->skip(1) as $post)            
-                    <x-post-card :post="$post" class="bg-red-500"/>
+                @foreach ($posts->skip(1) as $post) 
+                    @add($loop)           
+                    <x-post-card :post="$post" class="bla"/>
                 @endforeach   
             </div>
         </main>

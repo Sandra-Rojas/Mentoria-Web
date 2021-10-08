@@ -9,12 +9,7 @@
             <div class="mt-8 flex flex-col justify-between">
                 <header>
                     <div class="space-x-2">
-                        @if ($post->count())    
-                            <x-category-button :post="$post" />
-                        @else
-                                <p class="text-center">No posts yet. </p>
-                        @endif
-                        
+                            <x-category-button :category="$post->category" />
                     </div>
 
                     <div class="mt-4">

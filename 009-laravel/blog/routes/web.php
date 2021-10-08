@@ -27,8 +27,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('posts', [
         'posts' => Post::latest('published_at')
-        ->with(['category', 'author'])
-            ->get()
+            ->with(['category', 'author'])
+            ->get(),
+        'categories' => Category::all() ,
+        'test'  => 'bla bla'
         //'posts' => collect([]), //simular que no hay data    
 
         //'posts' => Post::with('category')->get()
@@ -38,9 +40,6 @@ Route::get('/', function () {
         //with es utilizado sólo cuando se llama estaticamente al modelo
         //    ->with('category')
         //->with(['category', 'user'])
-
-       
-        
     ]);
 });
 

@@ -2,7 +2,8 @@
         @include('_posts-header')
 
         <main class="max-w-6xl mx-auto mt-6 lg:mt-20 space-y-6">
-                @if ($posts->count())    
+                @if ($posts->count())
+                        {{ $test}}    
                         <x-post-main :post="$posts[0]" />
 
                         <div class="lg:grid lg:grid-cols-6">

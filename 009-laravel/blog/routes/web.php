@@ -30,7 +30,7 @@ Route::get('/', function () {
             ->with(['category', 'author'])
             ->get(),
         'categories' => Category::all(),
-        'test'  => 'bla bla'
+        'test'  => 'bla bla',
         //'posts' => collect([]), //simular que no hay data    
 
         //'posts' => Post::with('category')->get()

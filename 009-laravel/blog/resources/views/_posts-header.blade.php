@@ -27,7 +27,7 @@
 
             <!-- Segunda forma utilizando biblicoteca de Aplphine, componete de Aplhine -->
             <div x-data= "{ show:false }">
-                <button @click="show= true">Category</button>
+                <button @click="show= !show">Category</button>
 
                 <a href="#" x-show="show">One</a> 
                 <a href="#" x-show="show">Two</a>

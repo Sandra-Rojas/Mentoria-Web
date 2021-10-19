@@ -30,7 +30,7 @@ Route::get('/', function () {
             ->with(['category', 'author'])
             ->get(),
         'categories' => Category::all(),
-        'test'  => 'bla bla',
+        //'test'  => 'bla bla',
         //'posts' => collect([]), //simular que no hay data    
 
         //'posts' => Post::with('category')->get()
@@ -53,6 +53,8 @@ Route::get('/category/{category:slug}', function (Category $category) {
     return view('posts', [
      //'posts' => $category->posts, 
      'posts' => $category->posts->load(['category', 'author']), 
+     'categories' => Category::all(),
+     'currentCategory' => $category,
     ]);
 });
 
@@ -65,6 +67,7 @@ Route::get('/author/{author}', function (User $author) {
      //eager loading permite cargar los datos relacionados en una sola consulta.
      //por defecto es lazy loading (carga pasiva)
      'posts' => $author->posts->load(['category', 'author']), 
+     'categories' => Category::all(),
     ]);
 });
 

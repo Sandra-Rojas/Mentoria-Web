@@ -17,7 +17,7 @@
       
             <!-- Segunda forma utilizando biblicoteca de Aplphine, componete de Aplhine -->
             <div x-data= "{ show:false }">
-                <button @click="show= !show" class= "py-2 pl-3 pr-9 text-sm font-semibold inline-flex">
+                <button @click="show= !show" class= "py-2 pl-3 pr-9 text-sm font-semibold lg:w-32 w-full flex lg:inline-flex">
                     Category
 
                     <svg class="transform -rotate-90 absolute pointer-events-none" style="right: 12px;" width="22"

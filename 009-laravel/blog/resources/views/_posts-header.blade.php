@@ -16,7 +16,7 @@
         <div class="relative flex lg:inline-flex items-center bg-gray-100 rounded-xl">
       
             <!-- Segunda forma utilizando biblicoteca de Aplphine, componete de Aplhine -->
-            <div x-data= "{ show: false }"> @click.away = "show = false">
+            <div x-data= "{ show: false }" @click.away = "show = false">
                 <button @click="show= !show" class= "py-2 pl-3 pr-9 text-sm font-semibold lg:w-32 w-full flex lg:inline-flex">
                     {{ isset($currentCategory) ? ($currentCategory->name) : 'Categories' }}
 

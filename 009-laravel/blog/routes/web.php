@@ -41,7 +41,7 @@ Route::get('/', function () {
         //    ->with('category')
         //->with(['category', 'user'])
     ]);
-});
+})->name('home');
 
 Route::get('/post/{post}', function (Post $post) {    
     return view('post', [

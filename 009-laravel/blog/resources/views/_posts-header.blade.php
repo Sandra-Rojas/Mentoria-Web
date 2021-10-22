@@ -13,7 +13,7 @@
 
     <div class="space-y-2 lg:space-y-0 lg:space-x-4 mt-8">
         <!--  Category -->
-        <div class="relative flex lg:inline-flex items-center bg-gray-100 rounded-xl">
+        <div class="relative lg:inline-flex items-center bg-gray-100 rounded-xl">
       
             <!-- Segunda forma utilizando biblicoteca de Aplphine, componete de Aplhine -->
             <div x-data= "{ show: false }" @click.away = "show = false">
@@ -66,7 +66,7 @@
         </div>
 
         <!-- Search -->
-        <div class="relative lg:inline-flex items-center bg-gray-100 rounded-xl px-3 py-2">
+        <div class="relative flex lg:inline-flex items-center bg-gray-100 rounded-xl px-3 py-2">
             <form method="GET" action="#">
                 <input type="text" name="search" placeholder="Find something"
                         class="bg-transparent placeholder-black font-semibold text-sm">

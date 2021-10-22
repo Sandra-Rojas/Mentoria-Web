@@ -19,11 +19,11 @@
                 <x-dropdown-item href = "/" :actived="request()->routeIs('home')">ALL</x-dropdown-item>
 
                 @foreach( $categories as $category)
-                <x-dropdown-item 
+                <x-dropdown-item>
                     href="/category/{{$category->slug}}" 
                     :actived= "isset( $currentCategory) && $currentCategory->is($category)" > 
                     {{ ucwords($category->name) }}   
-                <x-dropdown-item>
+                </x-dropdown-item>
                 @endforeach
             </x-dropdown>
         </div>

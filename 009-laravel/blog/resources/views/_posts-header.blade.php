@@ -15,9 +15,9 @@
         <!--  Category -->
         <div class="relative lg:inline-flex items-center bg-gray-100 rounded-xl">
       
-            <!-- Segunda forma utilizando biblicoteca de Aplphine, componete de Aplhine -->
-            <div x-data= "{ show: false }" @click.away = "show = false">
-                <button @click="show= !show" class= "py-2 pl-3 pr-9 text-sm font-semibold lg:w-32 w-full flex lg:inline-flex">
+            <x-dropdown>
+                <x-slot name= "trigger">
+                <button class= "py-2 pl-3 pr-9 text-sm font-semibold lg:w-32 w-full flex lg:inline-flex">
                     {{ isset($currentCategory) ? ucwords(($currentCategory->name)) : 'Categories' }}
 
                     <svg class="transform -rotate-90 absolute pointer-events-none" style="right: 12px;" width="22"
@@ -30,17 +30,16 @@
                         </g>
                     </svg>
                 </button>
+                </x-slot>
 
-                <div x-show="show" class = "py-2 absolute bg-gray-100 w-full mt-2 rounded-xl z-50 text-left px-3 " style="display: none">
-                    @foreach ($categories as $category)
-                        <a href="/category/{{ $category->slug }}"
-                            class = "block text-left px-3 text-sm leading-6 hover:bg-blue-500 hover:text-white
-                                {{ isset($currentCategory) && $currentCategory->is($category) ? 'bg-blue-500 text-white' : '' }}">
-                            {{ ucwords($category->name) }}
-                        </a>    
-                    @endforeach
-                </div>
-            </div>    
+                @foreach( $categories as $category)
+                <a href="/category/{{$category->slug}}" 
+                    class="block text-left px-3 text-sm leading-6 hover:bg-blue-500 hover:text-white {{isset( $currentCategory) && $currentCategory->is($category) ? 'bg-blue-500 text-white' : ''}}">
+                    {{ ucwords($category->name) }}
+                </a>
+                @endforeach
+
+            </x-dropdown>
         </div>
 
         <!-- Other Filters -->

@@ -2,7 +2,7 @@
 
 @php
 
-$classes = "block text-left px-3 text-sm leading-6 hover:bg-blue-500 hover:text-white";
+$classes = 'block text-left px-3 text-sm leading-6 hover:bg-blue-500 hover:text-white';
 
 if ($actived){
 

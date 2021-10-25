@@ -6,7 +6,6 @@
      <div class="space-y-2 lg:space-y-0 lg:space-x-4 mt-8">
         <!--  Category -->
         <div class="relative lg:inline-flex items-center bg-gray-100 rounded-xl">
-      
             <x-dropdown>
                 <x-slot name= "trigger">
                     <button class= "py-2 pl-3 pr-9 text-sm font-semibold lg:w-32 w-full flex lg:inline-flex">

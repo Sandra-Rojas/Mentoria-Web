@@ -28,12 +28,7 @@ use App\Http\Controllers\PostController;
 //Route::get('/', function () {
 //aca indica que al llamar la ruta / se creara la instancia del controlador Post y se ejecutara la accion index    
 Route::get('/', [PostController::class, 'index'])->name('home');
-
-Route::get('/post/{post}', function (Post $post) {    
-    return view('post', [
-     'post' => $post, 
-    ]);
-});
+Route::get('/post/{post}', [PostController::class, 'show']);
 
 Route::get('/category/{category:slug}', function (Category $category) {    
     return view('posts', [

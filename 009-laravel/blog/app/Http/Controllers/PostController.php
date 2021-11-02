@@ -35,4 +35,10 @@ class PostController extends Controller
         ]);
 
     }
+
+    Public function show(Post $post) {    
+        return view('post', [
+         'post' => $post, 
+        ]);
+    }
 }

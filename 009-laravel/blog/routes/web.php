@@ -25,11 +25,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    dd(request(['search']));
+    //dd(request(['search'])); entrega valor de la palabra buscada
+    //request('search'); //valor
+    $posts = Post::latest('published_at')
+    ->with(['category', 'author']);
+
+    if (request('search')) {
+        $posts->where('title', '%', request('search'). '%');
+    }
+
     return view('posts', [
-        'posts' => Post::latest('published_at')
-            ->with(['category', 'author'])
-            ->get(),
+        'posts' => $posts->get(),
         'categories' => Category::all(),
         //'test'  => 'bla bla',
         //'posts' => collect([]), //simular que no hay data    

@@ -25,20 +25,25 @@ class Post extends Model
 
     public function scopeFilter($query, array $filters)
     {
-        //usando la forma when se cumple
-        $query->when(
-            isset($filters['search']), 
-            fn ($query, $search) =>
-            $query->where('title', 'like', "%$search%")
-                    ->orWhere('resumen', 'like', "%$search%"));
+        //usando la forma when 
+        //nofunciona
+        // return $query->when(
+        //     isset($filters['search']), 
+        //     fn ($query, $search) =>
+        //     $query->where('title', 'like', "%$search%")
+        //             ->orWhere('resumen', 'like', "%$search%"));
 
-       // if (request('search')) {
-        // if (isset($filters['search'])) {       
-        //     //agregar las condiciones de busqueda
-        //     return $query->where('title', 'like', '%' . $filters['search'] . '%')
-        //             ->orWhere('resumen', 'like', '%' . $filters['search'] . '%');
-        // }
+       if (request('search')) {
+        if (isset($filters['search'])) {       
+            //agregar las condiciones de busqueda
+            return $query->where('title', 'like', '%' . $filters['search'] . '%')
+                    ->orWhere('resumen', 'like', '%' . $filters['search'] . '%');
+        }
+        }
+
     }
+
+
     //relation: hasone, hasMany, belongsTo, belongsToMany
     public function category()
     {

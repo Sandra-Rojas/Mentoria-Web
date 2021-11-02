@@ -31,7 +31,8 @@ Route::get('/', function () {
     ->with(['category', 'author']);
 
     if (request('search')) {
-        $posts->where('title', 'like', '%' . request('search') . '%');
+        $posts->where('title', 'like', '%' . request('search') . '%')
+                ->orWhere('resumen', 'like', '%' . request('search') . '%');
     }
 
     return view('posts', [

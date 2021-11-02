@@ -12,7 +12,9 @@ class PostController extends Controller
     {
         return view('posts', [
             //'posts' => Post::latest('published_at')->with(['category', 'author'])->filter()->get(),
-            'posts' => Post::latest('published_at')->filter()->get(),
+            'posts' => Post::latest('published_at')
+                        ->filter(request(['search']))
+                        ->get(),
             'categories' => Category::all(),
             //'test'  => 'bla bla',
             //'posts' => collect([]), //simular que no hay data    

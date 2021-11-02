@@ -17,18 +17,20 @@ class Post extends Model
     //public $guarded = ['id'];
     protected $guarded = ['id'];
     public $with = ['category', 'author'];
+
     public function getRouteKeyName()
     {
         return 'slug';
     }
 
-    public function scopeFilter($query)
+    public function scopeFilter($query, array $filters)
     {
 
-        if (request('search')) {
+       // if (request('search')) {
+        if (isset($filters['search'])) {       
             //agregar las condiciones de busqueda
-            return $query->where('title', 'like', '%' . request('search') . '%')
-                    ->orWhere('resumen', 'like', '%' . request('search') . '%');
+            return $query->where('title', 'like', '%' . $filters['search'] . '%')
+                    ->orWhere('resumen', 'like', '%' . $filters['search'] . '%');
         }
     }
     //relation: hasone, hasMany, belongsTo, belongsToMany

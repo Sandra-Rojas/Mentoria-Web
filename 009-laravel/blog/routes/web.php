@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    dd(request('search'));
+    dd(request(['search']));
     return view('posts', [
         'posts' => Post::latest('published_at')
             ->with(['category', 'author'])

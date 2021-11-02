@@ -5,6 +5,7 @@ use App\Models\User;
 //use Illuminate\Support\Facades\File;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 //biblioteca nueva Yaml: permite leer metadata
 //requiere instacion de composer, se ejecuta al mismo nivel de archivo composer (ejec dentro de carpeta blog)
 //comando: composer require spatie/yaml-front-matter

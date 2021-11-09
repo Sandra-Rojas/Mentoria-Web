@@ -16,6 +16,7 @@ class PostController extends Controller
                         ->filter(request(['search', 'category']))
                         ->get(),
             'categories' => Category::all(),
+            'currentCategory' => Category::where('slug', request('category'->first))
             //'test'  => 'bla bla',
             //'posts' => collect([]), //simular que no hay data    
     

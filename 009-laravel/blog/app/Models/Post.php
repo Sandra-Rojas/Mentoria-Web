@@ -26,7 +26,7 @@ class Post extends Model
     public function scopeFilter($query, array $filters)
     {
         //usando la forma when 
-        return $query->when(
+        $query->when(
             $filters['search'] ?? false, //corregido
             //isset($filters['search']), //esto no va!!
             fn ($query, $search) =>
@@ -51,7 +51,7 @@ class Post extends Model
             $query ->Where('slug', $category))
         );
 
-        return $query;
+        //return $query;
 
     //    if (request('search')) {
     //     if (isset($filters['search'])) {       

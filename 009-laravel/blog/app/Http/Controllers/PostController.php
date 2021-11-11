@@ -19,7 +19,7 @@ class PostController extends Controller
         //'posts' => $posts
             'posts' => Post::latest('published_at') //Ordenamiento
                 ->filter(request(['search', 'category']))
-                ->paginate(5), //get => ejecutar
+                ->paginate(6), //get => ejecutar
             'categories' => Category::all(),
             'currentCategory' => 
                 request('category') !== null ? Category::where('slug', request('category'))->first() : null,

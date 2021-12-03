@@ -46,8 +46,13 @@
                 </div>
 
                 <h3>Listado de Ordenes</h3>
-                <ul>
+                <ul id="listado-ordenes">
                     <li>136 -Xbox One</li>
+                </ul>
+
+                <h3>Listado de Matriculas</h3>
+                <ul id="listado-matriculas">
+                    <li>112223334 - J R</li>
                 </ul>
 
                 <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
